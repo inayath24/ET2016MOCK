@@ -12,7 +12,7 @@
 #
 # Import the Solr configuration for the store
 #
-$productCatalog=__PRODUCT_CATALOG_NAME__
+$productCatalog=sapbasketProductCatalog
 $catalogVersions=catalogVersions(catalog(id),version);
 $serverConfigName=
 $indexConfigName=
