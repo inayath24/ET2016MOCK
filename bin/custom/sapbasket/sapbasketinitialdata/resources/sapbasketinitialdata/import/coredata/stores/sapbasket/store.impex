@@ -13,11 +13,11 @@
 # Create the BaseStore
 #
 
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$classificationCatalog=__CLASSIFICATION_CATALOG_NAME__
+$productCatalog=sapbasketProductCatalog
+$classificationCatalog=sapbasketClassificationCatalog
 $currencies=JPY,USD
 $net=false
-$storeUid=__STORE_UID__
+$storeUid=sapbasket
 $defaultCurrency=USD
 $languages=ja,en,de,zh
 $defaultLanguage=en
