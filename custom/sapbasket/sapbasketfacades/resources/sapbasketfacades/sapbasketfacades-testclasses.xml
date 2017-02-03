@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testclasses><sapbasketfacades><testclass>com.sap.sapbasket.facades.suggestion.impl.DefaultSimpleSuggestionFacadeTest</testclass><testclass>com.sap.sapbasket.facades.suggestion.DefaultSimpleSuggestionFacadeIntegrationTest</testclass></sapbasketfacades></testclasses>
