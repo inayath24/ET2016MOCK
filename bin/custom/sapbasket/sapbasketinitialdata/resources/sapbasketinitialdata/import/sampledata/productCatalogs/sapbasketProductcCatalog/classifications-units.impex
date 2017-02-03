@@ -9,15 +9,12 @@
 # Information and shall use it only in accordance with the terms of the
 # license agreement you entered into with SAP.
 # -----------------------------------------------------------------------
-# ImpEx for Importing Prices
+# ImpEx for Importing Units
 
 # Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
+$classificationCatalog=sapbasketClassificationCatalog
 
-$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default='$productCatalog:Staged']
-$prices=Europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
+$systemVersion=systemVersion(catalog(id[default='$classificationCatalog']),version[default='1.0'])
 
-# Set product approval status to Approved only for those products that have prices.
-$approved=approvalstatus(code)[default='approved']
 
-UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;Europe1PriceFactory_PTG(code)
+INSERT_UPDATE ClassificationAttributeUnit;code[unique=true];symbol;unitType;$systemVersion[unique=true]

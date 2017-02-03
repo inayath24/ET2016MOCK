@@ -15,7 +15,7 @@
 #% impex.setLocale( Locale.GERMAN );
 
 # Macros / Replacement Parameter definitions
-$storeUid=__STORE_UID__
+$storeUid=sapbasket
 
 INSERT_UPDATE BaseStore2WarehouseRel;source(uid)[unique=true];target(code)[unique=true]
 

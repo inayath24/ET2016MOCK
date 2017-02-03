@@ -12,10 +12,10 @@
 # ImpEx for Importing CMS Mobile Content
 
 # Macros / Replacement Parameter definitions
-$contentCatalog=__CONTENT_CATALOG_NAME__
-$contentCatalogName=__CONTENT_CATALOG_FULL_NAME__
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$productCatalogName=__PRODUCT_CATALOG_FULL_NAME__
+$contentCatalog=sapbasketContentCatalog
+$contentCatalogName=sapbasketContentCatalog
+$productCatalog=sapbasketProductCatalog
+$productCatalogName=sapbasketProductCatalog
 
 ##############VARIABLES#####################################
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
