@@ -8,7 +8,9 @@
 
 		  <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
 	      <path dir='${HYBRIS_BIN_DIR}/custom' autoload='true'/>
-
+          <extension name='hmc'/>
+		  <extension name='yaddon'/>
+		  <extension name='ycommercewebservices'/>
 
 										
 		<!-- ext-template -->
