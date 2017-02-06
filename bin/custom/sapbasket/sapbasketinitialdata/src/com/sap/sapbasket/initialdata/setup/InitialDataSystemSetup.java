@@ -36,7 +36,7 @@ import com.sap.sapbasket.initialdata.constants.SapbasketInitialDataConstants;
 
 /**
  * This class provides hooks into the system's initialization and update processes.
- * 
+ *
  * @see "https://wiki.hybris.com/display/release4/Hooks+for+Initialization+and+Update+Process"
  */
 @SystemSetup(extension = SapbasketInitialDataConstants.EXTENSIONNAME)
@@ -72,7 +72,7 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	/**
 	 * Implement this method to create initial objects. This method will be called by system creator during
 	 * initialization and system update. Be sure that this method can be called repeatedly.
-	 * 
+	 *
 	 * @param context
 	 *           the context provides the selected parameters and values
 	 */
@@ -109,6 +109,7 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	@SystemSetup(type = Type.PROJECT, process = Process.ALL)
 	public void createProjectData(final SystemSetupContext context)
 	{
+<<<<<<< HEAD
 		final List<ImportData> importData = new ArrayList<ImportData>();
 
 		final ImportData sampleImportData = new ImportData();
@@ -122,6 +123,30 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 
 		getSampleDataImportService().execute(this, context, importData);
 		getEventService().publishEvent(new SampleDataImportedEvent(context, importData));
+=======
+		/*
+		 * Add import data for each site you have configured
+		 */
+
+		final List<ImportData> importData = new ArrayList<ImportData>();
+		try
+		{
+			final ImportData sampleImportData = new ImportData();
+			sampleImportData.setProductCatalogName("sapbasket");
+			sampleImportData.setContentCatalogNames(Arrays.asList("sapbasket"));
+			sampleImportData.setStoreNames(Arrays.asList("sapbasket"));
+			importData.add(sampleImportData);
+
+			getCoreDataImportService().execute(this, context, importData);
+			getEventService().publishEvent(new CoreDataImportedEvent(context, importData));
+			getSampleDataImportService().execute(this, context, importData);
+			getEventService().publishEvent(new SampleDataImportedEvent(context, importData));
+		}
+		catch (final Exception e)
+		{
+			System.out.println(e);
+		}
+>>>>>>> ed48cb4943198328181fe89bd71b0e39543a9ad1
 
 	}
 
