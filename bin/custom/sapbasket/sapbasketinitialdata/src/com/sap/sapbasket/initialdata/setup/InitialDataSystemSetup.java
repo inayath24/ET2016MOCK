@@ -109,25 +109,6 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	@SystemSetup(type = Type.PROJECT, process = Process.ALL)
 	public void createProjectData(final SystemSetupContext context)
 	{
-<<<<<<< HEAD
-		final List<ImportData> importData = new ArrayList<ImportData>();
-
-		final ImportData sampleImportData = new ImportData();
-		sampleImportData.setProductCatalogName("sapbasket");
-		sampleImportData.setContentCatalogNames(Arrays.asList("sapbasket"));
-		sampleImportData.setStoreNames(Arrays.asList("sapbasket"));
-		importData.add(sampleImportData);
-
-		getCoreDataImportService().execute(this, context, importData);
-		getEventService().publishEvent(new CoreDataImportedEvent(context, importData));
-
-		getSampleDataImportService().execute(this, context, importData);
-		getEventService().publishEvent(new SampleDataImportedEvent(context, importData));
-=======
-		/*
-		 * Add import data for each site you have configured
-		 */
-
 		final List<ImportData> importData = new ArrayList<ImportData>();
 		try
 		{
@@ -146,7 +127,6 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 		{
 			System.out.println(e);
 		}
->>>>>>> ed48cb4943198328181fe89bd71b0e39543a9ad1
 
 	}
 
