@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Feb 3, 2017 10:44:46 PM                     ---
+ * --- Generated at Feb 4, 2017 3:19:54 PM                      ---
  * ----------------------------------------------------------------
  */
 package com.sap.sapbasket.fulfilmentprocess.constants;

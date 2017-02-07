@@ -29,7 +29,7 @@ $orderProcessCode=order-process
 $pickupInStoreMode=BUY_AND_COLLECT
 $customerAllowedToIgnoreSuggestions=true
 $paymentProvider=Mockup
-$promoGrp=__DEFAULT_PROMO_GRP__
+$promoGrp=sapbasketPromo
 $checkoutFlowGroup=defaultCheckoutGroup
 
 INSERT_UPDATE PromotionGroup;Identifier[unique=true];
