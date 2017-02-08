@@ -36,7 +36,7 @@ INSERT_UPDATE SapbasketProduct;code[unique=true];$supercategories;manufacturerNa
 ;Ghee;Oils&Edible;;;;SapbasketVariantProduct;
 
 ;Cookies;Biscuits,SnackFood;;;;SapbasketVariantProduct;
-;CreamBisuits;Biscuits,SnackFood;;;;SapbasketVariantProduct;
+;CreamBiscuits;Biscuits,SnackFood;;;;SapbasketVariantProduct;
 ;Digestive;Biscuits,SnackFood;;;;SapbasketVariantProduct;
 
 ;Lays;Chips,SnackFood;;;;SapbasketVariantProduct;
