@@ -13,9 +13,9 @@
 
 # Macros / Replacement Parameter definitions
 $contentCatalog=sapbasketContentCatalog
-$contentCatalogName=sapbasketContentCatalog
+$contentCatalogName=SapBasket Content Catalog
 $productCatalog=sapbasketProductCatalog
-$productCatalogName=sapbasketProductCatalog
+$productCatalogName=SapBasket Product Catalog
 
 ##############VARIABLES#####################################
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
