@@ -8,12 +8,7 @@
 
 		  <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
 	      <path dir='${HYBRIS_BIN_DIR}/custom' autoload='true'/>
-
-
-										
-		<!-- ext-template -->
-		
-
-
+          <extension name='hmc'/>
+		  
 	</extensions>
 </hybrisconfig>

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Feb 3, 2017 1:33:55 PM                      ---
+ * --- Generated at Feb 8, 2017 10:38:41 AM                     ---
  * ----------------------------------------------------------------
  */
 package com.sap.sapbasket.cockpits.constants;

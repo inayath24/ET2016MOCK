@@ -12,7 +12,7 @@
 # ImpEx for Importing Product Reviews
  
 # Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
+$productCatalog=sapbasketProductCatalog
 
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
 

@@ -12,8 +12,8 @@
 # ImpEx for SOLR Configuration
 
 # Macros / Replacement Parameter definitions
-$classificationCatalog=__CLASSIFICATION_CATALOG_NAME__
-$contentCatalog=__CONTENT_CATALOG_NAME__
+$classificationCatalog=sapbasketClassificationCatalog
+$contentCatalog=sapbasketContentCatalog
 
 $classSystemVersion=systemVersion(catalog(id[default='$classificationCatalog']),version[default='1.0'])
 $classCatalogVersion=catalogVersion(catalog(id[default='$classificationCatalog']),version[default='1.0'])
@@ -21,7 +21,7 @@ $classAttribute=classificationAttribute(code,$classSystemVersion)
 $classClass=classificationClass(code,$classCatalogVersion)
 $classAttributeAssignment=classAttributeAssignment($classClass,$classAttribute,$classSystemVersion)
 $contentCatalogVersion=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalogName]),CatalogVersion.version[default=Staged])[default=$contentCatalogName:Staged]
-$productCatalog=__PRODUCT_CATALOG_NAME__
+$productCatalog=sapbasketProductCatalog
 $productCatalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 
 

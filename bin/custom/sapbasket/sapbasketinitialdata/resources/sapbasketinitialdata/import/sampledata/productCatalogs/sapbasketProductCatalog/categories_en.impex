@@ -12,8 +12,8 @@
 # ImpEx for Importing Categories
 
 # Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$productCatalogName=__PRODUCT_CATALOG_FULL_NAME__
+$productCatalog=sapbasketProductCatalog
+$productCatalogName=SapBasket Product Catalog
 
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 
@@ -22,3 +22,12 @@ $lang=en
 
 # Create Categories
 UPDATE Category;code[unique=true];$catalogVersion;name[lang=$lang]
+;Food;;Food
+;RiceFlour&Pulses;;Rice, Flour & Pulses
+;Oils&Edible;;Oils & Edible
+;SnackFood;;Snack Food
+;Biscuits;;Biscuits
+;Chips;;Chips
+;DryFruits;;Dry Fruits
+;CoffeeTea&Beverages;;Coffee, Tea & Beverages
+;Jams&Pickles;;Jams & Pickles

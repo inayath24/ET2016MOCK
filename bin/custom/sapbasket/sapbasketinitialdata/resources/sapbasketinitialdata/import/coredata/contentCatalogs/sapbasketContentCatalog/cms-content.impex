@@ -12,7 +12,7 @@
 #
 # Import the CMS content for the site
 #
-$contentCatalog=__CONTENT_CATALOG_NAME__
+$contentCatalog=sapbasketContentCatalog
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 
 # Import config properties into impex macros
@@ -63,8 +63,8 @@ UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];velocityTemplate[tr
 ;;LandingPage5Template      ;$jarResourceCms/structure-view/structure_landingPage5Template.vm
 ;;LandingPage6Template      ;$jarResourceCms/structure-view/structure_landingPage6Template.vm
 ;;ContentPage1Template      ;$jarResourceCms/structure-view/structure_contentPage1Template.vm
-;;SearchResultsListPageTemplate ;$jarResourceCms/structure-view/structure_searchResultsPageTemplate.vm
-;;SearchResultsGridPageTemplate ;$jarResourceCms/structure-view/structure_searchResultsPageTemplate.vm
+;;SearchResultsListPageTemplate ;$jarResourceCms/structure-view/structure_searchResultsListPageTemplate.vm
+;;SearchResultsGridPageTemplate ;$jarResourceCms/structure-view/structure_searchResultsGridPageTemplate.vm
 ;;CartPageTemplate 		    ;$jarResourceCms/structure-view/structure_cartPageTemplate.vm
 ;;AccountPageTemplate 		;$jarResourceCms/structure-view/structure_accountPageTemplate.vm
 ;;StoreFinderPageTemplate	;$jarResourceCms/structure-view/structure_storefinderSearchTemplate.vm

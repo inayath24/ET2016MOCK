@@ -12,7 +12,7 @@
 #
 # Import the Responsive CMS Site configuration
 #
-$siteUid=__STORE_UID__
+$siteUid=sapbasket
 
 
 # CMS Site - Update the theme to be responsive

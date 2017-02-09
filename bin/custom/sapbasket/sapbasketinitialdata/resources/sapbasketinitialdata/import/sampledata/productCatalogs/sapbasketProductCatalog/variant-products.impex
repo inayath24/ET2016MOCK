@@ -17,7 +17,7 @@
 # ApparelProducts may have no variations, only style variations or both style and size variations.
 
 # Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
+$productCatalog=sapbasketProductCatalog
 
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $prices=europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
@@ -33,3 +33,88 @@ INSERT_UPDATE ApparelStyleVariantProduct;code[unique=true];$baseProduct;ean;unit
 INSERT_UPDATE ApparelSizeVariantProduct;code[unique=true];$baseProduct;ean;unit(code);swatchColour;supercategories(code,$catalogVersion);$approved;$catalogVersion
 
 INSERT_UPDATE ElectronicsColorVariantProduct;code[unique=true];$baseProduct;ean;unit(code);swatchColour;supercategories(code,$catalogVersion);$approved;$catalogVersion
+
+INSERT_UPDATE SapbasketVariantProduct;code[unique=true];$baseProduct;productUnit(code);quantity;supercategories(code,$catalogVersion);$approved;$catalogVersion
+;ToorDal_500;ToorDal;gm;500
+;ToorDal_1;ToorDal;kg;1
+;ChannaDal_500;ChannaDal;gm;500
+;ChannaDal_1;ChannaDal;kg;1
+;MoongDal_500;MoongDal;gm;500
+;MoongDal_1;MoongDal;kg;1
+;UradDal_500;UradDal;gm;500
+;UradDal_1;UradDal;kg;1
+;Peanuts_500;Peanuts;gm;500
+;Peanuts_1;Peanuts;kg;1
+
+;Olive_500;Olive;ml;500
+;Olive_1;Olive;l;1
+;Sunflower_500;Sunflower;ml;500
+;Sunflower_1;Sunflower;l;1
+;Groundnut_500;Groundnut;ml;500
+;Mustard_1;Mustard;l;1
+;Ghee_500;Ghee;ml;500
+;Ghee_1;Ghee;l;1
+
+;Cookies_1;Cookies;piece;1
+;Cookies_3;Cookies;pieces;3
+
+;CreamBiscuits_1;CreamBiscuits;piece;1
+;CreamBiscuits_3;CreamBiscuits;pieces;3
+
+;Digestive_1;Digestive;piece;1
+;Digestive_3;Digestive;pieces;3
+
+;Lays_100;Lays;gm;100
+;Kurkure_100;Kurkure;gm;100
+;UncleChips_100;UncleChips;gm;100
+
+;Cashew_50;Cashew;gm;50
+;Cashew_100;Cashew;gm;100
+
+;Almonds_50;Almonds;gm;50
+;Almonds_100;Almonds;gm;100
+
+;Pista_50;Pista;gm;50
+;Pista_100;Pista;gm;100
+
+;Walnuts_50;Walnuts;gm;50
+;Walnuts_100;Walnuts;gm;100
+
+;RedLabel_50;RedLabel;gm;50
+;RedLabel_100;RedLabel;gm;100
+;RedLabel_250;RedLabel;gm;250
+;RedLabel_500;RedLabel;gm;500
+;RedLabel_1;RedLabel;kg;1
+
+;Tetley_50;RedLabel;gm;50
+;Tetley_100;RedLabel;gm;100
+
+;Netscafe_50;Netscafe;gm;50
+;Netscafe_100;Netscafe;gm;100
+
+;BruInstant_50;BruInstant;gm;50
+;BruInstant_100;BruInstant;gm;100
+
+;FilterCoffeePowder_50;FilterCoffeePowder;gm;50
+;FilterCoffeePowder_100;FilterCoffeePowder;gm;100
+
+;Boost_500;Boost;gm;500
+;Boost_1;Boost;kg;1
+
+;Horlicks_500;Horlicks;gm;500
+;Horlicks_1;Horlicks;kg;1
+
+;FruitJam_50;FruitJam;gm;50
+;FruitJam_100;FruitJam;gm;100
+
+;FruitJam_50;FruitJam;gm;50
+;FruitJam_100;FruitJam;gm;100
+
+;Mayonnaise_50;Mayonnaise;gm;50
+;Mayonnaise_100;Mayonnaise;gm;100
+
+;Pickle_50;Pickle;gm;50
+;Pickle_100;Pickle;gm;100
+
+;Ketchup_250;Ketchup;ml;250
+;Ketchup_500;Ketchup;ml;500

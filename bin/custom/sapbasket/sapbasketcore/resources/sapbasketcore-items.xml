@@ -36,6 +36,15 @@
 			<value code="WHITE"/>
 			<value code="YELLOW"/>
 		</enumtype>
+		
+		<enumtype generate="true" code="sapbasketunit" autocreate="true" dynamic="true">
+			<value code="ml"/>
+			<value code="l"/>
+			<value code="gm"/>
+			<value code="kg"/>
+			<value code="piece"/>
+			<value code="pieces"/>
+		</enumtype>
 	</enumtypes>
 
 	<itemtypes>
@@ -45,6 +54,37 @@
 
 		<!-- TypeGroups are for structure of this file only -->
 
+<typegroup name="Sapbasket">
+			<itemtype code="SapbasketProduct" extends="Product"
+			          autocreate="true" generate="true"
+			          jaloclass="com.sap.sapbasket.core.jalo.SapbasketProduct">
+				<description>SapBasket Product item..</description>
+			</itemtype>
+
+			<itemtype code="SapbasketVariantProduct" extends="VariantProduct"
+			          autocreate="true" generate="true"
+			          jaloclass="com.sap.sapbasket.core.jalo.SapbasketVariantProduct">
+				<description>SapBasket variant type that contains additional attribute describing variant.
+				</description>
+				<attributes>
+					<attribute qualifier="quantity" type="java.lang.String">
+						<description>Quantity(Numeric Value) of the product, may vary depending on the product type.</description>
+						<modifiers/>
+						<persistence type="property"/>
+					</attribute>
+
+					<attribute qualifier="productUnit" type="sapBasketUnit">
+						<description>Unit of product in various Categories.
+						</description>
+						<modifiers/>
+						<persistence type="property"/>
+					</attribute>
+				</attributes>
+				
+			</itemtype>
+		</typegroup>
+		
+		
 		<typegroup name="Apparel">
 			<itemtype code="ApparelProduct" extends="Product"
 			          autocreate="true" generate="true"

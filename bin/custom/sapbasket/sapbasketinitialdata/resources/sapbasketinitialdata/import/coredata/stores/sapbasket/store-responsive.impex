@@ -13,7 +13,7 @@
 # Create the BaseStore
 #
 
-$storeUid=__STORE_UID__
+$storeUid=sapbasket
 $checkoutFlowGroup=responsiveCheckoutGroup
 
 # Base Store

@@ -12,10 +12,10 @@
 # ImpEx for Importing CMS Content
 
 # Macros / Replacement Parameter definitions
-$contentCatalog=__CONTENT_CATALOG_NAME__
-$contentCatalogName=__CONTENT_CATALOG_FULL_NAME__
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$productCatalogName=__PRODUCT_CATALOG_FULL_NAME__
+$contentCatalog=sapbasketContentCatalog
+$contentCatalogName=sapbasketContentCatalog
+$productCatalog=sapbasketProductCatalog
+$productCatalogName=sapbasketProductCatalog
 
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 $productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
@@ -107,7 +107,8 @@ INSERT_UPDATE SearchResultsListComponent;$contentCV[unique=true];uid[unique=true
 INSERT_UPDATE SearchResultsListComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
 
 # Content Slots
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(&componentRef)
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
 
@@ -176,8 +177,12 @@ INSERT_UPDATE ViewOrderAction;$contentCV[unique=true];uid[unique=true];url;name;
 # CMS View Store Action
 INSERT_UPDATE ViewStoreAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
 
+
 ##### Jsp Include Component #####
 INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
+;;ReturningCustomerLoginComponent;Returning Customer Login Component;accountReturningCustomerLogin.jsp;;ReturningCustomerLoginComponent
+;;NewCustomerLoginComponent;New Customer Login Component;accountNewCustomerLogin.jsp;;NewCustomerLoginComponent
+
 
 INSERT_UPDATE BreadcrumbComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
 
@@ -368,9 +373,13 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;c
 # ContentSlot
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
 
+
 ##### Customer Login #####
 # ContentSlot
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV);;;
+;;LeftContentSlot;Left Content Slot for Customer Login;true;ReturningCustomerLoginComponent
+;;RightContentSlot;Right Content Slot for Customer Login;true;NewCustomerLoginComponent;;;
+
 
 # ContentSlotForPage
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='login'];contentSlot(uid,$contentCV)[unique=true];;;

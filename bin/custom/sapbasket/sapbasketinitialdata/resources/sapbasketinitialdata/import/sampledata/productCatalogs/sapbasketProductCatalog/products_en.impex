@@ -12,8 +12,9 @@
 # ImpEx for Importing Product Localisations
  
 # Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$productCatalogName=__PRODUCT_CATALOG_FULL_NAME__
+$productCatalog=sapbasketProductCatalog
+$productCatalogName=SapBasket Product Catalog
+
 
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 
@@ -22,3 +23,40 @@ $lang=en
 
 # Update allProducts with localisations
 UPDATE Product;code[unique=true];$catalogVersion;name[lang=$lang];summary[lang=$lang];description[lang=$lang]
+;ToorDal;;Toor Dal
+;ChannaDal;;Channa Dal
+;MoongDal;;Moong Dal
+;UradDal;;Urad Dal
+;Peanuts;;Peanuts
+
+;Olive;;Olive
+;Sunflower;;Sunflower
+;Groundnut;;Groundnut
+;Mustard;;Mustard
+;Ghee;;Ghee
+
+;Cookies;;Cookies
+;CreamBisuits;;Cream Biscuits
+;Digestive;;Digestive
+
+;Lays;;Lays
+;Kurkure;;Kurkure
+;UncleChips;;Uncle Chips
+
+;Cashew;;Cashew
+;Almonds;;Almonds
+;Pista;;Pista
+;Walnuts;;Walnuts
+
+;RedLabel;;Red Label
+;Tetley;;Tetley
+;Netscafe;;Netscafe
+;BruInstant;;Bru Instant
+;FilterCoffeePowder;;Filter Coffee Powder
+;Boost;;Boost
+;Horlicks;;Horlicks
+
+;FruitJam;;Fruit Jam
+;Mayonnaise;;Mayonnaise
+;Pickle;;Pickle
+;Ketchup;;Ketchup

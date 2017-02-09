@@ -13,7 +13,7 @@
 # Import CMS content for the site
 #
 
-$contentCatalog=__CONTENT_CATALOG_NAME__
+$contentCatalog=sapbasketContentCatalog
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 
 # Language

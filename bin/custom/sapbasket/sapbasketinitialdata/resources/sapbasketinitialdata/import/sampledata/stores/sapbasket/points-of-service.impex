@@ -12,8 +12,8 @@
 # ImpEx for Points of Service
 
 # Macros / Replacement Parameter definitions
-$storeUid=__STORE_UID__
-$productCatalog=__PRODUCT_CATALOG_NAME__
+$storeUid=sapbasket
+$productCatalog=sapbasketProductCatalog
 
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $storeImage=storeImage(qualifier, $catalogVersion)
