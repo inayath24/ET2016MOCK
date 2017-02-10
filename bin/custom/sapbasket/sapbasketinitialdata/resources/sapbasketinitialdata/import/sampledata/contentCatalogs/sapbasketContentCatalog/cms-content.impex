@@ -40,6 +40,10 @@ INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];nam
 
 # CMS Link Components
 INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;&componentRef;target(code)[default='sameWindow']
+;;AccountProfileLink;AccountProfileLink;/my-account/profile;AccountProfileLink;AccountProfileLink;;
+;;AccountAddressBookLink;AccountAddressBookLink;/my-account/address-book;AccountAddressBookLink;AccountAddressBookLink;;
+;;AccountPaymentDetailsLink;AccountPaymentDetailsLink;/my-account/payment-details;AccountPaymentDetailsLink;AccountPaymentDetailsLink;;
+;;AccountOrderHistoryLink;AccountOrderHistoryLink;/my-account/orders;AccountOrderHistoryLink;AccountOrderHistoryLink;;
 
 # Lightbox Banner for Mini Cart
 INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
@@ -52,6 +56,7 @@ INSERT_UPDATE NavigationBarComponent;$contentCV[unique=true];uid[unique=true];na
 
 # Account Navigation Bar Components
 INSERT_UPDATE AccountNavigationComponent;$contentCV[unique=true];uid[unique=true];name;navigationNode(&nodeRef);styleClass;&componentRef
+;;AccountLeftNavigationComponent;Account Left Navigation Component;AccountLeftNavNode;;AccountLeftNavigationComponent
 
 # Account Navigation Bar Component
 INSERT_UPDATE AccountNavigationCollectionComponent;$contentCV[unique=true];uid[unique=true];name;components(uid, $contentCV);&componentRef
@@ -120,12 +125,15 @@ INSERT_UPDATE CMSCategoryRestriction;$contentCV[unique=true];uid[unique=true];na
 
 # CMS Navigation Nodes #
 INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;children(uid,$contentCV)[mode=append]
+;root;;root;;
 
 # CMS Navigation Nodes
 INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&linkRef);&nodeRef
-
+;SiteRootNode;;SiteRootNode;root;;SiteRootNode
+;AccountLeftNavNode;;My Account;SiteRootNode;AccountProfileLink,AccountAddressBookLink,AccountPaymentDetailsLink,AccountOrderHistoryLink;AccountLeftNavNode
 # Navigation Bar Component
 INSERT_UPDATE NavigationBarComponent;$contentCV[unique=true];uid[unique=true];navigationNode(&nodeRef);dropDownLayout(code)
+
 
 INSERT_UPDATE NavigationBarComponent;$contentCV[unique=true];uid[unique=true];name;wrapAfter;navigationNode(&nodeRef);link(uid, $contentCV);styleClass;dropDownLayout(code);&componentRef
 
@@ -180,8 +188,13 @@ INSERT_UPDATE ViewStoreAction;$contentCV[unique=true];uid[unique=true];url;name;
 
 ##### Jsp Include Component #####
 INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
-;;ReturningCustomerLoginComponent;Returning Customer Login Component;accountReturningCustomerLogin.jsp;;ReturningCustomerLoginComponent
-;;NewCustomerLoginComponent;New Customer Login Component;accountNewCustomerLogin.jsp;;NewCustomerLoginComponent
+;;ReturningCustomerLoginComponent;Returning Customer Login Component;accountReturningCustomerLogin.jsp;ReturningCustomerLoginComponent
+;;NewCustomerLoginComponent;New Customer Login Component;accountNewCustomerLogin.jsp;NewCustomerLoginComponent
+;;UpdateProfileComponent;Update Profile Component;accountProfileEditPage.jsp;UpdateProfileComponent
+;;AccountAddressBookComponent;Account Address Book Component;accountAddressBookPage.jsp;AccountAddressBookComponent
+;;UpdateEmailComponent;Update Email Component;accountProfileEmailEditPage.jsp;UpdateEmailComponent
+;;UpdatePasswordComponent;Update Password Component;accountChangePasswordPage.jsp;UpdatePasswordComponent
+;;AccountAddEditAddressComponent;Account Add Edit Address Component;accountEditAddressPage.jsp;AccountAddEditAddressComponent
 
 
 INSERT_UPDATE BreadcrumbComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
@@ -304,16 +317,24 @@ INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];positi
 ###### Account Address Book ######
 # ContentSlot
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-address-book;Side Content Slot for Account Address Book;true;AccountLeftNavigationComponent;;;
+;;BodyContent-address-book;Body Content Slot for Account Address Book;true;AccountAddressBookComponent;;;
 
 # ContentSlotForPage
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='address-book'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-address-book;SideContent;;SideContent-address-book;;;
+;;BodyContent-address-book;BodyContent;;BodyContent-address-book;;;
 
 ###### Account Add Edit Address ######
 # ContentSlot
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-add-edit-address;Side Content Slot for Add Edit Address;true;AccountLeftNavigationComponent;;;
+;;BodyContent-add-edit-address;Body Content Slot for Add Edit Address;true;AccountAddEditAddressComponent;;;
 
 # ContentSlotForPage
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='add-edit-address'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-add-edit-address;SideContent;;SideContent-add-edit-address;;;
+;;BodyContent-add-edit-address;BodyContent;;BodyContent-add-edit-address;;;
 
 ###### Account Payment Detail Page ######
 # ContentSlot
@@ -339,23 +360,36 @@ INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];positi
 ###### Account Update Password ######
 # ContentSlot
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-updatePassword;Side Content Slot for Update Password;true;AccountLeftNavigationComponent;;;
+;;BodyContent-updatePassword;Body Content Slot for Update Password;true;UpdatePasswordComponent;;;
 
 # ContentSlotForPage
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='updatePassword'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-updatePassword;SideContent;;SideContent-updatePassword;;;
+;;BodyContent-updatePassword;BodyContent;;BodyContent-updatePassword;;;
 
 ###### Account Update Profile ######
 # ContentSlot
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-update-profile;Side Content Slot for Update Profile;true;AccountLeftNavigationComponent;;;
+;;BodyContent-update-profile;Body Content Slot for Update Profile;true;UpdateProfileComponent;;;
 
 # ContentSlotForPage
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='update-profile'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-update-profile;SideContent;;SideContent-update-profile;;;
+;;BodyContent-update-profile;BodyContent;;BodyContent-update-profile;;;
+
 
 ###### Account Update Email ######
 # ContentSlot
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-update-email;Side Content Slot for Update Email;true;AccountLeftNavigationComponent;;;
+;;BodyContent-update-email;Body Content Slot for Update Email;true;UpdateEmailComponent;;;
 
 # ContentSlotForPage
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='update-email'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-update-email;SideContent;;SideContent-update-email;;;
+;;BodyContent-update-email;BodyContent;;BodyContent-update-email;;;
 
 ##### ProductListPage #####
 # ContentSlot

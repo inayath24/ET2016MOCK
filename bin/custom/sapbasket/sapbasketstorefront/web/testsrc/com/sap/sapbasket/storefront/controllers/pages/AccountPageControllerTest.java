@@ -60,6 +60,7 @@ import de.hybris.platform.commerceservices.search.pagedata.SearchPageData;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 import de.hybris.platform.servicelayer.i18n.I18NService;
 import com.sap.sapbasket.storefront.controllers.ControllerConstants;
+import com.sap.sapbasket.storefront.forms.ExtendedUpdateProfileForm;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -163,7 +164,7 @@ public class AccountPageControllerTest
 	@Mock
 	private UpdateEmailForm emailForm;
 	@Mock
-	private UpdateProfileForm profileForm;
+	private ExtendedUpdateProfileForm profileForm;
 	@Mock
 	private UpdatePasswordForm passwordForm;
 	@Mock

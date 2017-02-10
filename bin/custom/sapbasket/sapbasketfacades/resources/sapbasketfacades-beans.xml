@@ -20,4 +20,11 @@
 		<property name="code" type="String"/>
 		<property name="name" type="String"/>
 	</bean>
+	
+	<bean class="de.hybris.platform.commercefacades.user.data.CustomerData">
+		<property name="email" type="String"/>
+		<property name="date_of_birth" type="String"/>
+		<property name="mobile_number" type="String"/>
+		<property name="landline_number" type="String"/>
+	</bean>
 </beans>
