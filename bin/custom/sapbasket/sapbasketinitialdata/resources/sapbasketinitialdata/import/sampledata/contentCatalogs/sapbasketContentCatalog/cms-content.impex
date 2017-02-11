@@ -17,8 +17,8 @@ $contentCatalogName=sapbasketContentCatalog
 $productCatalog=sapbasketProductCatalog
 $productCatalogName=sapbasketProductCatalog
 
-$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
-$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
 $picture=media(code, $contentCV);
 $image=image(code, $contentCV);
 $media=media(code, $contentCV);
@@ -80,6 +80,7 @@ INSERT_UPDATE ProductVariantSelectorComponent;$contentCV[unique=true];uid[unique
 
 # CMS ProductAddToCart Components
 INSERT_UPDATE ProductAddToCartComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;AddToCart;Product Add To Cart;AddToCartAction;AddToCart
 
 # CMS ProductReferences Components
 INSERT_UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;&componentRef
@@ -113,7 +114,8 @@ INSERT_UPDATE SearchResultsListComponent;$contentCV[unique=true];uid[unique=true
 
 # Content Slots
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
-
+;;VariantSelectorSlot;VariantSelector
+;;AddToCartSlot;AddToCart
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
 
@@ -166,6 +168,7 @@ INSERT_UPDATE CMSActionRestriction;$contentCV[unique=true];uid[unique=true];name
 
 # CMS AddToCart Action
 INSERT_UPDATE AddToCartAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+;;AddToCartAction;/cart/add;Product Add To Cart Action;;AddToCartAction
 
 # CMS ListAddToCartAction
 INSERT_UPDATE ListAddToCartAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
