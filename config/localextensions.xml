@@ -12,11 +12,11 @@
 
 		<extension name="hmc"/>
 		
-		<extension name="electronicsstore"/>
+		<!--<extension name="electronicsstore"/>
 		<extension name="apparelstore"/>
 		
-		<extension name="yempty" />
-		<extension name="yhacext" />
+		<extension name="yempty"/>
+		<extension name="yhacext"/>-->
 
 	</extensions>
 </hybrisconfig>
