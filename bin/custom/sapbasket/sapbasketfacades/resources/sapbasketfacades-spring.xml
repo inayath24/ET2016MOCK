@@ -187,4 +187,11 @@
 	</bean>
 
 	<bean id="genderData" class="com.sap.sapbasket.facades.product.data.GenderData" scope="prototype"/>
+	
+	<alias name="defaultCustomCustomerFacade" alias="custCustomerFacade"/>
+	<bean id="defaultCustomCustomerFacade" class="com.sap.sapbasket.sapbasketfacades.impl.DefaultCustomCustomerFacade" parent="defaultCustomerFacade">	
+	</bean>
+	
+	<alias name="CustomCustomerPopulator" alias="customerPopulator"/>
+	<bean id="CustomCustomerPopulator" class="com.sap.sapbasket.facades.populators.CustomCustomerPopulator" parent="defaultCustomerPopulator"></bean>
 </beans>

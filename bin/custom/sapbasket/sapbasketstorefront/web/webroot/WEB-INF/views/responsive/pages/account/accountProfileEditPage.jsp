@@ -18,12 +18,17 @@
     <div class="container-lg col-md-6">
         <div class="account-section-content">
             <div class="account-section-form">
-                <form:form action="update-profile" method="post" commandName="updateProfileForm">
+                <form:form action="update-profile" method="post" commandName="extendedUpdateProfileForm">
 
                     <formElement:formSelectBox idKey="profile.title" labelKey="profile.title" path="titleCode" mandatory="true" skipBlank="false" skipBlankMessageKey="form.select.empty" items="${titleData}" selectCSSClass="form-control"/>
                     <formElement:formInputBox idKey="profile.firstName" labelKey="profile.firstName" path="firstName" inputCSS="text" mandatory="true"/>
                     <formElement:formInputBox idKey="profile.lastName" labelKey="profile.lastName" path="lastName" inputCSS="text" mandatory="true"/>
-
+					
+					<formElement:formInputBox idKey="profile.email" labelKey="profile.email" path="email" inputCSS="text" mandatory="true"/>
+					<formElement:formInputBox idKey="profile.date_of_birth" labelKey="profile.date_of_birth" path="date_of_birth" inputCSS="text"/>
+					<formElement:formInputBox idKey="profile.mobile_number" labelKey="profile.mobile_number" path="mobile_number" inputCSS="text" mandatory="true"/>
+					<formElement:formInputBox idKey="profile.landline_number" labelKey="profile.landline_number" path="landline_number" inputCSS="text"/>
+					
                     <div class="row">
                         <div class="col-sm-6 col-sm-push-6">
                             <div class="accountActions">
