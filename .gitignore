@@ -1,17 +1,14 @@
 /bin/ext-*/
 /bin/platform/
-<<<<<<< Updated upstream
-
-=======
 /config/
 /temp/
 /data/
 /log/
 /config/localextensions.xml
 
+
 **/platformhome.properties
 **/Generated.*java
->>>>>>> Stashed changes
 
 .project
 hybris-dependencies/
@@ -20,23 +17,6 @@ hybris-oms/
 Mobile-Commerce-SDK/
 pom.xml
 
-<<<<<<< Updated upstream
-*.class
-
-/temp/
-/data/
-/log/
-**/Generated.*java
-
-.project
-hybris-dependencies/
-hybris/sampleconfigurations/
-hybris-oms/
-Mobile-Commerce-SDK/
-pom.xml
-
-=======
->>>>>>> Stashed changes
 **/bin/**/bin
 **/gensrc/
 **/items.xsd
@@ -62,15 +42,6 @@ pom.xml
 /hybris/roles/**/bootstrap
 /hybris/roles/**/lib
 /hybris/roles/**/tcServer/conf
-<<<<<<< Updated upstream
-**/ignore/
-**/addons/
-**/velocity.log
-**/addonsrc
-**/web/webroot/cmscockpit/
-**/web/webroot/cockpit/
-**/ext
-=======
 **/ignore
 **/addons/
 **/velocity.log
@@ -79,7 +50,4 @@ pom.xml
 **/web/webroot/cmscockpit/
 **/web/webroot/cockpit/
 **/ext
-
-**/web/testclasses/de/hybris/platform/springmvctests/*.class
-*.class
->>>>>>> Stashed changes
+**/web/testclasses/
