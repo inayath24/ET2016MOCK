@@ -29,6 +29,204 @@ $productResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&
 $jarResourceCms=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/cockpits/cmscockpit
 
 
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='check'] 
+$contentCatalog=sapbasketContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+$productCatalog=sapbasketProductCatalog
+$productCatalogName=SapBasket Product Catalog
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online] 
+$contentCatalog=sapbasketContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+$siteResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+
+
+#Media for Ist rotating image component
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+;;BBRoyalHoneyMedia;$siteResource/images/banners/homepage/BBRoyalHoney.jpg;;;"BB Royal Honey"
+;;BBRoyalOrganicMedia;$siteResource/images/banners/homepage/BBRoyalOrganic.jpg;;;"BB Royal Organic"
+;;BloomsMedia;$siteResource/images/banners/homepage/Blooms.jpg;;;"Blooms"
+;;HealthyLivingMedia;$siteResource/images/banners/homepage/HealthyLiving.jpg;;;"Healthy Living"
+;;GiftingRangeMedia;$siteResource/images/banners/homepage/GiftingRange.jpg;;;"Gifing Range"
+;;GuaranteedMedia;$siteResource/images/banners/homepage/GuareenteImage.jpg;;;"Guaranteed"
+;;BeautyStore;$siteResource/images/banners/homepage/BeautyStore.jpg;;;"BB Royal Honey"
+;;OrganicStore;$siteResource/images/banners/homepage/OrganicStore.jpg;;;"BB Royal Organic"
+;;GourmetStore;$siteResource/images/banners/homepage/GourmetStore.jpg;;;"Gourment"
+;;ChocolateStore;$siteResource/images/banners/homepage/ChocolateStore.jpg;;;"Chocolate"
+;;CheeseColdCuts;$siteResource/images/banners/homepage/CheeseColdCuts.jpg;;;"CheeseColdCuts"
+;;DealsWeek;$siteResource/images/banners/homepage/DealsWeek.jpg;;;"DealsWeek"
+;;KitchenContainer;$siteResource/images/banners/homepage/kitchen-container.jpg;;;"kitchen"
+;;PetCare;$siteResource/images/banners/homepage/capture.jpg;;;"petcare"
+;;BabyCare;$siteResource/images/banners/homepage/babycare.jpg;;;"baby"
+;;breakfast;$siteResource/images/banners/homepage/break-fast.jpg;;;"breakfast"
+;;partyfood;$siteResource/images/banners/homepage/party-food.jpg;;;"partyfood"
+;;BigsaveBannerMedia;$siteResource/images/banners/homepage/bigsave.jpg;;;"BigsaveBanner"
+;;SavingsBannerMedia;$siteResource/images/banners/homepage/savingsbanner.png;;;"saveBanner"
+;;TastiesBannerMedia;$siteResource/images/banners/homepage/tastiesbanner.jpg;;;"TastiessaveBanner"
+;;BloomsBannerMedia;$siteResource/images/banners/homepage/bloomsbanner.jpg;;;"BloomsBanner"
+;;FreshoBannerMedia;$siteResource/images/banners/homepage/freshobanner.jpg;;;"BigsaveBanner"
+;;MobikwikTileMedia;$siteResource/images/banners/homepage/MobikwikTile.jpg;;;"Mobikwik Tile"
+;;PaytmTileMedia;$siteResource/images/banners/homepage/PaytmTile.jpg;;;"PaytmTile"
+;;PocketsTileMedia;$siteResource/images/banners/homepage/savings.jpg;;;"PocketsTile"
+;;ZivameTileMedia;$siteResource/images/banners/homepage/zivame.jpg;;;"ZivameTile"
+;;BigsaveBannerMedia;$siteResource/images/banners/homepage/bigsave.jpg;;;"BigsaveBanner"
+;;BloomsBannerMedia;$siteResource/images/banners/homepage/bloomsbanner.jpg;;;"BlooomsTile"
+;;NiveaBrandMedia;$siteResource/images/banners/homepage/NiveaBrand.jpg;;;"NiveaBrand"
+;;FreshoSignatureBrandMedia;$siteResource/images/banners/homepage/fresho.jpg;;;"FreshoSignatureBrand"
+;;HappychefBrandMedia;$siteResource/images/banners/homepage/happychef.jpg;;;"HappychefBrand"
+;;TastiesBrandMedia;$siteResource/images/banners/homepage/tasties.jpg;;;"TastiesBrand"
+;;CadburyBrandMedia;$siteResource/images/banners/homepage/CadburyBrand.jpg;;;"CadburyBrand"
+;;LindbergBrandMedia;$siteResource/images/banners/homepage/LindbergBrand.jpg;;;"LindbergBrand"
+;;RecipeMedia;$siteResource/images/banners/homepage/recipeoftheweek.jpg;;;"Recipe"
+;;MartiniMedia;$siteResource/images/banners/homepage/Martini.jpg;;;"Martini"
+;;StarterMedia;$siteResource/images/banners/homepage/starter.jpg;;;"Starter"
+
+
+
+
+
+
+INSERT_UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink;media(code,$contentCV)
+;;giftingrange;Gifting Range Banner;http://www.google.com;GiftingRangeMedia
+;;healthyliving;Healthy Living Banner;http://www.google.com;HealthyLivingMedia
+;;bbroyalorganic;BB Royal Organice Banner;http://www.google.com;BBRoyalOrganicMedia
+;;blooms;Blooms Banner;http://www.google.com;BloomsMedia
+;;bbroyalhoney;BB Royal Honey Banner;http://www.google.com;BBRoyalOrganicMedia
+;;guaranteedbanner;Guaranteed Banner;http://www.google.com;GuaranteedMedia
+;;CustomBanner1;Custom Banner;http://www.google.com;BeautyStore
+;;CustomBanner2;Custom Banner2;http://www.google.com;OrganicStore
+;;CustomBanner3;Custom Banner3;http://www.google.com;GourmetStore
+;;CustomBanner4;Custom Banner4;http://www.google.com;ChocolateStore
+;;CustomBanner5;Custom Banner5;http://www.google.com;CheeseColdCuts
+;;CustomBanner6;Custom Banner;http://www.google.com;DealsWeek
+;;babycarebanner;Baby Care Banner;http://www.google.com;BabyCare
+;;breakfastbanner;Breakfast Banner;http://www.google.com;breakfast
+;;petcarebanner;Pet Care Banner;http://www.google.com;PetCare
+;;kitchencontainerbanner;kitchen Banner;http://www.google.com;KitchenContainer
+;;PartyFoodBanner;PartyFood Banner;http://www.google.com;partyfood
+;;BigsaveBanner;Bigsave Banner;http://www.google.com;BigsaveBannerMedia
+;;FreshoBanner;Fresho Banner;http://www.google.com;FreshoBannerMedia
+;;TastiesBanner;Tasties Banner;http://www.google.com;TastiesBannerMedia
+;;ZivameBanner;Great Offers Tile Banner;http://www.google.com;ZivameTileMedia
+;;BloomsBanner;Bigsave Banner;http://www.google.com;BloomsBannerMedia
+;;SavingsBanner;Fresho Banner;http://www.google.com;SavingsBannerMedia
+;;MobikwikTileBanner;Mobikwik Tile Banner;http://www.google.com;MobikwikTileMedia
+;;PaytmTileBanner;Paytm Tile Banner;http://www.google.com;PaytmTileMedia
+;;PocketsTileBanner;Pockets Tile Banner;http://www.google.com;PocketsTileMedia
+;;BigsaveBanner;Bigsave Banner;http://www.google.com;BigsaveBannerMedia
+;;FreshoBanner;Fresho Banner;http://www.google.com;FreshoBannerMedia
+;;TastiesBanner;Tasties Banner;http://www.google.com;TastiesBannerMedia
+;;NiveaBrandBanner;Nivea Brand Banner;http://www.google.com;NiveaBrandMedia
+;;FreshoSignatureBrandBanner;Fresho Signature Brand Banner;http://www.google.com;FreshoSignatureBrandMedia
+;;HappychefBrandBanner;Happychef Brand Banner;http://www.google.com;HappychefBrandMedia
+;;TastiesBrandBanner;Tasties Brand Banner;http://www.google.com;TastiesBrandMedia
+;;CadburyBrandBanner;Cadbury Brand Banner;http://www.google.com;CadburyBrandMedia
+;;LindbergBrandBanner;Lindberg Brand Banner;http://www.google.com;LindbergBrandMedia
+;;StarterBanner;Starter Banner;http://www.google.com;StarterMedia
+;;MartiniBanner;Martini Banner;http://www.google.com;MartiniMedia
+;;RecipeBanner;Recipe Banner;http://www.google.com;RecipeMedia
+
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;banners(uid,$contentCV);&componentRef
+;;SAPBasketHomepageRotatingComponent;SAPBasket Homepage Rotating Component;giftingrange,healthyliving,bbroyalorganic,blooms,bbroyalhoney;SAPBasketHomepageCarouselComponent
+
+INSERT_UPDATE StoreBannerComponent;$contentCV[unique=true];uid[unique=true];name;storebannerset(uid,$contentCV)
+;;SAPBasketStoreBannerComponent;SAPBasket StoreBanner Component;CustomBanner1,CustomBanner2,CustomBanner3,CustomBanner4,CustomBanner5,CustomBanner6
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;ExclusiveOffers;Offers Heading information;ExclusiveOffers;;;;<br><center><h2>ExclusiveOffers</h2></center><hr/><hr/><hr/>;
+
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;Section1CustomSlot;SAPBasketHomepageRotatingComponent,guaranteedbanner,SAPBasketStoreBannerComponent,ExclusiveOffers;Section1
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section1CustomSlot-HomePage;Section1;;Section1CustomSlot
+
+#adding rotating comp to content slot
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;Section2ACustomSlot;kitchencontainerbanner;Section2A
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;Section2BCustomSlot;breakfastbanner,PartyFoodBanner;Section2B
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;Section2CCustomSlot;petcarebanner,babycarebanner;Section2C
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section2ACustomSlot-HomePage;Section2A;;Section2ACustomSlot
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section2BCustomSlot-HomePage;Section2B;;Section2BCustomSlot
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section2CCustomSlot-HomePage;Section2C;;Section2CCustomSlot
+
+-----------------------------------------------------------------------
+
+
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;brandStoreParaComponent;Brandstore Heading information;Brandstore;;;;<br><center><h2>BrandStore</h2></center><hr/>; 
+
+
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;ShopMoreSaveMoreParaComponent;ShopMoreSaveMore Heading information;ShopMore;;;;<br><center><h2>Shop More - Save More</h2></center><hr/>;
+
+
+INSERT_UPDATE StoreBannerComponent;$contentCV[unique=true];uid[unique=true];name;storebannerset(uid,$contentCV)
+;;SAPBasketStoreBannerComponent2;SAPBasket StoreBanner Component2;ZivameBanner,MobikwikTileBanner,PaytmTileBanner,PocketsTileBanner
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;banners(uid,$contentCV)
+;;OffersHomepageRotatingComponent;Offers Homepage Rotating Component;BloomsBanner,TastiesBanner
+
+INSERT_UPDATE StoreBannerComponent;$contentCV[unique=true];uid[unique=true];name;storebannerset(uid,$contentCV)
+;;BrandComponent;Brand Component;NiveaBrandBanner,CadburyBrandBanner,TastiesBrandBanner,LindbergBrandBanner,HappychefBrandBanner
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;OffersRotatingImageComponentSlot;ShopMoreSaveMoreParaComponent,SAPBasketStoreBannerComponent2,OffersHomepageRotatingComponent,brandStoreParaComponent,BrandComponent;Section3
+
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section3Slot-HomePage;Section3;;OffersRotatingImageComponentSlot
+
+
+----------------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------------
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;bestsellersParaComponent;Best Sellers Heading information;BestSellers;;;;<br><center><h2>BestSellers</h2></center><hr/>; 
+
+
+INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);scroll(code);popup;&componentRef
+;;BestSellerCarouselComponent;Best Selling Products;Mayonnaise,Boost,Ghee,Groundnut,Almonds,Cashew,Cookies;allVisible;true;BestSellerCarouselComponent
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;featuredrecipesParaComponent;Featured Recipies information;featuredrecipes;;;;<br><center><h2>Featured Recipes</h2></center><hr/>
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;banners(uid,$contentCV)
+;;FeaturedRecipesRotatingComponent;featured recipesRotating Component;MartiniBanner,RecipeBanner,StarterBanner
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;BrandStoreComponentSlot;bestsellersParaComponent,BestSellerCarouselComponent,featuredrecipesParaComponent,FeaturedRecipesRotatingComponent;Section4
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section4Slot-HomePage;Section4;;BrandStoreComponentSlot
+
+-----------------------------------------------------------------
+
 # CMS Site Settings
 UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);defaultPreviewProduct(code, $productCV)
 
@@ -390,3 +588,4 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;c
 
 # ContentSlotForPage
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='checkout-login'];contentSlot(uid,$contentCV)[unique=true];;;
+
