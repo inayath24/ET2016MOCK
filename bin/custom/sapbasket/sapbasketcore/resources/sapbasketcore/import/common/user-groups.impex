@@ -21,9 +21,20 @@ $defaultPassword=12341234
 # Create Customer Group
 INSERT_UPDATE Usergroup;uid[unique=true];groups(uid)[mode=append]
 ;$regulargroup;customergroup
+;sapbasketcustomergroup;customergroup
+
+
 
 # Customers
-INSERT_UPDATE Customer;originalUid[unique=true];uid[unique=true];title(code);name;description;sessionLanguage(isocode);sessionCurrency(isocode);groups(uid);password[default=$defaultPassword];&userId;defaultPaymentAddress(&addId);defaultShipmentAddress(&addId)
+INSERT_UPDATE Customer;originalUid[unique=true];uid[unique=true];title(code);name;description;sessionLanguage(isocode);sessionCurrency(isocode);groups(uid);&userId;password[default=$defaultPassword]
+;saptestuser1@test.com;saptestuser1@test.com;mr;sap test user1;test user;en;GBP;sapbasketcustomergroup;saptestuser1@test.com
+;saptestuser2@test.com;saptestuser2@test.com;mr;sap test user2;test user;de;USD;sapbasketcustomergroup;saptestuser2@test.com
+;kevin@customer.com;kevin@customer.com;mr;Kevin Leo Jacob;;en;USD;sapbasketcustomergroup;kevin@customer.com
 
 # Customer addresses
 INSERT_UPDATE Address;&addId;owner(&userId)[unique=true];streetname[unique=true];postalcode[unique=true];duplicate[unique=true];town;country(isocode);billingAddress;contactAddress;shippingAddress;unloadingAddress;firstname;lastname;email;gender(code);middlename;phone1;title(code);url;company;fax;department
+;timesquare avenue;saptestuser2@test.com;timesquare Street;10019;false;New York;US;true;true;true;true;Enterprise;User;saptestuser1@test.com;MALE;;+001 1234567;;Hybris;;
+;;saptestuser2@test.com;express Street;10019;false;New York;US;true;true;true;true;Enterprise;User;saptestuser2@test.com;MALE;;+001 1234567;;Hybris;;
+;expresss avenue;kevin@customer.com;express Street;10019;false;New York;US;true;true;true;true;Enterprise;User;kevin@customer.com;MALE;;+001 1234567;;Hybris;;
+
+
