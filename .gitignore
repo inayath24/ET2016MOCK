@@ -1,14 +1,14 @@
 /bin/ext-*/
 /bin/platform/
+
 /config/
 /temp/
 /data/
 /log/
-/config/localextensions.xml
-
-
-**/platformhome.properties
 **/Generated.*java
+
+**/web/commonwebsrc/
+**/web/testclasses/
 
 .project
 hybris-dependencies/
@@ -25,7 +25,6 @@ pom.xml
 **/classes/
 **/extensioninfo.xsd
 **/*hmc.jar
-**/hmc/classes/
 **/hmc.xsd
 **/platformhome.properties
 **/*-testclasses.xml
@@ -46,10 +45,6 @@ pom.xml
 **/addons/
 **/velocity.log
 **/addonsrc
-**/web/commonwebsrc/
 **/web/webroot/cmscockpit/
 **/web/webroot/cockpit/
 **/ext
-
-**/web/testclasses/de/hybris/platform/springmvctests/*.class
-*.class
