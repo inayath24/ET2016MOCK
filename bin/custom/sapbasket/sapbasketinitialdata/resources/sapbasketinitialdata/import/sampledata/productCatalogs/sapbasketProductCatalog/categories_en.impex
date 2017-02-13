@@ -21,7 +21,7 @@ $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[defa
 $lang=en
 
 # Create Categories
-UPDATE Category;code[unique=true];$catalogVersion;name[lang=$lang]
+INSERT_UPDATE Category;code[unique=true];$catalogVersion;name[lang=$lang]
 ;Food;;Food
 ;RiceFlour&Pulses;;Rice, Flour & Pulses
 ;Oils&Edible;;Oils & Edible
@@ -31,3 +31,13 @@ UPDATE Category;code[unique=true];$catalogVersion;name[lang=$lang]
 ;DryFruits;;Dry Fruits
 ;CoffeeTea&Beverages;;Coffee, Tea & Beverages
 ;Jams&Pickles;;Jams & Pickles
+
+;Offers;;OFFERS
+;Discounts;;DISCOUNTS
+;BundlePacks;;BUNDLE PACKS
+;Promotions;;PROMOTIONS
+;SBExpress;;SB EXPRESS
+;SBSpecialty;;SB SPECIALITY
+;MoreStores;;MORE STORES
+;RegionalSpecial;; REGIONAL SPECIAL
+;SBInhouseBrands;;SB INHOUSE BRANDS

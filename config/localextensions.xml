@@ -6,9 +6,18 @@
 				More information about how to configure available extensions can be found here : https://wiki.hybris.com/x/nZVzC
 		-->
 
-		  <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
-	      <path dir='${HYBRIS_BIN_DIR}/custom' autoload='true'/>
-          <extension name='hmc'/>
-		  
+		<path dir="${HYBRIS_BIN_DIR}" autoload='false'/>
+		<path dir="${HYBRIS_BIN_DIR}/custom/sapbasket" autoload="true"/>
+
+
+		<extension name="hmc"/>
+		
+		<!--<extension name="electronicsstore"/>
+		<extension name="apparelstore"/>-->
+		
+		<extension name="mcc"/>
+		<extension name="yaddon"/>
+		<extension name="ycommercewebservices"/>
+
 	</extensions>
 </hybrisconfig>
