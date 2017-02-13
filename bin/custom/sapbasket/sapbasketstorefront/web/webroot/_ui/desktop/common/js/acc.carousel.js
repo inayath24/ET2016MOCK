@@ -45,7 +45,7 @@ ACC.carousel = {
 				ACC.common.refreshScreenReaderBuffer();
 			}
 		});
-		$('#homepage_slider').waitForImages(function ()
+		$('.homepage_slider').waitForImages(function ()
 		{
 			$(this).slideView({toolTip: true, ttOpacity: 0.6, autoPlay: true, autoPlayTime: 8000});
 		});
