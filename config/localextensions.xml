@@ -13,10 +13,11 @@
 		<extension name="hmc"/>
 		
 		<!--<extension name="electronicsstore"/>
-		<extension name="apparelstore"/>
+		<extension name="apparelstore"/>-->
 		
-		<extension name="yempty"/>
-		<extension name="yhacext"/>-->
+		<extension name="mcc"/>
+		<extension name="yaddon"/>
+		<extension name="ycommercewebservices"/>
 
 	</extensions>
 </hybrisconfig>
