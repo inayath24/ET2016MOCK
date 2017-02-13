@@ -122,7 +122,7 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 		importImpexFile(context,
 				"/sapbasketinitialdata/import/sampledata/productCatalogs/sapbasketProductCatalog/products_en.impex");
 		importImpexFile(context,
-				"/sapbasketinitialdata/import/sampledata/ContentCatalogs/sapbasketContentCatalog/cms-content.impex");
+				"/sapbasketinitialdata/import/sampledata/contentCatalogs/sapbasketContentCatalog/cms-content.impex");
 		importImpexFile(context,
 				"/sapbasketinitialdata/import/sampledata/productCatalogs/sapbasketProductCatalog/variant-products_en.impex");
 		importImpexFile(context,

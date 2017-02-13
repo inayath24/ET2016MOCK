@@ -48,7 +48,6 @@ $medias=medias(code, $catalogVersion)
 $galleryImages=galleryImages(qualifier, $catalogVersion)
 $siteResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/sampledata/productCatalogs/$productCatalog
 
-
 INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
 ;300Wx300H;/300Wx300H/300Wx300H-Almond.jpg;$siteResource/images/300Wx300H/300Wx300H-Almond.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-Boost.jpg;$siteResource/images/300Wx300H/300Wx300H-Boost.jpg;;;images
