@@ -813,6 +813,6 @@ INSERT_UPDATE ProductPage;$contentCV[unique=true];uid[unique=true];name;masterTe
 
 # Category Pages
 INSERT_UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved']
-;;productList;Product List;ProductListPageTemplate;true;
+;;productList;Product List;ProductListPageTemplate;false;
 ;;productGrid;Product Grid;ProductGridPageTemplate;false;
 ;;category;Default Category Page;CategoryPageTemplate;false;
