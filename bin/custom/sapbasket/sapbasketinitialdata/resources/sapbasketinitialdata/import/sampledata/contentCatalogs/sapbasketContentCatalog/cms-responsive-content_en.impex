@@ -12,7 +12,12 @@ UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$
 #;;OrderHistoryLink;"Order History"
 #;;SavedCartsLink;"Saved Carts"
 #;;ImportSavedCartLink;"Import Saved Cart"
+;;AccountUpdateProfileLink;"Edit Profile"
+;;AccountAddressBookLink;"Delivery Addresses"
+;;AccountUpdatePasswordLink;"Change Password"
+;;AccountUpdateEmailLink;"Email Addresses"
 
 #update navigation node title
 UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
 ;;MyAccountNavNode;"My Account"
+;;AccountLeftNavNode;"Personal Details"
