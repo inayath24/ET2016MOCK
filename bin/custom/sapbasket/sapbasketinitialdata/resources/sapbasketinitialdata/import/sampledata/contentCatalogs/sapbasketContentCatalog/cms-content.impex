@@ -59,6 +59,12 @@ INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url
 ;;AccountOrderHistoryLink;AccountOrderHistoryLink;/my-account/orders;AccountOrderHistoryLink;AccountOrderHistoryLink;;;;
 ;;AccountViewOrderHistoryLink;AccountViewOrderHistoryLink;/my-account/orders;AccountViewOrderHistoryLink;AccountViewOrderHistoryLink;;;;
 
+;;AccountUpdatePasswordLink;AccountUpdatePasswordLink;/my-account/update-password;AccountUpdatePasswordLink;AccountUpdatePasswordLink;;;;
+;;AccountAddressBookLink;AccountAddressBookLink;/my-account/address-book;AccountAddressBookLink;AccountAddressBookLink;;;;
+;;AccountUpdateEmailLink;AccountUpdateEmailLink;/my-account/update-email;AccountUpdateEmailLink;AccountUpdateEmailLink;;;;
+;;AccountUpdateProfileLink;AccountUpdateProfileLink;/my-account/update-profile;AccountUpdateProfileLink;AccountUpdateProfileLink;;;;
+
+
 # Lightbox Banner for Mini Cart
 INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
 ;;LightboxHomeDeliveryBannerComponent;Lightbox Home Delivery Banner Component;LightboxHomeDeliveryBannerComponent;
@@ -180,9 +186,10 @@ INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;pa
 ;AcceleratorNavNode;;Accelerator Pages;SapBasketNavNode;AboutAcceleratorLink,FAQLink;AcceleratorNavNode
 ;HybrisNavNode;;Hybris Pages;SapBasketNavNode;AboutHybrisLink,ContactUsLink;HybrisNavNode
 ;FollowUsNavNode;;Follow Us Pages;SapBasketNavNode;AgileCommerceBlogLink,LinkedInLink,FacebookLink,TwitterLink;FollowUsNavNode
-;AccountLeftNavNode;;My Account;SiteRootNode;AccountProfileLink,AccountOrderHistoryLink;AccountLeftNavNode
+;AccountLeftNavNode;;My Account;SiteRootNode;AccountUpdateProfileLink,AccountAddressBookLink,AccountUpdatePasswordLink,AccountUpdateEmailLink;AccountLeftNavNode
 ;AccountProfileNavNode;;Profile;AccountLeftNavNode;AccountPersonalDetailsLink;AccountProfileNavNode
 ;AccountOrderHistoryNavNode;;Order History;AccountLeftNavNode;AccountViewOrderHistoryLink;AccountOrderHistoryNavNode
+
 
 # Navigation Bar Component
 INSERT_UPDATE NavigationBarComponent;$contentCV[unique=true];uid[unique=true];navigationNode(&nodeRef);dropDownLayout(code)
