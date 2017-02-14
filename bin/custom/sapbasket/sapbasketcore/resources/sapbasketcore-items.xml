@@ -18,6 +18,8 @@
 		<collectiontype code="GenderList" elementtype="Gender" autocreate="true" generate="true" type="list"/>
 		<collectiontype code="SwatchColorSet" elementtype="SwatchColorEnum" autocreate="true" generate="true"
 		                type="set"/>
+	<collectiontype code="StoreBannerSet" elementtype="BannerComponent" autocreate="true" generate="true"
+		                type="set"/>
 	</collectiontypes>
 
 
@@ -74,6 +76,15 @@
 
 
 		<!-- TypeGroups are for structure of this file only -->
+		<itemtype code="StoreBannerComponent" jaloclass="com.sap.sapbasket.core.jalo.StoreBannerComponent" generate="true" extends="SimpleCMSComponent" autocreate="true">
+		<deployment table="StoreBannerComponent" typecode="15666"/>
+			<attributes>
+				<attribute type="StoreBannerSet" qualifier="storebannerset">
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
+		
 
 <typegroup name="Sapbasket">
 			<itemtype code="SapbasketProduct" extends="Product"

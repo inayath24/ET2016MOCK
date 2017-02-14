@@ -25,7 +25,7 @@
 #$data_sheet=data_sheet(code, $catalogVersion)
 #$medias=medias(code, $catalogVersion)
 #$galleryImages=galleryImages(qualifier, $catalogVersion)
-#$siteResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/productCatalogs/$productCatalog
+#$siteResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/sampledata/productCatalogs/$productCatalog
 
 # Create Media
 #INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];$media;mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
@@ -48,7 +48,6 @@ $medias=medias(code, $catalogVersion)
 $galleryImages=galleryImages(qualifier, $catalogVersion)
 $siteResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/sampledata/productCatalogs/$productCatalog
 
-
 INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
 ;300Wx300H;/300Wx300H/300Wx300H-Almond.jpg;$siteResource/images/300Wx300H/300Wx300H-Almond.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-Boost.jpg;$siteResource/images/300Wx300H/300Wx300H-Boost.jpg;;;images
@@ -58,8 +57,8 @@ INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=d
 ;300Wx300H;/300Wx300H/300Wx300H-Cookies.jpg;$siteResource/images/300Wx300H/300Wx300H-Cookies.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-CreamBiscuit.jpg;$siteResource/images/300Wx300H/300Wx300H-CreamBiscuit.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-Digestive.jpg;$siteResource/images/300Wx300H/300Wx300H-Digestive.jpg;;;images
-#;300Wx300H;/300Wx300H/300Wx300H-FilterCoffeePowder.jpg;$siteResource/images/300Wx300H-FilterCoffeePowder.jpg;;;images
-;300Wx300H;/300Wx300H/300Wx300H-FruitJam.jpg;$siteResource/images/300Wx300H-FruitJam.jpg;;;images
+#;300Wx300H;/300Wx300H/300Wx300H-FilterCoffeePowder.jpg;$siteResource/images/300Wx300H/300Wx300H-FilterCoffeePowder.jpg;;;images
+;300Wx300H;/300Wx300H/300Wx300H-FruitJam.jpg;$siteResource/images/300Wx300H/300Wx300H-FruitJam.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-Ghee.jpg;$siteResource/images/300Wx300H/300Wx300H-Ghee.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-Groundnut.jpg;$siteResource/images/300Wx300H/300Wx300H-Groundnut.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-Horlicks.jpg;$siteResource/images/300Wx300H/300Wx300H-Horlicks.jpg;;;images
@@ -88,9 +87,9 @@ INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=d
 ;515Wx515H;/515Wx515H/515Wx515H-ChannaDal.jpg;$siteResource/images/515Wx515H/515Wx515H-ChannaDal.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Cookies.jpg;$siteResource/images/515Wx515H/515Wx515H-Cookies.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-CreamBiscuit.jpg;$siteResource/images/515Wx515H/515Wx515H-CreamBiscuit.jpg;;;images
-;515Wx515H;/515Wx515H/515Wx515H-Digestive.jpg;$siteResource/images/515Wx515H/515Wx515H-Digestive.jpg;;;images
-;515Wx515H;/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;$siteResource/images/515Wx515H-FilterCoffeePowder.jpg;;;images
-#;515Wx515H;/515Wx515H/515Wx515H-FruitJam.jpg;$siteResource/images/515Wx515H-FruitJam.jpg;;;images
+;515Wx515H;/515Wx515H/515Wx515H-Digestive.jpg;$siteResource/images/515Wx515H/515Wx515H/515Wx515H-Digestive.jpg;;;images
+;515Wx515H;/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;$siteResource/images/515Wx515H/15Wx515H-FilterCoffeePowder.jpg;;;images
+#;515Wx515H;/515Wx515H/515Wx515H-FruitJam.jpg;$siteResource/images/515Wx515H/515Wx515H-FruitJam.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Ghee.jpg;$siteResource/images/515Wx515H/515Wx515H-Ghee.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Groundnut.jpg;$siteResource/images/515Wx515H/515Wx515H-Groundnut.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Horlicks.jpg;$siteResource/images/515Wx515H/515Wx515H-Horlicks.jpg;;;images
