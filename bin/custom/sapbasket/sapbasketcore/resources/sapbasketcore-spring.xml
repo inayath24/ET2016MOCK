@@ -437,4 +437,9 @@
 		<property name="rootCategoryCode" value="categories"/>
 	</bean>
 	
+	<alias name="defaultCustomCustomerAccountService" alias="customCustomerAccountService"/>
+	<bean id="defaultCustomCustomerAccountService" class="com.sap.sapbasket.core.service.impl.DefaultCustomCustomerAccountService" parent="defaultCustomerAccountService">
+		
+	</bean>
+	
 </beans>

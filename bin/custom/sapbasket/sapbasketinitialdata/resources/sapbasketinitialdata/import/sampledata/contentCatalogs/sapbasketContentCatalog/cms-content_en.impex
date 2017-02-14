@@ -13,8 +13,8 @@
 # English Localisation
 
 # Macros / Replacement Parameter definitions
-$contentCatalog=sapbasketContentCatalog
 
+$contentCatalog=sapbasketContentCatalog
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 $picture=media(code, $contentCV);
 $siteResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/contentCatalogs/$contentCatalog
@@ -24,9 +24,34 @@ $lang=en
 
 # Site Logo Component
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+;;SiteLogoComponent;/images/theme/logo-bigbasket.png
 
 # CMS Link Components
 UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$lang]
+;;ShopByCategoryLink;"Shop By Category"
+;;Oils&EdibleLink;"Oils & Edible"
+;;SnackFoodLink;"Snack Food"
+;;RiceFlour&PulsesLink;"Rice Flour & Pulses"
+;;Jams&PicklesLink;"Jams & Pickles"
+;;CoffeeTea&BeveragesLink;"Coffee Tea & Beverages"
+;;SBExpressLink;"SB Express"
+;;OffersLink;"Offers"
+;;SBSpecialityLink;"SB Specialty"
+;;MoreStoresCategoryLink;"More Stores"
+;;AboutAcceleratorLink;"About Commerce Accelerator"
+;;AboutHybrisLink;"About hybris"
+;;AgileCommerceBlogLink;"Agile Commerce Blog"
+;;ContactUsLink;"Contact Us"
+;;FAQLink;"FAQ"
+;;FacebookLink;"Facebook"
+;;HomepageNavLink;"Home"
+;;LinkedInLink;"Linked In"
+;;TwitterLink;"Twitter"
+;;AccountHomeLink;"My Account"
+;;AccountOrderHistoryLink;"Order History"
+;;AccountPersonalDetailsLink;"Update personal details"
+;;AccountProfileLink;"Profile"
+;;AccountViewOrderHistoryLink;"View order history"
 
 # Lightbox Banner for Mini Cart (banner is not localizable so we must create a separate banner per language)
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];&imageRef;folder(qualifier)[default='images'];altText

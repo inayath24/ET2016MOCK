@@ -21,9 +21,13 @@ $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[defa
 
 INSERT_UPDATE Vendor;code[unique=true]
 #;$vendor
+;sapbasketvendor1
 
 INSERT_UPDATE Warehouse;code[unique=true];vendor(code);default[default=true]
+;sapbasketwarehouse;sapbasketvendor1
 
 INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
+;10;sapbasketwarehouse;;;;;;Almonds
 
 UPDATE Product;code[unique=true];$catalogVersion;stockLevels(productCode,warehouse(code));vendors(code)
+;Almonds;;;sapbasketvendor1

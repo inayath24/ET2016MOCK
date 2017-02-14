@@ -19,45 +19,50 @@ $productCatalogName=SapBasket Product Catalog
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $supercategories=supercategories(code, $catalogVersion)
 $baseProduct=baseProduct(code,$catalogVersion)
-$approved=approvalstatus(code)[default='check']
+$approved=approvalstatus(code)[default='approved']
 
 # Insert Products
 INSERT_UPDATE SapbasketProduct;code[unique=true];$supercategories;manufacturerName;manufacturerAID;unit(code);variantType(code);$catalogVersion;$approved
-;ToorDal;RiceFlour&Pulses;;;;SapbasketVariantProduct;
-;ChannaDal;RiceFlour&Pulses;;;;SapbasketVariantProduct;
-;MoongDal;RiceFlour&Pulses;;;;SapbasketVariantProduct;
-;UradDal;RiceFlour&Pulses;;;;SapbasketVariantProduct;
-;Peanuts;RiceFlour&Pulses;;;;SapbasketVariantProduct;
+;ToorDal;RiceFlour&Pulses;Fresho;Fresho;;SapbasketVariantProduct;
+;ToorDal_harvest;RiceFlour&Pulses;Harvest;Harvest;;SapbasketVariantProduct;
+;ToorDal_sbroyal;RiceFlour&Pulses;SB Royal;SBRoyal;;SapbasketVariantProduct;
 
-;Olive;Oils&Edible;;;;SapbasketVariantProduct;
-;Sunflower;Oils&Edible;;;;SapbasketVariantProduct;
-;Groundnut;Oils&Edible;;;;SapbasketVariantProduct;
-;Mustard;Oils&Edible;;;;SapbasketVariantProduct;
-;Ghee;Oils&Edible;;;;SapbasketVariantProduct;
+;ChannaDal;RiceFlour&Pulses;Fresho;Fresho;;SapbasketVariantProduct;
+;ChannaDal_harvest;RiceFlour&Pulses;Harvest;Harvest;;SapbasketVariantProduct;
+;ChannaDal_sbroyal;RiceFlour&Pulses;SB Royal;SBRoyal;;SapbasketVariantProduct;
+ 
+;MoongDal;RiceFlour&Pulses;Harvest;Harvest;;SapbasketVariantProduct;
+;UradDal;RiceFlour&Pulses;Fresho;Fresho;;SapbasketVariantProduct;
+;Peanuts;RiceFlour&Pulses;SB Royal;SB Royal;;SapbasketVariantProduct;
 
-;Cookies;Biscuits,SnackFood;;;;SapbasketVariantProduct;
-;CreamBiscuits;Biscuits,SnackFood;;;;SapbasketVariantProduct;
-;Digestive;Biscuits,SnackFood;;;;SapbasketVariantProduct;
+;Olive;Oils&Edible;Borges;Borges;;SapbasketVariantProduct;
+;Sunflower;Oils&Edible;Fortune;Fortune;;SapbasketVariantProduct;
+;Groundnut;Oils&Edible;Saffola;Saffola;;SapbasketVariantProduct;
+;Mustard;Oils&Edible;Sundrop;Sundrop;;SapbasketVariantProduct;
+;Ghee;Oils&Edible;Amul;Amul;;SapbasketVariantProduct;
 
-;Lays;Chips,SnackFood;;;;SapbasketVariantProduct;
-;Kurkure;Chips,SnackFood;;;;SapbasketVariantProduct;
-;UncleChips;Chips,SnackFood;;;;SapbasketVariantProduct;
+;Cookies;Biscuits,SnackFood;Britania;Britania;;SapbasketVariantProduct;
+;CreamBiscuits;Biscuits,SnackFood;Sunfeast;Sunfeast;;SapbasketVariantProduct;
+;Digestive;Biscuits,SnackFood;Easy Digest;EasyDigest;;SapbasketVariantProduct;
+
+;Lays;Chips,SnackFood;Lays;Lays;;SapbasketVariantProduct;
+;Kurkure;Chips,SnackFood;Kurkure;Kurkure;;SapbasketVariantProduct;
+;UncleChips;Chips,SnackFood;Uncle Chips;UncleChips;;SapbasketVariantProduct;
 
 ;Cashew;DryFruits,SnackFood;;;;SapbasketVariantProduct;
 ;Almonds;DryFruits,SnackFood;;;;SapbasketVariantProduct;
 ;Pista;DryFruits,SnackFood;;;;SapbasketVariantProduct;
 ;Walnuts;DryFruits,SnackFood;;;;SapbasketVariantProduct;
 
-
-;RedLabel;CoffeeTea&Beverages;;;;SapbasketVariantProduct;
-;Tetley;CoffeeTea&Beverages;;;;SapbasketVariantProduct;
-;Netscafe;CoffeeTea&Beverages;;;;SapbasketVariantProduct;
-;BruInstant;CoffeeTea&Beverages;;;;SapbasketVariantProduct;
+;RedLabel;CoffeeTea&Beverages;Red Label;RedLabel;;SapbasketVariantProduct;
+;Tetley;CoffeeTea&Beverages;Tetley;Tetley;;SapbasketVariantProduct;
+;Netscafe;CoffeeTea&Beverages;Nestcafe;Nestcafe;;SapbasketVariantProduct;
+;BruInstant;CoffeeTea&Beverages;Bru Instant;BruInstant;;SapbasketVariantProduct;
 ;FilterCoffeePowder;CoffeeTea&Beverages;;;;SapbasketVariantProduct;
-;Boost;CoffeeTea&Beverages;;;;SapbasketVariantProduct;
-;Horlicks;CoffeeTea&Beverages;;;;SapbasketVariantProduct;
+;Boost;CoffeeTea&Beverages;Boost;Boost;;SapbasketVariantProduct;
+;Horlicks;CoffeeTea&Beverages;Horlicks;Horlicks;;SapbasketVariantProduct;
 
-;FruitJam;Jams&Pickles;;;;SapbasketVariantProduct;
-;Mayonnaise;Jams&Pickles;;;;SapbasketVariantProduct;
-;Pickle;Jams&Pickles;;;;SapbasketVariantProduct;
-;Ketchup;Jams&Pickles;;;;SapbasketVariantProduct;
+;FruitJam;Jams&Pickles;Kissan;Kissan;;SapbasketVariantProduct;
+;Mayonnaise;Jams&Pickles;Kissan;Kissan;;SapbasketVariantProduct;
+;Pickle;Jams&Pickles;Pickle;Pickle;;SapbasketVariantProduct;
+;Ketchup;Jams&Pickles;Kissan;Kissan;;SapbasketVariantProduct;

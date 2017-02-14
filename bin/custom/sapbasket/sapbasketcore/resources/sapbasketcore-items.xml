@@ -48,6 +48,27 @@
 	</enumtypes>
 
 	<itemtypes>
+				<itemtype code="Customer" autocreate="false" generate="false">
+			<description>Extending the Customer type from core with additional attributes.</description>
+			<attributes>
+				<attribute type="java.lang.String" qualifier="email">
+					<modifiers optional="true" />
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="date_of_birth">
+					<modifiers optional="true" />
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="mobile_number">
+					<modifiers optional="true" />
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="landline_number">
+					<modifiers optional="true" />
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
 
 		<!-- Add your item definitions here -->
 
@@ -136,6 +157,9 @@
 					</attribute>
 				</attributes>
 			</itemtype>
+			
+
+		
 		</typegroup>
 		
 		<typegroup name="Electronics">

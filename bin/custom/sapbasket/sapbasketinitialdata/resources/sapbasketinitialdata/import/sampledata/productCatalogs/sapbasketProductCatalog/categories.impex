@@ -30,6 +30,15 @@ INSERT_UPDATE Category;code[unique=true];allowedPrincipals(uid)[default='custome
 ;DryFruits
 ;CoffeeTea&Beverages
 ;Jams&Pickles
+;Offers
+;Discounts
+;BundlePacks
+;Promotions
+;SBExpress
+;SBSpecialty
+;MoreStores
+;RegionalSpecial
+;SBInhouseBrands
 
 # Insert Category Structure
 INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
@@ -41,3 +50,8 @@ INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
 ;DryFruits;SnackFood
 ;CoffeeTea&Beverages;Food
 ;Jams&Pickles;Food
+;Discounts;Offers
+;BundlePacks;Offers
+;Promotions;Offers
+;RegionalSpecial;MoreStores
+;SBInhouseBrands;MoreStores
