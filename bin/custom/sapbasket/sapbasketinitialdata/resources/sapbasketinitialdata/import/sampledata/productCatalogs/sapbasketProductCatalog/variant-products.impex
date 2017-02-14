@@ -22,7 +22,7 @@ $productCatalog=sapbasketProductCatalog
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $prices=europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
 $baseProduct=baseProduct(code, catalogVersion(catalog(id[default='$productCatalog']),version[default='Staged']))
-$approved=approvalstatus(code)[default='check']
+$approved=approvalstatus(code)[default='approved']
 
 # Create Products
 INSERT_UPDATE ApparelProduct;code[unique=true];ean;unit(code);supercategories(code,$catalogVersion);varianttype(code);genders(code);$approved;$catalogVersion
