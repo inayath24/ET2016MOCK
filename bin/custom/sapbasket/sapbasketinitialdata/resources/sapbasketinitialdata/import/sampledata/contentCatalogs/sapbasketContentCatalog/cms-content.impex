@@ -13,36 +13,13 @@ $page=page(uid, $contentCV);
 $product=product(code, $productCV)
 $category=category(code, $productCV)
 $contentPage=contentPage(uid, $contentCV);
-<<<<<<< Updated upstream
-$siteResource=jar:com.sap.sapbasket.initialdata.constants.SapbasketInitialDataConstants&/sapbasketinitialdata/import/sampledata/contentCatalogs/$contentCatalog
-$productResource=jar:com.sap.sapbasket.initialdata.constants.SapbasketInitialDataConstants&/sapbasketinitialdata/import/sampledata/productCatalogs/$productCatalog
-$jarResourceCms=jar:com.sap.sapbasket.initialdata.constants.SapbasketInitialDataConstants&/sapbasketinitialdata/import/sampledata/cockpits/cmscockpit
-
-
-$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
-$supercategories=supercategories(code, $catalogVersion)
-$baseProduct=baseProduct(code,$catalogVersion)
-$approved=approvalstatus(code)[default='check'] 
-$contentCatalog=sapbasketContentCatalog
-$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
-$productCatalog=sapbasketProductCatalog
-$productCatalogName=SapBasket Product Catalog
-$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online] 
-$contentCatalog=sapbasketContentCatalog
-$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
-=======
->>>>>>> Stashed changes
 $siteResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/sampledata/contentCatalogs/$contentCatalog
 $productResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/sampledata/productCatalogs/$productCatalog
 $jarResourceCms=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/cockpits/cmscockpit
 
 
 # CMS Site Settings
-<<<<<<< Updated upstream
-UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);defaultPreviewProduct(code, $productCV) 
-=======
 INSERT_UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);defaultPreviewProduct(code, $productCV)
->>>>>>> Stashed changes
 
 # Site Logo
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
