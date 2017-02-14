@@ -129,6 +129,8 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 				"/sapbasketinitialdata/import/sampledata/productCatalogs/sapbasketProductCatalog/products-media.impex");
 		importImpexFile(context,
 				"/sapbasketinitialdata/import/sampledata/productCatalogs/sapbasketProductCatalog/products-stocklevels.impex");
+				importImpexFile(context,
+				"/sapbasketinitialdata/import/sampledata/productCatalogs/sapbasketProductCatalog/products-prices.impex");
 		final List<ImportData> importData = new ArrayList<ImportData>();
 		try
 		{
