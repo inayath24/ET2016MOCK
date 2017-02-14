@@ -62,3 +62,18 @@ button.positive, a.button.positive {
 	float:right;
 	padding:5px 0 0 10px;
 }
+html,body{
+	max-width:50% !important;
+	margin-left:0% ;
+}
+.section1{
+	margin:0 auto;
+}
+.section2{
+	position:relative;
+	align:center;
+	margin-left:20%;
+}
+.section1div{
+	width:50%;
+}

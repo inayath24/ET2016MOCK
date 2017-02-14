@@ -237,3 +237,15 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 .clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
 .clearfix, .container {display:block;}
 .clear {clear:both;}
+.custom1{
+	
+	
+	margin-left:10%;
+	
+	width:100%;
+}
+.innerstore{
+	margin:0;
+width:20%;
+padding-left:80%;
+}

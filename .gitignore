@@ -10,6 +10,8 @@
 **/web/commonwebsrc/
 **/web/testclasses/
 
+**/jalo/
+
 .project
 hybris-dependencies/
 hybris/sampleconfigurations/

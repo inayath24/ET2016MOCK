@@ -4,7 +4,7 @@
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags" %>
 
 <div class="slider_component simple-banner">
-	<div id="homepage_slider" class="svw">
+	<div id="homepage_slider" class="homepage_slider">
 		<ul>
 			<c:forEach items="${banners}" var="banner" varStatus="status">
 				<c:if test="${ycommerce:evaluateRestrictions(banner)}">
