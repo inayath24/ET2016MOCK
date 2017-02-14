@@ -30,7 +30,7 @@ INSERT_UPDATE SapbasketProduct;code[unique=true];$supercategories;manufacturerNa
 ;ChannaDal;RiceFlour&Pulses;Fresho;Fresho;;SapbasketVariantProduct;
 ;ChannaDal_harvest;RiceFlour&Pulses;Harvest;Harvest;;SapbasketVariantProduct;
 ;ChannaDal_sbroyal;RiceFlour&Pulses;SB Royal;SBRoyal;;SapbasketVariantProduct;
-
+ 
 ;MoongDal;RiceFlour&Pulses;Harvest;Harvest;;SapbasketVariantProduct;
 ;UradDal;RiceFlour&Pulses;Fresho;Fresho;;SapbasketVariantProduct;
 ;Peanuts;RiceFlour&Pulses;SB Royal;SB Royal;;SapbasketVariantProduct;
