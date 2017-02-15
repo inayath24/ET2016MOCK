@@ -10,7 +10,7 @@
 <%@ taglib prefix="theme" tagdir="/WEB-INF/tags/shared/theme"%>
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags"%>
 
-<html>
+<!--<html>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
   <script src="https://apis.google.com/js/api:client.js"></script>
@@ -84,8 +84,6 @@
   </style>
   </head>
   <body>
-  <!-- In the callback, you would hide the gSignInWrapper element on a
-  successful sign in -->
   <div id="gSignInWrapper">
     <span class="label">Sign up with:</span>
     <div id="customBtn" class="customGPlusSignIn">
@@ -97,7 +95,7 @@
   <script>startApp();</script>
 </body>
 </html>
-
+-->
 
 <html lang="en">
   <head>
@@ -106,7 +104,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div><p>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     <a href="#" onclick="signOut();">Sign out</a>
     <script>
       function onSignIn(googleUser) {
