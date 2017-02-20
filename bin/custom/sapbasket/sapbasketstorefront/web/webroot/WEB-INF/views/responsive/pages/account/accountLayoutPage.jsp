@@ -13,18 +13,31 @@
 <spring:url value="/my-account/orders" var="ordersUrl"/>
 
 <template:page pageTitle="${pageTitle}">
-		<cms:pageSlot position="SideContent" var="feature" class="accountPageSideContent">
-			<cms:component component="${feature}" />
-		</cms:pageSlot>
+		
         <cms:pageSlot position="TopContent" var="feature" element="div" class="accountPageTopContent">
             <cms:component component="${feature}" />
         </cms:pageSlot>
 
-        <div class="account-section">
-            <cms:pageSlot position="BodyContent" var="feature" element="div" class="account-section-content">
-                <cms:component component="${feature}" />
-            </cms:pageSlot>
+        
         </div>
+		<table style="width:100%">
+  
+			<tr>
+				<td>
+					<br></br><br></br>
+					<cms:pageSlot position="SideContent" var="feature" class="accountPageSideContent">
+					<cms:component component="${feature}" />
+					</cms:pageSlot>
+				</td>
+				<td>
+					<div class="account-section">
+					<cms:pageSlot position="BodyContent" var="feature" element="div" class="account-section-content">
+					<cms:component component="${feature}" />
+					</cms:pageSlot>	
+				</td> 
+			</tr>
+  
+		</table>
 
         <cms:pageSlot position="BottomContent" var="feature" element="div" class="accountPageBottomContent">
             <cms:component component="${feature}" />
