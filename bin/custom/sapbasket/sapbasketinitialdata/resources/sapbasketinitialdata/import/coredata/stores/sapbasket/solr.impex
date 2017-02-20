@@ -14,65 +14,151 @@
 #
 $productCatalog=sapbasketProductCatalog
 $catalogVersions=catalogVersions(catalog(id),version);
-$serverConfigName=
-$indexConfigName=
-$searchConfigName=
-$facetSearchConfigName=
-$facetSearchConfigDescription=
-$searchIndexNamePrefix=
-$solrIndexedType=
-$indexBaseSite=
-$indexLanguages=ja,en,de,zh
-$indexCurrencies=JPY,USD
+$serverConfigName=sapbasketsolrServerConfig
+$indexConfigName=sapbasketsolrIndexConfig
+$searchConfigName=sapbasketPageSize
+$facetSearchConfigName=sapbasketIndex
+$facetSearchConfigDescription=sapbasket Solr Index
+$searchIndexNamePrefix=sapbasket
+$solrIndexedType=sapbasketProductType
+$indexBaseSite=sapbasket
+$indexLanguages=en
+$indexCurrencies=INR
 
-
-#
 # Setup the Solr server, indexer, and search configs
 #
-
-# Create the solr server configuration
 INSERT_UPDATE SolrServerConfig;name[unique=true];mode(code)
+;$serverConfigName;standalone
+
+INSERT_UPDATE SolrEndpointUrl;solrServerConfig(name)[unique=true];url[unique=true];master[unique=true,default=false]
+;$serverConfigName;http://localhost:8983/solr;true
 
 # Create the solr indexer configuration
 INSERT_UPDATE SolrIndexConfig;name[unique=true];batchSize;numberOfThreads;indexMode(code);
+;$indexConfigName;100;1;TWO_PHASE;
 
 # Create the faceted search configuration
 INSERT_UPDATE SolrSearchConfig;description[unique=true];pageSize
+;$searchConfigName;20
 
-#
 # Setup the indexed types, their properties, and the update queries
 #
 
 # Declare the indexed type Product
 INSERT_UPDATE SolrIndexedType;identifier[unique=true];type(code);variant;sorts(&sortRefID)
+;$solrIndexedType;Product;false;sortRef1,sortRef2,sortRef3,sortRef4
 
 INSERT_UPDATE SolrFacetSearchConfig;name[unique=true];description;indexNamePrefix;languages(isocode);currencies(isocode);solrServerConfig(name);solrSearchConfig(description);solrIndexConfig(name);solrIndexedTypes(identifier);enabledLanguageFallbackMechanism;$catalogVersions
+;$facetSearchConfigName;$facetSearchConfigDescription;$searchIndexNamePrefix;$indexLanguages;$indexCurrencies;$serverConfigName;$searchConfigName;$indexConfigName;$solrIndexedType;true;$productCatalog:Online,$productCatalog:Staged
 
 UPDATE BaseSite;uid[unique=true];solrFacetSearchConfiguration(name)
+;$indexBaseSite;$facetSearchConfigName
 
 # Define price range set
 INSERT_UPDATE SolrValueRangeSet;name[unique=true];qualifier;type;solrValueRanges(&rangeValueRefID)
+;sapbasketPriceRangeINR;INR;double;rangeRefINR1,rangeRefINR2,rangeRefINR3,rangeRefINR4,rangeRefINR5,rangeRefINR6,rangeRefINR7,rangeRefINR8,rangeRefINR9,rangeRefINR10,rangeRefINR11,rangeRefINR12,rangeRefINR13
 
 # Define price ranges
 INSERT_UPDATE SolrValueRange;&rangeValueRefID;solrValueRangeSet(name)[unique=true];name[unique=true];from;to
+;rangeRefINR1 ;sapbasketPriceRangeINR;    ₹0-₹20;   0; 20
+;rangeRefINR2 ;sapbasketPriceRangeINR;   ₹20-₹50;  21; 50
+;rangeRefINR3 ;sapbasketPriceRangeINR;   ₹50-₹100;  51; 100
+;rangeRefINR4 ;sapbasketPriceRangeINR; ₹100-₹200; 101;200
+;rangeRefINR5 ;sapbasketPriceRangeINR; ₹200-₹300; 201;300
+;rangeRefINR6 ;sapbasketPriceRangeINR; ₹300-₹400; 301;400
+;rangeRefINR7 ;sapbasketPriceRangeINR; ₹400-₹500; 401;500
+;rangeRefINR8 ;sapbasketPriceRangeINR; ₹500-₹600; 501;600
+;rangeRefINR9 ;sapbasketPriceRangeINR; ₹600-₹700; 601;700
+;rangeRefINR10;sapbasketPriceRangeINR; ₹700-₹800; 701;800
+;rangeRefINR11;sapbasketPriceRangeINR; ₹800-₹900; 801;900
+;rangeRefINR12;sapbasketPriceRangeINR; ₹900-₹1000; 901;1000
+;rangeRefINR13;sapbasketPriceRangeINR;More than ₹1000;1001;100000
+
 
 # Non-facet properties
-INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;valueProviderParameter
-
-# Category fields
-INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);localized[default=false];multiValue[default=true];categoryField[default=true];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider
-
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;valueProviderParameters[map-delimiter=|];ftsPhraseQuery[default=false];ftsPhraseQueryBoost;ftsQuery[default=false];ftsQueryBoost;ftsFuzzyQuery[default=false];ftsFuzzyQueryBoost;ftsWildcardQuery[default=false];ftsWildcardQueryType(code)[default=POSTFIX];ftsWildcardQueryBoost;ftsWildcardQueryMinTermLength
+;$solrIndexedType; itemtype               ;string ;            ;    ;    ;    ;    ;    ;                                       ;									;    ;   ;    ;   ;    ;  ;    ;   ;;
+;$solrIndexedType; code                   ;string ;            ;    ;    ;    ;TRUE;TRUE;                                       ;									;    ;   ;TRUE;90 ;    ;  ;TRUE;POSTFIX;45;3
+;$solrIndexedType; name                   ;text   ;sortabletext;    ;TRUE;    ;TRUE;TRUE;                                       ;									;TRUE;100;TRUE;50 ;TRUE;25;    ;   ;  ;
+;$solrIndexedType; description            ;text   ;            ;    ;TRUE;    ;    ;    ;                                       ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; summary                ;text   ;            ;    ;TRUE;    ;    ;    ;                                       ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; manufacturerName       ;text   ;            ;    ;    ;    ;TRUE;TRUE;                                       ;									;TRUE;80 ;TRUE;40 ;TRUE;20;    ;   ;  ;
+;$solrIndexedType; manufacturerAID        ;string ;            ;    ;    ;    ;    ;    ;                                       ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; ean                    ;string ;            ;    ;    ;    ;TRUE;TRUE;                                       ;									;    ;   ;TRUE;100;    ;  ;TRUE;POSTFIX;50;3
+;$solrIndexedType; priceValue                  ;double ;            ;TRUE;    ;    ;    ;    ;productPriceValueProvider              ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; keywords               ;text   ;            ;    ;TRUE;    ;TRUE;TRUE;productKeywordsValueProvider           ;									;TRUE;40 ;TRUE;20 ;TRUE;10;    ;   ;  ;
+;$solrIndexedType; reviewAvgRating        ;double ;            ;    ;TRUE;    ;    ;    ;productReviewAverageRatingValueProvider;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; img-515Wx515H          ;string ;            ;    ;    ;    ;    ;    ;image515ValueProvider                  ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; img-300Wx300H          ;string ;            ;    ;    ;    ;    ;    ;image300ValueProvider                  ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; img-96Wx96H            ;string ;            ;    ;    ;    ;    ;    ;image96ValueProvider                   ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; img-65Wx65H            ;string ;            ;    ;    ;    ;    ;    ;image65ValueProvider                   ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; img-30Wx30H            ;string ;            ;    ;    ;    ;    ;    ;image30ValueProvider                   ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; url                    ;string ;            ;    ;TRUE;    ;    ;    ;productUrlValueProvider                ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; primaryPromotionCode   ;string ;            ;    ;    ;    ;    ;    ;promotionCodeValueProvider             ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; primaryPromotionBanner ;string ;            ;    ;    ;    ;    ;    ;promotionImageValueProvider            ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; stockLevelStatus       ;string ;            ;    ;    ;    ;    ;    ;productStockLevelStatusValueProvider   ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; inStockFlag            ;boolean;            ;    ;    ;    ;    ;    ;productInStockFlagValueProvider        ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; pickupAvailableFlag    ;boolean;            ;    ;    ;    ;    ;    ;productPickupAvailabilityValueProvider ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; configurable           ;boolean;            ;    ;    ;    ;    ;    ;productConfigurableProvider            ;									;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; baseProductCode		  ;string ;			   ;	;	 ;	  ;	   ;	;productAttributesValueResolver			;attribute->code|skipVariants->TRUE ;	 ;	 ;	  ;	  ;	   ;  ;	   ;   ;  ;
+ #Category fields
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);localized[default=false];multiValue[default=true];categoryField[default=true];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;ftsPhraseQuery[default=false];ftsPhraseQueryBoost;ftsQuery[default=false];ftsQueryBoost;ftsFuzzyQuery[default=false];ftsFuzzyQueryBoost
+#;$solrIndexedType; categoryName     ;text   ;true;;;true;true;sapbasketCategoryNameValueProvider          ;true;40;true;20;true;10
+;$solrIndexedType; categoryName     ;text   ;true;;;true;true;         ;true;40;true;20;true;10
 # Category facets
 INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);multiValue[default=true];facet[default=true];facetType(code);facetSort(code);priority;visible;categoryField[default=true];fieldValueProvider;facetDisplayNameProvider;topValuesProvider
+;$solrIndexedType; allCategories ;string;;;Refine;Alpha;-9999;false;;categoryCodeValueProvider                 ;
+;$solrIndexedType; categoryPath  ;string;;;Refine;Alpha;-9999;false;false;categoryPathValueProvider                 ;
+;$solrIndexedType; category      ;string;;;Refine;Alpha; 6000;true;;sapbasketCategoryCodeValueProvider          ;categoryFacetDisplayNameProvider;defaultTopValuesProvider
+;$solrIndexedType; category      ;string;;;Refine;Alpha; 6000;true;;          ;categoryFacetDisplayNameProvider;defaultTopValuesProvider
 
 # Other facet properties
 INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];facet[default=true];facetType(code);facetSort(code);priority;visible;useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;facetDisplayNameProvider;customFacetSortProvider;topValuesProvider;rangeSets(name)
+;$solrIndexedType; price            ;double ; ;true ;    ;    ; ;MultiSelectOr ;Alpha ; 4000;true;    ;    ;productPriceValueProvider              ;                                             ;                             ;defaultTopValuesProvider ;sapbasketPriceRangeINR
+;$solrIndexedType; discount            ;double ; ;true ;    ;    ; ;MultiSelectOr ;Alpha ; 4000;true;    ;    ;productPriceValueProvider              ;                                             ;                             ;defaultTopValuesProvider ;sapbasketPriceRangeINR
 
 # Create the queries that will be used to extract data for Solr
 INSERT_UPDATE SolrIndexerQuery;solrIndexedType(identifier)[unique=true];identifier[unique=true];type(code);injectCurrentDate[default=true];injectCurrentTime[default=true];injectLastIndexTime[default=true];query;user(uid)
+;$solrIndexedType;$searchIndexNamePrefix-fullQuery;full;;;false;"SELECT {p:PK} FROM {Product AS p} WHERE {p:varianttype} IS NOT NULL";anonymous
+;$solrIndexedType;$searchIndexNamePrefix-updateQuery;update;;;;"
+SELECT DISTINCT tbl.pk, tbl.code FROM (
+	{{
+		SELECT DISTINCT {p:PK} AS pk, {p:code} AS code
+		FROM {Product AS p LEFT JOIN CustomerReview AS cr ON {cr:product}={p:PK} }
+		WHERE {p:varianttype} IS NOT NULL AND ({p:modifiedtime} >= ?lastIndexTime OR {cr:modifiedtime} >= ?lastIndexTime)
+	}}
+	UNION
+	{{
+		SELECT DISTINCT {p:PK} AS pk, {p:code} AS code
+		FROM {VariantProduct AS p JOIN Product AS bp1 ON {p:baseProduct}={bp1:PK} LEFT JOIN CustomerReview AS cr ON {cr:product}={bp1:PK} }
+		WHERE {p:varianttype} IS NOT NULL AND ({bp1:modifiedtime} >= ?lastIndexTime OR {cr:modifiedtime} >= ?lastIndexTime)
+	}}
+	UNION
+	{{
+		SELECT DISTINCT {p:PK} AS pk, {p:code} AS code
+		FROM {VariantProduct AS p JOIN VariantProduct AS bp1 ON {p:baseProduct}={bp1:PK} JOIN Product AS bp2 ON {bp1:baseProduct}={bp2:PK} LEFT JOIN CustomerReview AS cr ON {cr:product}={bp2:PK} }
+		WHERE {p:varianttype} IS NOT NULL AND ({bp2:modifiedtime} >= ?lastIndexTime OR {cr:modifiedtime} >= ?lastIndexTime)
+	}}
+	UNION
+	{{
+		SELECT {p:PK}  AS pk, {p:code} AS code FROM {Product AS p} WHERE {p:code} IN (
+			{{
+				SELECT DISTINCT {sl:productCode} FROM {StockLevel AS sl} WHERE {sl:modifiedtime} >= ?lastIndexTime
+			}}
+		)
+	}}
+) tbl ORDER BY tbl.code
+";anonymous
 
-# Define the available sorts
 INSERT_UPDATE SolrSort;&sortRefID;indexedType(identifier)[unique=true];code[unique=true];useBoost
+;sortRef1;$solrIndexedType;name-asc;false
+;sortRef2;$solrIndexedType;name-desc;false
+;sortRef3;$solrIndexedType;price-asc;false
+;sortRef4;$solrIndexedType;price-desc;false
 
 # Define the sort fields
 INSERT_UPDATE SolrSortField;sort(indexedType(identifier),code)[unique=true];fieldName[unique=true];ascending[unique=true]
+;$solrIndexedType:name-asc;name;true
+;$solrIndexedType:name-desc;name;false
+;$solrIndexedType:price-asc;priceValue;true
+;$solrIndexedType:price-desc;priceValue;false
