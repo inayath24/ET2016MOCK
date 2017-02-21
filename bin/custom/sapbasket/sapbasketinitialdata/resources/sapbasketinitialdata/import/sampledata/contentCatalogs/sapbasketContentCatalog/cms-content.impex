@@ -112,9 +112,11 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];nam
 
 # CMS VariantSelector Components
 INSERT_UPDATE ProductVariantSelectorComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;VariantSelector;Product Variant Selector;VariantSelector
 
 # CMS ProductAddToCart Components
-INSERT_UPDATE ProductAddToCartComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+INSERT_UPDATE ProductAddToCartComponent;$contentCV[unique=true];uid[unique=true];name;actions(&actionRef);&componentRef
+;;AddToCart;Product Add To Cart;AddToCartAction;AddToCart
 
 # CMS ProductReferences Components
 INSERT_UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;&componentRef
@@ -158,6 +160,9 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents
 ;;FooterSlot;FooterComponent
 #;;HeaderLinksSlot;ContactInfo
 ;;SearchBoxSlot;SearchBox
+;;VariantSelectorSlot;VariantSelector
+;;AddToCartSlot;AddToCart
+
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
 
@@ -233,6 +238,7 @@ INSERT_UPDATE CMSActionRestriction;$contentCV[unique=true];uid[unique=true];name
 
 # CMS AddToCart Action
 INSERT_UPDATE AddToCartAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+;;AddToCartAction;/cart/add;Product Add To Cart Action;;AddToCartAction
 
 # CMS ListAddToCartAction
 INSERT_UPDATE ListAddToCartAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
