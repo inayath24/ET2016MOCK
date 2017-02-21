@@ -15,10 +15,10 @@
 
 $productCatalog=sapbasketProductCatalog
 $classificationCatalog=sapbasketClassificationCatalog
-$currencies=JPY,USD
+$currencies=INR
 $net=false
 $storeUid=sapbasket
-$defaultCurrency=USD
+$defaultCurrency=INR
 $languages=ja,en,de,zh
 $defaultLanguage=en
 $unitedKingdom=GB,GG,IM,JE
