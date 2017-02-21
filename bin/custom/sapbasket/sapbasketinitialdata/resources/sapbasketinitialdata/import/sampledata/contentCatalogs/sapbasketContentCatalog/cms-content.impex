@@ -643,7 +643,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];nam
 
 INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);scroll(code);popup;&componentRef
 ;;BestSellerCarouselComponent;Best Selling Products;Mayonnaise,Boost,Ghee,Groundnut,Almonds,Cashew,Cookies;allVisible;true;BestSellerCarouselComponent
-`
+
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
 ;;featuredrecipesParaComponent;Featured Recipies information;featuredrecipes;;;;<br><center><h2>Featured Recipes</h2></center><hr/>
 
