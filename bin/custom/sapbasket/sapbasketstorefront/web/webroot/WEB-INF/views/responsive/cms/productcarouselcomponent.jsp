@@ -23,7 +23,7 @@
 								class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 								<span class="sr-only">Next</span>
 							</a>
-							<c:url value="${product.url}" var="productQuickViewUrl" />
+							<c:url value="${product.url}/quickView" var="productQuickViewUrl" />
 							<div class="carousel__item">
 								<a href="${productQuickViewUrl}" class="js-reference-item">
 									<div class="carousel__item--thumb">
