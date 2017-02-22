@@ -41,7 +41,6 @@ INSERT_UPDATE Category;code[unique=true];$catalogVersion;name[lang=$lang]
 ;MoreStores;;MORE STORES
 ;RegionalSpecial;; REGIONAL SPECIAL
 ;SBInhouseBrands;;SB INHOUSE BRANDS
-
 ;Brands;;Brands
 ;Fresho;;Fresho
 ;Harvest;;Harvest
