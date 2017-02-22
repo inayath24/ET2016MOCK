@@ -22,7 +22,7 @@ $baseProduct=baseProduct(code,$catalogVersion)
 $approved=approvalstatus(code)[default='approved']
 
 # Insert Products
-INSERT_UPDATE SapbasketProduct;code[unique=true];$supercategories;manufacturerName;manufacturerAID;unit(code);variantType(code);$catalogVersion;$approved
+INSERT_UPDATE Product;code[unique=true];$supercategories;manufacturerName;manufacturerAID;unit(code);variantType(code);$catalogVersion;$approved
 ;ToorDal;RiceFlour&Pulses;Fresho;Fresho;;SapbasketVariantProduct;
 ;ToorDal_harvest;RiceFlour&Pulses;Harvest;Harvest;;SapbasketVariantProduct;
 ;ToorDal_sbroyal;RiceFlour&Pulses;SB Royal;SBRoyal;;SapbasketVariantProduct;
