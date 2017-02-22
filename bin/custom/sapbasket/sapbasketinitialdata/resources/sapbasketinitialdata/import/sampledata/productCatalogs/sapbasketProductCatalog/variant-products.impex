@@ -94,8 +94,6 @@ INSERT_UPDATE SapbasketVariantProduct;code[unique=true];$baseProduct;productUnit
 
 ;FruitJam_50;FruitJam;gm;50
 ;FruitJam_100;FruitJam;gm;100
-;FruitJam_50;FruitJam;gm;50
-;FruitJam_100;FruitJam;gm;100
 ;Mayonnaise_50;Mayonnaise;gm;50
 ;Mayonnaise_100;Mayonnaise;gm;100
 ;Pickle_50;Pickle;gm;50
