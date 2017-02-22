@@ -239,7 +239,7 @@
                             </c:if>
                             <option value="${variantOptionUrl}" ${(variantOption.url eq product.url) ? 'selected="selected"' : ''}>
                                 <span class="variant-selected">${optionsString}&nbsp;<format:price
-                                        priceData="${variantOption.priceData}"/>&nbsp;&nbsp;${variantOption.stock.stockLevel}</span>
+                                        priceData="${variantOption.priceData}"/>&nbsp;&nbsp;<!--${variantOption.stock.stockLevel}--></span>
                             </option>
                         </c:forEach>
                     </select>
