@@ -87,8 +87,8 @@ INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=d
 ;515Wx515H;/515Wx515H/515Wx515H-ChannaDal.jpg;$siteResource/images/515Wx515H/515Wx515H-ChannaDal.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Cookies.jpg;$siteResource/images/515Wx515H/515Wx515H-Cookies.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-CreamBiscuit.jpg;$siteResource/images/515Wx515H/515Wx515H-CreamBiscuit.jpg;;;images
-;515Wx515H;/515Wx515H/515Wx515H-Digestive.jpg;$siteResource/images/515Wx515H/515Wx515H/515Wx515H-Digestive.jpg;;;images
-;515Wx515H;/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;$siteResource/images/515Wx515H/15Wx515H-FilterCoffeePowder.jpg;;;images
+;515Wx515H;/515Wx515H/515Wx515H-Digestive.jpg;$siteResource/images/515Wx515H/515Wx515H-Digestive.jpg;;;images
+#;515Wx515H;/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;$siteResource/images/515Wx515H/15Wx515H-FilterCoffeePowder.jpg;;;images
 #;515Wx515H;/515Wx515H/515Wx515H-FruitJam.jpg;$siteResource/images/515Wx515H/515Wx515H-FruitJam.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Ghee.jpg;$siteResource/images/515Wx515H/515Wx515H-Ghee.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Groundnut.jpg;$siteResource/images/515Wx515H/515Wx515H-Groundnut.jpg;;;images
@@ -139,7 +139,7 @@ INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
 ;Tetley;/300Wx300H/300Wx300H-Tetley.jpg,/515Wx515H/515Wx515H-Tetley.jpg;
 ;Netscafe;/300Wx300H/300Wx300H-Netscafe.jpg,/515Wx515H/515Wx515H-Netscafe.jpg;
 ;BruInstant;/300Wx300H/300Wx300H-BruInstant.jpg,/515Wx515H/515Wx515H-BruInstant.jpg;
-#;FilterCoffeePowder;/300Wx300H/300Wx300H-FilterCoffeePowder.jpg,/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;
+#;CoffeePowder;/300Wx300H/300Wx300H-FilterCoffeePowder.jpg,/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;
 ;Boost;/300Wx300H/300Wx300H-Boost.jpg,/515Wx515H/515Wx515H-Boost.jpg;
 ;Horlicks;/300Wx300H/300Wx300H-Horlicks.jpg,/515Wx515H/515Wx515H-Horlicks.jpg;
 ;#FruitJam;/300Wx300H/300Wx300H-FruitJam.jpg,/515Wx515H/515Wx515H-FruitJam.jpg;
