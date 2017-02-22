@@ -22,7 +22,7 @@ INSERT_UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);
 
 # Site Logo
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
-;;/images/theme/logo-bigbasket.png;logo-bigbasket.png;$siteResource/images/theme/logo-bigbasket.png;image/png;hybris Accelerator;
+;;/images/theme/logo-bigbasket.png;logo-bigbasket.png;$siteResource/images/theme/logo-bigbasket.png;image/png;SAP Basket;
 
 
 # Site Logo Component
