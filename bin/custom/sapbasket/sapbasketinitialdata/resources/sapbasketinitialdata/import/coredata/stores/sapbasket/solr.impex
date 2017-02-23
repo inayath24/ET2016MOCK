@@ -103,8 +103,8 @@ INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[
 ;$solrIndexedType; baseProductCode		  ;string ;			   ;	;	 ;	  ;	   ;	;productAttributesValueResolver			;attribute->code|skipVariants->TRUE ;	 ;	 ;	  ;	  ;	   ;  ;	   ;   ;  ;
  #Category fields
 INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);localized[default=false];multiValue[default=true];categoryField[default=true];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;ftsPhraseQuery[default=false];ftsPhraseQueryBoost;ftsQuery[default=false];ftsQueryBoost;ftsFuzzyQuery[default=false];ftsFuzzyQueryBoost
-#;$solrIndexedType; categoryName     ;text   ;true;;;true;true;sapbasketCategoryNameValueProvider          ;true;40;true;20;true;10
-;$solrIndexedType; categoryName     ;text   ;true;;;true;true;         ;true;40;true;20;true;10
+;$solrIndexedType; categoryName     ;text   ;true;;;true;true;sapbasketCategoryNameValueProvider          ;true;40;true;20;true;10
+
 # Category facets
 INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);multiValue[default=true];facet[default=true];facetType(code);facetSort(code);priority;visible;categoryField[default=true];fieldValueProvider;facetDisplayNameProvider;topValuesProvider
 ;$solrIndexedType; allCategories ;string;;;Refine;Alpha;-9999;false;;categoryCodeValueProvider                 ;
@@ -115,7 +115,7 @@ INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[
 # Other facet properties
 INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];facet[default=true];facetType(code);facetSort(code);priority;visible;useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;facetDisplayNameProvider;customFacetSortProvider;topValuesProvider;rangeSets(name)
 ;$solrIndexedType; price            ;double ; ;true ;    ;    ; ;MultiSelectOr ;Alpha ; 4000;true;    ;    ;productPriceValueProvider              ;                                             ;                             ;defaultTopValuesProvider ;sapbasketPriceRangeINR
-;$solrIndexedType; discount            ;double ; ;true ;    ;    ; ;MultiSelectOr ;Alpha ; 4000;true;    ;    ;productPriceValueProvider              ;                                             ;                             ;defaultTopValuesProvider ;sapbasketPriceRangeINR
+#;$solrIndexedType; discount            ;double ; ;true ;    ;    ; ;MultiSelectOr ;Alpha ; 4000;true;    ;    ;productPriceValueProvider              ;                                             ;                             ;defaultTopValuesProvider ;sapbasketPriceRangeINR
 
 # Create the queries that will be used to extract data for Solr
 INSERT_UPDATE SolrIndexerQuery;solrIndexedType(identifier)[unique=true];identifier[unique=true];type(code);injectCurrentDate[default=true];injectCurrentTime[default=true];injectLastIndexTime[default=true];query;user(uid)

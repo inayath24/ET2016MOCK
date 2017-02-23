@@ -138,6 +138,7 @@ INSERT_UPDATE LanguageCurrencyComponent;$contentCV[unique=true];uid[unique=true]
 
 # CMS Product Refinement Component
 INSERT_UPDATE ProductRefinementComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;RefinementFacetComponent;Product Refinement Facet Component;RefinementFacetComponent
 
 # CMS Product List Component
 INSERT_UPDATE CMSProductListComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
@@ -164,6 +165,7 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents
 ;;SearchBoxSlot;SearchBox
 ;;VariantSelectorSlot;VariantSelector
 ;;AddToCartSlot;AddToCart
+;;ProductLeftRefinements;RefinementFacetComponent
 
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']

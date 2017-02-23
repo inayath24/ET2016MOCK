@@ -18,7 +18,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-           http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
      <context:annotation-config/> 
 
@@ -54,7 +54,11 @@
 	<bean id="electronicsCategorySource" parent="abstractCategorySource">
 		<property name="rootCategory" value="1"/>
 		<!-- '1' is the root icecat category -->
+		
 	</bean>
+	<bean id="sapbasketCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="Food"/>
+		</bean>
 	<bean id="electronicsBrandCategorySource" parent="abstractCategorySource">
 		<property name="rootCategory" value="brands"/>
 		<!-- 'brands' is the root of the brands hierarchy -->
@@ -195,6 +199,14 @@
 		<property name="i18nService" ref="i18nService"/>
 		<property name="commonI18NService" ref="commonI18NService"/>
 	</bean>
+<bean id="sapbasketCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+<property name="categorySource" ref="sapbasketCategorySource"/>
+</bean>
+<bean id="sapbasketCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="sapbasketCategorySource"/>
+	</bean>
+
+
 
 	<!--
 		Event listeners are singletons, therefore the dependency for a bean in tenant-scope
