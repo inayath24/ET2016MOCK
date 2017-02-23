@@ -57,7 +57,7 @@ INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=d
 ;300Wx300H;/300Wx300H/300Wx300H-Cookies.jpg;$siteResource/images/300Wx300H/300Wx300H-Cookies.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-CreamBiscuit.jpg;$siteResource/images/300Wx300H/300Wx300H-CreamBiscuit.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-Digestive.jpg;$siteResource/images/300Wx300H/300Wx300H-Digestive.jpg;;;images
-#;300Wx300H;/300Wx300H/300Wx300H-FilterCoffeePowder.jpg;$siteResource/images/300Wx300H/300Wx300H-FilterCoffeePowder.jpg;;;images
+;300Wx300H;/300Wx300H/300Wx300H-FilterCoffeePowder.jpg;$siteResource/images/300Wx300H/300Wx300H-FilterCoffeePowder.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-FruitJam.jpg;$siteResource/images/300Wx300H/300Wx300H-FruitJam.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-Ghee.jpg;$siteResource/images/300Wx300H/300Wx300H-Ghee.jpg;;;images
 ;300Wx300H;/300Wx300H/300Wx300H-Groundnut.jpg;$siteResource/images/300Wx300H/300Wx300H-Groundnut.jpg;;;images
@@ -88,8 +88,8 @@ INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=d
 ;515Wx515H;/515Wx515H/515Wx515H-Cookies.jpg;$siteResource/images/515Wx515H/515Wx515H-Cookies.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-CreamBiscuit.jpg;$siteResource/images/515Wx515H/515Wx515H-CreamBiscuit.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Digestive.jpg;$siteResource/images/515Wx515H/515Wx515H-Digestive.jpg;;;images
-#;515Wx515H;/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;$siteResource/images/515Wx515H/15Wx515H-FilterCoffeePowder.jpg;;;images
-#;515Wx515H;/515Wx515H/515Wx515H-FruitJam.jpg;$siteResource/images/515Wx515H/515Wx515H-FruitJam.jpg;;;images
+;515Wx515H;/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;$siteResource/images/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;;;images
+;515Wx515H;/515Wx515H/515Wx515H-FruitJam.jpg;$siteResource/images/515Wx515H/515Wx515H-FruitJam.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Ghee.jpg;$siteResource/images/515Wx515H/515Wx515H-Ghee.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Groundnut.jpg;$siteResource/images/515Wx515H/515Wx515H-Groundnut.jpg;;;images
 ;515Wx515H;/515Wx515H/515Wx515H-Horlicks.jpg;$siteResource/images/515Wx515H/515Wx515H-Horlicks.jpg;;;images
@@ -139,10 +139,10 @@ INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
 ;Tetley;/300Wx300H/300Wx300H-Tetley.jpg,/515Wx515H/515Wx515H-Tetley.jpg;
 ;Netscafe;/300Wx300H/300Wx300H-Netscafe.jpg,/515Wx515H/515Wx515H-Netscafe.jpg;
 ;BruInstant;/300Wx300H/300Wx300H-BruInstant.jpg,/515Wx515H/515Wx515H-BruInstant.jpg;
-#;CoffeePowder;/300Wx300H/300Wx300H-FilterCoffeePowder.jpg,/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;
+;FilterCoffeePowder;/300Wx300H/300Wx300H-FilterCoffeePowder.jpg,/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;
 ;Boost;/300Wx300H/300Wx300H-Boost.jpg,/515Wx515H/515Wx515H-Boost.jpg;
 ;Horlicks;/300Wx300H/300Wx300H-Horlicks.jpg,/515Wx515H/515Wx515H-Horlicks.jpg;
-;#FruitJam;/300Wx300H/300Wx300H-FruitJam.jpg,/515Wx515H/515Wx515H-FruitJam.jpg;
+;FruitJam;/300Wx300H/300Wx300H-FruitJam.jpg,/515Wx515H/515Wx515H-FruitJam.jpg;
 ;Mayonnaise;/300Wx300H/300Wx300H-Mayonnaise.jpg,/515Wx515H/515Wx515H-Mayonnaise.jpg;
 ;Pickle;/300Wx300H/300Wx300H-Pickle.jpg,/515Wx515H/515Wx515H-Pickle.jpg;
 ;Ketchup;/300Wx300H/300Wx300H-Ketchup.jpg,/515Wx515H/515Wx515H-Ketchup.jpg;
@@ -151,7 +151,11 @@ INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion
 UPDATE Product;code[unique=true];$picture;$thumbnail;$detail;$others;$normal;$thumbnails;$galleryImages;$catalogVersion
 #;Code;picture;thumbnail;detail;others;normal;thumbnail;galleryimages;catalogversion
 ;ChannaDal;/515Wx515H/515Wx515H-ChannaDal.jpg;/300Wx300H/300Wx300H-ChannaDal.jpg;;;;;ChannaDal;
+;ChannaDal_harvest;/515Wx515H/515Wx515H-ChannaDal.jpg;/300Wx300H/300Wx300H-ChannaDal.jpg;;;;;ChannaDal;
+;ChannaDal_sbroyal;/515Wx515H/515Wx515H-ChannaDal.jpg;/300Wx300H/300Wx300H-ChannaDal.jpg;;;;;ChannaDal;
 ;ToorDal;/515Wx515H/515Wx515H-ToorDal.jpg;/515Wx515H/515Wx515H-ToorDal.jpg;;;;;ToorDal;
+;ToorDal_harvest;/515Wx515H/515Wx515H-ToorDal.jpg;/515Wx515H/515Wx515H-ToorDal.jpg;;;;;ToorDal;
+;ToorDal_sbroyal;/515Wx515H/515Wx515H-ToorDal.jpg;/515Wx515H/515Wx515H-ToorDal.jpg;;;;;ToorDal;
 ;MoongDal;/515Wx515H/515Wx515H-MoongDal.jpg;/300Wx300H/300Wx300H-MoongDal.jpg;;;;;MoongDal;
 ;UradDal;/515Wx515H/515Wx515H-UradDal.jpg;/300Wx300H/300Wx300H-UradDal.jpg;;;;;UradDal;
 ;Peanuts;/515Wx515H/515Wx515H-Peanuts.jpg;/300Wx300H/300Wx300H-Peanuts.jpg;;;;;Peanuts;
@@ -172,12 +176,12 @@ UPDATE Product;code[unique=true];$picture;$thumbnail;$detail;$others;$normal;$th
 ;Walnuts;/300Wx300H/300Wx300H-Walnuts.jpg;/515Wx515H/515Wx515H-Walnuts.jpg;;;;;Walnuts;
 ;RedLabel;/300Wx300H/300Wx300H-RedLabel.jpg;/515Wx515H/515Wx515H-RedLabel.jpg;;;;;RedLabel;
 ;Tetley;/300Wx300H/300Wx300H-Tetley.jpg;/515Wx515H/515Wx515H-Tetley.jpg;;;;;Tetley;
-;Netscafe;/300Wx300H/300Wx300H-Netscafe.jpg;/515Wx515H/515Wx515H-Netscafe.jpg;;;;;Nestcafe;
+;Netscafe;/300Wx300H/300Wx300H-Netscafe.jpg;/515Wx515H/515Wx515H-Netscafe.jpg;;;;;Netscafe;
 ;BruInstant;/300Wx300H/300Wx300H-BruInstant.jpg;/515Wx515H/515Wx515H-BruInstant.jpg;;;;;BruInstant;
-#;FilterCoffeePowder;/300Wx300H/300Wx300H-FilterCoffeePowder.jpg;/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;;;;;FilterCoffeePowder;
+;FilterCoffeePowder;/300Wx300H/300Wx300H-FilterCoffeePowder.jpg;/515Wx515H/515Wx515H-FilterCoffeePowder.jpg;;;;;FilterCoffeePowder;
 ;Boost;/300Wx300H/300Wx300H-Boost.jpg;/515Wx515H/515Wx515H-Boost.jpg;;;;;Boost;
 ;Horlicks;/300Wx300H/300Wx300H-Horlicks.jpg;/515Wx515H/515Wx515H-Horlicks.jpg;;;;;Horlicks;
-#;FruitJam;/300Wx300H/300Wx300H-FruitJam.jpg;/515Wx515H/515Wx515H-FruitJam.jpg;;;;;GruitJam;
+;FruitJam;/300Wx300H/300Wx300H-FruitJam.jpg;/515Wx515H/515Wx515H-FruitJam.jpg;;;;;FruitJam;
 ;Mayonnaise;/300Wx300H/300Wx300H-Mayonnaise.jpg;/515Wx515H/515Wx515H-Mayonnaise.jpg;;;;;Mayonnaise;
 ;Pickle;/300Wx300H/300Wx300H-Pickle.jpg;/515Wx515H/515Wx515H-Pickle.jpg;;;;;Pickle;
 ;Ketchup;/300Wx300H/300Wx300H-Ketchup.jpg;/515Wx515H/515Wx515H-Ketchup.jpg;;;;;Ketchup;
