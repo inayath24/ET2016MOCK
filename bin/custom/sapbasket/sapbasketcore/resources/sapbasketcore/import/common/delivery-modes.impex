@@ -19,6 +19,7 @@ $ukCurrency=GBP
 $jpCurrency=JPY
 $usCurrency=USD
 $europeCurrency=EUR
+$indiaCurrency=INR
 
 # Delivery Zones
 INSERT_UPDATE Zone                  ; code[unique=true]               ; countries(isocode)
@@ -28,6 +29,7 @@ INSERT_UPDATE Zone                  ; code[unique=true]               ; countrie
                                     ; ca                              ; CA
                                     ; japan                           ; JP
                                     ; china                           ; CN
+                                    ; india							  ; IN
 
 # Zone Delivery Modes
 INSERT_UPDATE ZoneDeliveryMode      ; code[unique=true]               ; net                                                                                                                                             ; active[default=true]
@@ -44,12 +46,14 @@ INSERT_UPDATE ZoneDeliveryModeValue ; deliveryMode(code)[unique=true] ; zone(cod
                                     ; premium-gross                   ;                                                                                                                                                 ; $usCurrency                    ; 14,99  ; 0,00
                                     ; premium-gross                   ;                                                                                                                                                 ; $jpCurrency                    ; 99,99  ; 0,00
                                     ; premium-gross                   ;                                                                                                                                                 ; $europeCurrency                ; 19,99  ; 0,00
+                                    ; premium-gross                   ;                                                                                                                                                 ; $indiaCurrency                 ; 5,99   ; 0,00
                                     ; premium-net                     ;                                                                                                                                                 ; $jpCurrency                    ; 99,99  ; 0,00
                                     ; premium-net                     ;                                                                                                                                                 ; $usCurrency                    ; 17,99  ; 0,00
                                     ; standard-gross                  ;                                                                                                                                                 ; $ukCurrency                    ; 5,99   ; 0,00
                                     ; standard-gross                  ;                                                                                                                                                 ; $usCurrency                    ; 7,99   ; 0,00
                                     ; standard-gross                  ;                                                                                                                                                 ; $jpCurrency                    ; 59,99  ; 0,00
                                     ; standard-gross                  ;                                                                                                                                                 ; $europeCurrency                ; 9,99   ; 0,00
+                                    ; standard-gross                  ;                                                                                                                                                 ; $indiaCurrency                 ; 2,99  ; 0,00
                                     ; standard-net                    ;                                                                                                                                                 ; $jpCurrency                    ; 59,99  ; 0,00
                                     ; standard-net                    ;                                                                                                                                                 ; $usCurrency                    ; 9,99   ; 0,00
 
@@ -135,6 +139,8 @@ INSERT_UPDATE ZoneDeliveryModeValue ; deliveryMode(code)[unique=true] ; zone(cod
                                     ; standard-gross                  ;                                                                                                                                                 ; $jpCurrency                    ; 59,99  ; 0,00
                                     ; standard-net                    ;                                                                                                                                                 ; $jpCurrency                    ; 59,99  ; 0,00
                                     ; standard-net                    ;                                                                                                                                                 ; $usCurrency                    ; 18,49  ; 0,00
+                                    
+
 
 # Pickup Delivery Mode
 INSERT_UPDATE PickUpDeliveryMode    ; code[unique=true]               ; active[default=true]                                                                                                                            ; supportedMode(code)
