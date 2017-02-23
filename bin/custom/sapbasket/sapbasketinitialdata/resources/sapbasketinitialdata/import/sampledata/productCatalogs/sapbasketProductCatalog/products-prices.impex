@@ -35,8 +35,15 @@ INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=piec
 ;ToorDal_sbroyal_500;pieces;INR;90
 ;ToorDal_sbroyal_1;pieces;INR;180
 ;ChannaDal;pieces;INR;140
-;ChannaDal_sbroyal_500;pieces;INR;70
-;ChannaDal_sbroyal_1;pieces;INR;140
+;ChannaDal_500;pieces;INR;70
+;ChannaDal_1;pieces;INR;140
+;ChannaDal_harvest;pieces;INR;140
+;ChannaDal_harvest_500;pieces;INR;750
+;ChannaDal_harvest_1;pieces;INR;150
+;ChannaDal_sbroyal;pieces;INR;140
+;ChannaDal_sbroyal_500;pieces;INR;80
+;ChannaDal_sbroyal_1;pieces;INR;160
+
 ;MoongDal;pieces;INR;130
 ;MoongDal_500;pieces;INR;65
 ;MoongDal_1;pieces;INR;130
@@ -73,73 +80,72 @@ INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=piec
 ;Digestive_3;pieces;INR;70
 
 ;Lays;pieces;INR;10
-;Lays_1;pieces;INR;10
-;Lays_3;pieces;INR;30
+;Lays_100;pieces;INR;10
 
 ;Kurkure;pieces;INR;10
-;Kurkure_1;pieces;INR;10
-;Kurkure_3;pieces;INR;30
+;Kurkure_100;pieces;INR;10
 
 ;UncleChips;pieces;INR;10
-;UncleChips_1;pieces;INR;10
-;UncleChips_3;pieces;INR;30
+;UncleChips_100;pieces;INR;10
 
 ;Cashew;pieces;INR;100
-;Cashew_1;pieces;INR;100
-;Cashew_3;pieces;INR;300
+;Cashew_50;pieces;INR;100
+;Cashew_100;pieces;INR;200
 
-;Almonds;pieces;INR;200
-;Almonds_1;pieces;INR;200
-;Almonds_3;pieces;INR;600
+;Almonds;pieces;INR;100
+;Almonds_50;pieces;INR;50
+;Almonds_100;pieces;INR;100
 
-;Pista;pieces;INR;300
-;Pista_1;pieces;INR;300
-;Pista_3;pieces;INR;900
+;Pista;pieces;INR;100
+;Pista_50;pieces;INR;50
+;Pista_100;pieces;INR;100
 
-;Walnuts;pieces;INR;250
-;Walnuts_1;pieces;INR;250
-;Walnuts_3;pieces;INR;750
+;Walnuts;pieces;INR;100
+;Walnuts_50;pieces;INR;50
+;Walnuts_100;pieces;INR;100
 
-;RedLabel;pieces;INR;100
-;RedLabel_1;pieces;INR;100
-;RedLabel_3;pieces;INR;300
+;RedLabel;pieces;INR;150
+;RedLabel_50;pieces;INR;20
+;RedLabel_100;pieces;INR;40
+;RedLabel_250;pieces;INR;75
+;RedLabel_500;pieces;INR;150
 
 ;Tetley;pieces;INR;110
-;Tetley_1;pieces;INR;110
-;Tetley_3;pieces;INR;320
+;Tetley_50;pieces;INR;110
+;Tetley_100;pieces;INR;220
 
 ;Netscafe;pieces;INR;120
-;Netscafe_1;pieces;INR;120
-;Netscafe_3;pieces;INR;360
+;Netscafe_50;pieces;INR;120
+;Netscafe_100;pieces;INR;240
 
 ;BruInstant;pieces;INR;80
-;BruInstant_1;pieces;INR;80
-;BruInstant_3;pieces;INR;240
+;BruInstant_50;pieces;INR;80
+;BruInstant_100;pieces;INR;160
 
-;FilterCoffeePowder;pieces;INR;90
-;FilterCoffeePowder_1;pieces;INR;90
-;FilterCoffeePowder_3;pieces;INR;270
+;FilterCoffeePowder;pieces;INR;180
+;FilterCoffeePowder_50;pieces;INR;90
+;FilterCoffeePowder_100;pieces;INR;180
 
-;Boost;pieces;INR;100
-;Boost_1;pieces;INR;100
-;Boost_3;pieces;INR;300
+;Boost;pieces;INR;200
+;Boost_500;pieces;INR;100
+;Boost_1;pieces;INR;200
 
-;Horlicks;pieces;INR;150
-;Horlicks_1;pieces;INR;150
-;Horlicks_3;pieces;INR;450
+;Horlicks;pieces;INR;300
+;Horlicks_500;pieces;INR;150
+;Horlicks_1;pieces;INR;300
 
 ;FruitJam;pieces;INR;125
-;FruitJam_1;pieces;INR;125
-;FruitJam_3;pieces;INR;360
+;FruitJam_50;pieces;INR;125
+;FruitJam_100;pieces;INR;250
 
 ;Mayonnaise;pieces;INR;75
-;Mayonnaise_1;pieces;INR;75
-;Mayonnaise_3;pieces;INR;220
+;Mayonnaise_50;pieces;INR;75
+;Mayonnaise_100;pieces;INR;150
 
 ;Pickle;pieces;INR;60
-;Pickle_1;pieces;INR;60
-;Pickle_3;pieces;INR;180
+;Pickle_50;pieces;INR;60
+;Pickle_100;pieces;INR;180
 
 ;Ketchup;pieces;INR;40
-;Ketchup_1;pieces;INR;40
-;Ketchup_3;pieces;INR;120
+;Ketchup_250;pieces;INR;40
+;Ketchup_500;pieces;INR;120

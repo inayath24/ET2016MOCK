@@ -87,13 +87,7 @@
 		
 
 <typegroup name="Sapbasket">
-			<itemtype code="SapbasketProduct" extends="Product"
-			          autocreate="true" generate="true"
-			          jaloclass="com.sap.sapbasket.core.jalo.SapbasketProduct">
-				<description>SapBasket Product item..</description>
-			</itemtype>
-
-			<itemtype code="SapbasketVariantProduct" extends="VariantProduct"
+				<itemtype code="SapbasketVariantProduct" extends="VariantProduct"
 			          autocreate="true" generate="true"
 			          jaloclass="com.sap.sapbasket.core.jalo.SapbasketVariantProduct">
 				<description>SapBasket variant type that contains additional attribute describing variant.

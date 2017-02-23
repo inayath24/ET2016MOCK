@@ -41,6 +41,28 @@ INSERT_UPDATE Category;code[unique=true];allowedPrincipals(uid)[default='custome
 ;MoreStores
 ;RegionalSpecial
 ;SBInhouseBrands
+;Brands
+;Fresho
+;Harvest
+;SBRoyal
+;Borges
+;Fortune
+;Saffola
+;Sunlite
+;Amul
+;Britania
+;Sunfeast
+;EasyDigest
+;Chips
+;SBRoyalTea
+;Nestcafe
+;Bru
+;SBRoyalCoffee
+;Boost
+;Horlicks
+;Kissan
+;Maggi
+;Tasty
 
 # Insert Category Structure
 INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
@@ -57,3 +79,25 @@ INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
 ;Promotions;Offers
 ;RegionalSpecial;MoreStores
 ;SBInhouseBrands;MoreStores
+;Fresho;Brands
+;Harvest;Brands
+;SBRoyal;Brands
+;Borges;Brands
+;Saffola;Brands
+;Fortune;Brands
+;Sunlite;Brands
+;Amul;Brands
+;Britania;Brands
+;Sunfeast;Brands
+;EasyDigest;Brands
+;Chips;Brands;Brands
+;SBRoyalTea;Brands
+;Nestcafe;Brands
+;Bru;Brands
+;SBRoyalCoffee;Brands
+;Boost;Brands
+;Horlicks;Brands
+;Kissan;Brands
+;Maggi;Brands
+;Tasty;Brands
+
