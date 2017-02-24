@@ -11,6 +11,7 @@ import de.hybris.platform.core.model.user.CustomerModel;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.sap.sapbasket.core.event.UpdateEvent;
 import com.sap.sapbasket.core.service.CustomCustomerAccountService;
 
 
@@ -31,7 +32,7 @@ public class DefaultCustomCustomerAccountService extends DefaultCustomerAccountS
 	@Override
 	public void updateProfile(final CustomerModel customerModel, final String titleCode, final String name, final String login,
 			final String email, final String date_of_birth, final String mobile_number, final String landline_number)
-					throws DuplicateUidException
+			throws DuplicateUidException
 	{
 		validateParameterNotNullStandardMessage("customerModel", customerModel);
 
@@ -50,7 +51,8 @@ public class DefaultCustomCustomerAccountService extends DefaultCustomerAccountS
 			customerModel.setTitle(null);
 		}
 		internalSaveCustomer(customerModel);
-
+		final UpdateEvent event = (UpdateEvent) initializeEvent(new UpdateEvent(), customerModel);
+		getEventService().publishEvent(event);
 	}
 
 
