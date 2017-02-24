@@ -59,6 +59,9 @@
 	<bean id="sapbasketCategorySource" parent="abstractCategorySource">
 		<property name="rootCategory" value="Food"/>
 		</bean>
+		<bean id="sapbasketBrandCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="Brands"/>
+		</bean>
 	<bean id="electronicsBrandCategorySource" parent="abstractCategorySource">
 		<property name="rootCategory" value="brands"/>
 		<!-- 'brands' is the root of the brands hierarchy -->
@@ -119,6 +122,13 @@
 	</bean>
 	<bean id="apparelCollectionCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
 		<property name="categorySource" ref="apparelCollectionCategorySource"/>
+	</bean>
+	<bean id="sapbasketBrandCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="sapbasketBrandCategorySource"/>
+		
+	</bean>
+	<bean id="sapbasketBrandCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+		<property name="categorySource" ref="sapbasketBrandCategorySource"/>
 	</bean>
 
 	<bean id="image515ValueProvider" parent="abstractImageValueProvider" >
