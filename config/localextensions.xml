@@ -3,6 +3,7 @@
   <extensions>
     <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
     <path dir="${HYBRIS_BIN_DIR}/custom/sapbasket" autoload="true"/>
+
     
 	<extension name='mcc' />
     <extension name="hmc"/>
