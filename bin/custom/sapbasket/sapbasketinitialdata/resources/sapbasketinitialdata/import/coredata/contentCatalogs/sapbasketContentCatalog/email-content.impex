@@ -19,6 +19,7 @@ $wideContent=CMSImageComponent,BannerComponent
 # Import config properties into impex macros
 UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
 $jarResourceCms=$config-jarResourceCmsValue
+$emailPackageName=$config-emailContextPackageName
 
 # Email page Template
 INSERT_UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];name;active;frontendTemplateName;subject(code);htmlTemplate(code);restrictedPageTypes(code)
@@ -35,8 +36,13 @@ INSERT_UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];name;ac
 ;;OrderPartiallyRefundedEmailTemplate;Order Partially Refunded Email Template;true;orderPartiallyRefundedEmail;electronics_Email_Order_Partially_Refunded_Subject;electronics_Email_Order_Partially_Refunded_Body;EmailPage
 ;;NotPickedUpConsignmentCanceledEmailTemplate;Not Picked Up Consignment Canceled Email Template;true;notPickedUpConsignmentCanceledEmail;electronics_Email_NotPickedUpConsignment_Canceled_Subject;electronics_Email_NotPickedUpConsignment_Canceled_Body;EmailPage
 
+;;UpdateProfileEmailTemplate;Update Profile Email Template;true;UpdateProfileEmailTemplate;sapbasket_Email_Update_Profile_Subject;sapbasket_Email_Update_Profile_Body;EmailPage
+
 # Templates for CMS Cockpit Page Edit
 UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];velocityTemplate[translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+;;CustomerRegistrationEmailTemplate;$jarResourceCms/structure-view/structure_customerRegistrationEmailTemplate.vm
+
+#;;UpdateProfileEmailTemplate;
 
 INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='CustomerRegistrationEmailTemplate'];validComponentTypes(code)
 ;SiteLogo;;;logo
@@ -98,11 +104,17 @@ INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=
 ;TopContent;;$wideContent;
 ;BottomContent;;$wideContent;
 
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='UpdateProfileEmailTemplate'];validComponentTypes(code)
+;SiteLogo;;;logo
+;TopContent;;$wideContent;
+;BottomContent;;$wideContent;
+
+
 # Create Content Slots
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active
-;;EmailTopSlot;Default Email Top Slot;true
-;;EmailBottomSlot;Default Email Bottom Slot;true
-;;EmailSiteLogoSlot;Default Email Site Slot;true
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
+;;EmailTopSlot;Default Email Top Slot;true;;
+;;EmailBottomSlot;Default Email Bottom Slot;true;;
+;;EmailSiteLogoSlot;Default Email Site Slot;true;SiteLogoComponent
 
 # Bind Content Slots to Email Page Templates
 INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='CustomerRegistrationEmailTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
@@ -160,17 +172,38 @@ INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];po
 ;;TopContent-OrderCollectionReminderEmail;TopContent;;EmailTopSlot;true
 ;;BottomContent-OrderCollectionReminderEmail;BottomContent;;EmailBottomSlot;true
 
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='UpdateProfileEmailTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+;;SiteLogo-UpdateProfileEmail;SiteLogo;;EmailSiteLogoSlot;true
+;;TopContent-UpdateProfileEmail;TopContent;;EmailTopSlot;true
+;;BottomContent-UpdateProfileEmail;BottomContent;;EmailBottomSlot;true
+
 # Email Pages
 INSERT_UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved']
+;;CustomerRegistrationEmail;Customer Registration Email;CustomerRegistrationEmailTemplate;true;
+
+;;UpdateProfileEmail;Update Profile Email;UpdateProfileEmailTemplate;true;
 
 # CMS components velocity templates
 INSERT_UPDATE RendererTemplate;code[unique=true];contextClass;rendererType(code)[default='velocity']
+;sapbasket-CMSImageComponent-template;java.util.Map
+;sapbasket-BannerComponent-template;java.util.Map
+;sapbasket-SimpleBannerComponent-template;java.util.Map
+;sapbasket-CMSLinkComponent-template;java.util.Map
+;sapbasket-CMSParagraphComponent-template;java.util.Map
 
 # Email velocity templates
 INSERT_UPDATE RendererTemplate;code[unique=true];contextClass;rendererType(code)[default='velocity']
+#;sapbasket_Email_Customer_Registration_HTML;de.hybris.platform.commerceservices.process.email.context.CustomerEmailContext
+#;sapbasket_Email_Customer_Registration_Subject;de.hybris.platform.commerceservices.process.email.context.CustomerEmailContext
+;sapbasket_Email_Customer_Registration_Body;$emailPackageName.CustomerEmailContext
+;sapbasket_Email_Customer_Registration_Subject;$emailPackageName.CustomerEmailContext
+
+;sapbasket_Email_Update_Profile_Subject;$emailPackageName.CustomerEmailContext
+;sapbasket_Email_Update_Profile_Body;$emailPackageName.CustomerEmailContext
 
 # Preview Image for use in the CMS Cockpit
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true]
 ;;EmailPageModel_preview;text/gif;EmailPageModel_preview.gif;$jarResourceCms/preview-images/EmailPageModel_preview.gif
 
 UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV)
+;;CustomerRegistrationEmail;EmailPageModel_preview
