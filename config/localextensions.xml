@@ -2,9 +2,9 @@
 <hybrisconfig xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../bin/platform/resources/schemas/extensions.xsd'>
   <extensions>
     <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
-                <path dir="${HYBRIS_BIN_DIR}/custom/sapbasket" autoload="true"/>
-    <extension name='mcc' />
-   
+    <path dir="${HYBRIS_BIN_DIR}/custom/sapbasket" autoload="true"/>
+    
+	<extension name='mcc' />
     <extension name="hmc"/>
     <extension name="backoffice"/>
     <extension name='rulebuilderbackoffice' />
@@ -14,9 +14,7 @@
     <extension name='droolsruleengineservices' />
     <extension name='couponfacades' />
     <extension name='promotionenginesamplesaddon' />
-  
     <extension name='promotionengineatddtests' />
-     
     <extension name="promotionenginetrail"/>
     
   </extensions>
