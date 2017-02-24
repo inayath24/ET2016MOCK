@@ -306,13 +306,40 @@ INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];positi
 
 ###### Cart Page ######
 
-INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
+# SimpleBannerComponent 
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
+;;FreeDeliverySimpleBannerComponent;Free Delivery Simple Banner Component;FreeDeliverySimpleBannerComponent;;;;
+;;HelpWithCheckoutSimpleBannerComponent;Help With Checkout Simple Banner Component;HelpWithCheckoutSimpleBannerComponent;;;;
 
-INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
 
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
+;;CartComponent;Cart Display Component;cartDisplay.jsp;;CartComponent
+;;CartTotalsComponent;Cart Totals Display Component;cartTotalsDisplay.jsp;;CartTotalsComponent
+;;PromotionsComponent;Promotions Component;cartPromotionsDisplay.jsp;;PromotionsComponent
+;;PotentialPromotionsComponent;Potential Promotions Component;potentialPromotionsDisplay.jsp;;PotentialPromotionsComponent
+;;CheckoutComponent;Checkout Display Component;checkoutDisplay.jsp;;CheckoutComponent
 
+# CMSParagraphComponent 
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
+;;EmptyCartParagraphComponent;Empty Cart Paragraph Component;EmptyCartParagraphComponent;;;;
+;;HelpParagraphComponent;Help Paragraph Component;HelpParagraphComponent;;;;
+
+# ContentSlot 
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
+;;EmptyCartMiddleContent;Middle Slot for Cart Page;true;EmptyCartParagraphComponent
+;;TopContentSlot;Top Content Slot for Cart Page;true;FreeDeliverySimpleBannerComponent,CartComponent
+;;CenterLeftContentSlot;Center Left Content Slot for Cart Page;true;PromotionsComponent,PotentialPromotionsComponent
+;;CenterRightContentSlot;Center Right Content Slot for Cart Page;true;CartTotalsComponent
+;;BottomContentSlot;Bottom Content Slot for Cart Page;true;CheckoutComponent
+
+# ContentSlotForPage 
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='cartPage'];contentSlot(uid,$contentCV)[unique=true]
+;;EmptyCartMiddleForCartPage;EmptyCartMiddleContent;;EmptyCartMiddleContent
+;;TopContentSlotForCartPage;TopContent;;TopContentSlot
+;;CenterLeftContentSlotForCartPage;CenterLeftContentSlot;;CenterLeftContentSlot
+;;CenterRightContentSlotForCartPage;CenterRightContentSlot;;CenterRightContentSlot
+;;BottomContentSlotForCartPage;BottomContentSlot;;BottomContentSlot
+
 
 ###### Checkout Login Page ######
 

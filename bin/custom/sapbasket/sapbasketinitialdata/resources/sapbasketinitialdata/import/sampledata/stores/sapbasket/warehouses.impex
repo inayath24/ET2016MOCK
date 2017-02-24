@@ -13,7 +13,7 @@
 # Create Warehouses for Store
 #
 #% impex.setLocale( Locale.GERMAN );
-
+ 
 # Macros / Replacement Parameter definitions
 $storeUid=sapbasket
 

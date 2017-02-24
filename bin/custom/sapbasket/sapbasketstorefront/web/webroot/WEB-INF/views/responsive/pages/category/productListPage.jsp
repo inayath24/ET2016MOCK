@@ -7,7 +7,9 @@
 
 <template:page pageTitle="${pageTitle}">
 
-	<div class="row">		
+dfgdg
+
+	<div class="row">		sdfsdfsdf
 		<cms:pageSlot position="Section1" var="feature" element="div" class="product-list-section1-slot">
 			<cms:component component="${feature}" element="div" class="col-xs-12 yComponentWrapper product-list-section1-component"/>
 		</cms:pageSlot>		
