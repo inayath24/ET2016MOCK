@@ -99,7 +99,8 @@
 				<entry key="zoom" value="515Wx515H"/>
 				<entry key="store" value="365Wx246H"/>
 				<entry key="product" value="300Wx300H"/>
-				<entry key="thumbnail" value="96Wx96H"/>
+				<!-- <entry key="thumbnail" value="96Wx96H"/> -->
+				<entry key="thumbnail" value="300Wx300H"/>
 				<entry key="cartIcon" value="65Wx65H"/>
 				<entry key="styleSwatch" value="30Wx30H"/>
 			</map>
