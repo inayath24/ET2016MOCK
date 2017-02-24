@@ -41,3 +41,25 @@ INSERT_UPDATE Category;code[unique=true];$catalogVersion;name[lang=$lang]
 ;MoreStores;;MORE STORES
 ;RegionalSpecial;; REGIONAL SPECIAL
 ;SBInhouseBrands;;SB INHOUSE BRANDS
+;Brands;;Brands
+;Fresho;;Fresho
+;Harvest;;Harvest
+;SBRoyal;;SBRoyal
+;Borges;;Borges
+;Fortune;;Fortune
+;Saffola;;Soffola
+;Sunlite;;Sunlite
+;Amul;;Amul
+;Britania;;Britania
+;Sunfeast;;Sunfeast
+;EasyDigest;;Easy Digest
+;Chips;;Chips
+;SBRoyalTea;;SBRoyal Tea
+;Nestcafe;;Nestcafe
+;Bru;;Bru
+;SBRoyalCoffee;;SBRoyal Coffee
+;Boost;;Boost
+;Horlicks;;Horlicks
+;Kissan;;Kissan
+;Maggi;;Maggi
+;Tasty;;Tasty
