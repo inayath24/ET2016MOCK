@@ -24,6 +24,20 @@ $lang=en
 
 # CMS components and Email velocity templates
 UPDATE RendererTemplate;code[unique=true];description[lang=$lang];templateScript[lang=$lang,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
-
+;sapbasket-BannerComponent-template;"CMSBannerComponent Template";$emailResource/email-bannerComponentTemplate.vm
+;sapbasket-CMSImageComponent-template;"CMSImageComponent Template";$emailResource/email-cmsImageComponentTemplate.vm
+;sapbasket-CMSLinkComponent-template;"CMSLinkComponent Template";$emailResource/email-cmsLinkComponentTemplate.vm
+;sapbasket-CMSParagraphComponent-template;"CMSParagraphComponent Template";$emailResource/email-cmsParagraphComponentTemplate.vm
+;sapbasket-SimpleBannerComponent-template;"CMSSimpleBannerComponent Template";$emailResource/email-bannerComponentTemplate.vm
+;sapbasket_Email_Customer_Registration_Body;"Customer Registration Email Body";$emailResource/email-customerRegistrationBody.vm
+;sapbasket_Email_Customer_Registration_Subject;"Customer Registration Email Subject";$emailResource/email-customerRegistrationSubject.vm
+ 
+;sapbasket_Email_Update_Profile_Subject;"Update Profile Email Subject";$emailResource/email-UpdateProfileSubject.vm
+;sapbasket_Email_Update_Profile_Body;"Update Profile Email Body";$emailResource/email-UpdateProfileBody.vm
+ 
+ 
 # Email Pages
 UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];fromEmail[lang=$lang];fromName[lang=$lang]
+;;CustomerRegistrationEmail;"customerservices@hybris.com";"Customer Services Team"
+
+;;UpdateProfileEmail;"customerservices@hybris.com";"Customer Services Team"

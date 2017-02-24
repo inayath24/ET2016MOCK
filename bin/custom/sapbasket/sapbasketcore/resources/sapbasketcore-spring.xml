@@ -259,12 +259,21 @@
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
+	<bean id="customerUpdateProfileEventListener"
+	      class="com.sap.sapbasket.core.event.UpdateProfileEventListener" parent="abstractAcceleratorSiteEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
 
 	<!-- Process resources definition -->
 
 	<bean id="customerRegistrationEmailProcessDefinitionResource"
 	      class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
 		<property name="resource" value="classpath:/sapbasketcore/processes/customerRegistrationEmailProcess.xml"/>
+	</bean>
+	<bean id="customerUpdateProfileEmailProcessDefinitionResource"
+	      class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/sapbasketcore/processes/customerUpdateProfileEmailProcess.xml"/>
 	</bean>
 	<bean id="forgottenPasswordEmailProcessDefinitionResource"
 	      class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
@@ -359,6 +368,9 @@
 	</bean>
 	<bean id="generateNotPickedUpConsignmentCanceledEmail" parent="abstractGenerateEmailAction">
 		<property name="frontendTemplateName" value="NotPickedUpConsignmentCanceledEmailTemplate"/>
+	</bean>
+	<bean id="generateCustomerUpdateProfileEmail" parent="abstractGenerateEmailAction">
+		<property name="frontendTemplateName" value="UpdateProfileEmailTemplate"/>
 	</bean>
 
 	<bean id="removeSentEmail"
