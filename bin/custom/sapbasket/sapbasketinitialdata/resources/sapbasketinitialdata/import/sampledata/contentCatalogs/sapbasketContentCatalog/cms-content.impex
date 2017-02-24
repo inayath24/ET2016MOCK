@@ -118,7 +118,6 @@ INSERT_UPDATE ProductVariantSelectorComponent;$contentCV[unique=true];uid[unique
 
 INSERT_UPDATE ProductAddToCartComponent;$contentCV[unique=true];uid[unique=true];name;actions(&actionRef);&componentRef
 ;;AddToCart;Product Add To Cart;AddToCartAction;AddToCart
-;;AddToCart;Product Add To Cart;AddToCartAction;AddToCart
 
 # CMS ProductReferences Components
 INSERT_UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;&componentRef
@@ -262,13 +261,19 @@ INSERT_UPDATE ViewStoreAction;$contentCV[unique=true];uid[unique=true];url;name;
 
 ##### Jsp Include Component #####
 INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
-;;ReturningCustomerLoginComponent;Returning Customer Login Component;accountReturningCustomerLogin.jsp;;ReturningCustomerLoginComponent
-;;NewCustomerLoginComponent;New Customer Login Component;accountNewCustomerLogin.jsp;;NewCustomerLoginComponent
+;;ReturningCustomerLoginComponent;Returning Customer Login Component;accountReturningCustomerLogin.jsp;ReturningCustomerLoginComponent
+;;NewCustomerLoginComponent;New Customer Login Component;accountNewCustomerLogin.jsp;NewCustomerLoginComponent
 ;;UpdateProfileComponent;Update Profile Component;accountProfileEditPage.jsp;UpdateProfileComponent
 ;;AccountAddressBookComponent;Account Address Book Component;accountAddressBookPage.jsp;AccountAddressBookComponent
 ;;UpdateEmailComponent;Update Email Component;accountProfileEmailEditPage.jsp;UpdateEmailComponent
 ;;UpdatePasswordComponent;Update Password Component;accountChangePasswordPage.jsp;UpdatePasswordComponent
 ;;AccountAddEditAddressComponent;Account Add Edit Address Component;accountEditAddressPage.jsp;AccountAddEditAddressComponent
+;;CartComponent;Cart Display Component;cartDisplay.jsp;CartComponent
+;;CartTotalsComponent;Cart Totals Display Component;cartTotalsDisplay.jsp;CartTotalsComponent
+;;PromotionsComponent;Promotions Component;cartPromotionsDisplay.jsp;PromotionsComponent
+;;PotentialPromotionsComponent;Potential Promotions Component;potentialPromotionsDisplay.jsp;PotentialPromotionsComponent
+;;CheckoutComponent;Checkout Display Component;checkoutDisplay.jsp;CheckoutComponent
+
 
 
 
@@ -312,12 +317,7 @@ INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];nam
 ;;HelpWithCheckoutSimpleBannerComponent;Help With Checkout Simple Banner Component;HelpWithCheckoutSimpleBannerComponent;;;;
 
 
-INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
-;;CartComponent;Cart Display Component;cartDisplay.jsp;;CartComponent
-;;CartTotalsComponent;Cart Totals Display Component;cartTotalsDisplay.jsp;;CartTotalsComponent
-;;PromotionsComponent;Promotions Component;cartPromotionsDisplay.jsp;;PromotionsComponent
-;;PotentialPromotionsComponent;Potential Promotions Component;potentialPromotionsDisplay.jsp;;PotentialPromotionsComponent
-;;CheckoutComponent;Checkout Display Component;checkoutDisplay.jsp;;CheckoutComponent
+#INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
 
 # CMSParagraphComponent 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
