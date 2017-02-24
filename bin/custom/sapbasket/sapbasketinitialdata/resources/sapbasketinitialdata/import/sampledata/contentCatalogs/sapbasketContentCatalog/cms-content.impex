@@ -269,12 +269,7 @@ INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;
 ;;UpdateEmailComponent;Update Email Component;accountProfileEmailEditPage.jsp;UpdateEmailComponent
 ;;UpdatePasswordComponent;Update Password Component;accountChangePasswordPage.jsp;UpdatePasswordComponent
 ;;AccountAddEditAddressComponent;Account Add Edit Address Component;accountEditAddressPage.jsp;AccountAddEditAddressComponent
-;;CartComponent;Cart Display Component;cartDisplay.jsp;;CartComponent
-;;CartTotalsComponent;Cart Totals Display Component;cartTotalsDisplay.jsp;;CartTotalsComponent
-;;PromotionsComponent;Promotions Component;cartPromotionsDisplay.jsp;;PromotionsComponent
-;;PotentialPromotionsComponent;Potential Promotions Component;potentialPromotionsDisplay.jsp;;PotentialPromotionsComponent
-;;CheckoutComponent;Checkout Display Component;checkoutDisplay.jsp;;CheckoutComponent
-;;GuestCheckoutLoginComponent;Guest Checkout Login Component;checkoutGuestLogin.jsp;;GuestCheckoutLoginComponent
+
 
 
 INSERT_UPDATE BreadcrumbComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
@@ -380,18 +375,8 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;c
 # ContentSlotForPage
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='profile'];contentSlot(uid,$contentCV)[unique=true];;;
 
-INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='cartPage'];contentSlot(uid,$contentCV)[unique=true]
-;;TopContentSlotForCartPage;TopContent;;TopContent-cartPage
-;;CenterLeftContentSlotForCartPage;CenterLeftContentSlot;;CenterLeftContentSlot-cartPage
-;;CenterRightContentSlotForCartPage;CenterRightContentSlot;;CenterRightContentSlot-cartPage
-;;BottomContentSlotForCartPage;BottomContentSlot;;BottomContentSlot-cartPage
 
 
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
-;;TopContent-cartPage;Top Slot for Cart Page;true;CartComponent
-;;CenterLeftContentSlot-cartPage;Center Left Content Slot for Cart Page;true;PromotionsComponent,PotentialPromotionsComponent
-;;CenterRightContentSlot-cartPage;Center Right Content Slot for Cart Page;true;CartTotalsComponent
-;;BottomContentSlot-cartPage;Bottom Content Slot for Cart Page;true;CheckoutComponent
 ###### Account Address Book ######
 # ContentSlot
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
