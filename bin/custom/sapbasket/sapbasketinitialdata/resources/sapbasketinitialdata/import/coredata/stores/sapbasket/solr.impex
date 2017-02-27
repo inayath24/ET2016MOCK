@@ -11,7 +11,7 @@
 # -----------------------------------------------------------------------
 #
 # Import the Solr configuration for the store
-#
+# SAPBASKET
 $productCatalog=sapbasketProductCatalog
 $catalogVersions=catalogVersions(catalog(id),version);
 $serverConfigName=sapbasketsolrServerConfig

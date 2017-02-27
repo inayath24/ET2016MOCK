@@ -31,7 +31,7 @@
 	<bean id="acceleratorCoreSystemSetup" class="com.sap.sapbasket.core.setup.CoreSystemSetup"
 	       parent="abstractCoreSystemSetup"/>
 
-	<!-- Solr field value providers -->
+	<!-- Solr field value providers SAPBasket -->
 	
 	<bean id="volumeAwareProductPriceValueProvider" class="com.sap.sapbasket.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">
         <property name="fieldNameProvider" ref="solrFieldNameProvider"/>
