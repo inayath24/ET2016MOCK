@@ -124,19 +124,19 @@ SELECT DISTINCT tbl.pk, tbl.code FROM (
 	{{
 		SELECT DISTINCT {p:PK} AS pk, {p:code} AS code
 		FROM {Product AS p LEFT JOIN CustomerReview AS cr ON {cr:product}={p:PK} }
-		WHERE {p:varianttype} IS  NULL AND ({p:modifiedtime} >= ?lastIndexTime OR {cr:modifiedtime} >= ?lastIndexTime)
+		WHERE {p:varianttype} IS NOT NULL AND ({p:modifiedtime} >= ?lastIndexTime OR {cr:modifiedtime} >= ?lastIndexTime)
 	}}
 	UNION
 	{{
 		SELECT DISTINCT {p:PK} AS pk, {p:code} AS code
 		FROM {VariantProduct AS p JOIN Product AS bp1 ON {p:baseProduct}={bp1:PK} LEFT JOIN CustomerReview AS cr ON {cr:product}={bp1:PK} }
-		WHERE {p:varianttype} IS NULL AND ({bp1:modifiedtime} >= ?lastIndexTime OR {cr:modifiedtime} >= ?lastIndexTime)
+		WHERE {p:varianttype} IS NOT NULL AND ({bp1:modifiedtime} >= ?lastIndexTime OR {cr:modifiedtime} >= ?lastIndexTime)
 	}}
 	UNION
 	{{
 		SELECT DISTINCT {p:PK} AS pk, {p:code} AS code
 		FROM {VariantProduct AS p JOIN VariantProduct AS bp1 ON {p:baseProduct}={bp1:PK} JOIN Product AS bp2 ON {bp1:baseProduct}={bp2:PK} LEFT JOIN CustomerReview AS cr ON {cr:product}={bp2:PK} }
-		WHERE {p:varianttype} IS  NULL AND ({bp2:modifiedtime} >= ?lastIndexTime OR {cr:modifiedtime} >= ?lastIndexTime)
+		WHERE {p:varianttype} IS NOT NULL AND ({bp2:modifiedtime} >= ?lastIndexTime OR {cr:modifiedtime} >= ?lastIndexTime)
 	}}
 	UNION
 	{{
