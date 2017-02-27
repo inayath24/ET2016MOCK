@@ -19,7 +19,6 @@ $jarResourceCms=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/
 
 # CMS Site Settings
 INSERT_UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);defaultPreviewProduct(code, $productCV)
-
 # Site Logo
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
 ;;/images/theme/logo-bigbasket.png;logo-bigbasket.png;$siteResource/images/theme/logo-bigbasket.png;image/png;SAP Basket;
@@ -125,7 +124,7 @@ INSERT_UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true
 # CMS PurchasedCategorySuggestionComponent Components
 INSERT_UPDATE PurchasedCategorySuggestionComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;filterPurchased;category(code, $productCV);&componentRef
 
-# CMS CartSuggestion Components
+# CMS CartSuggestion Component
 INSERT_UPDATE CartSuggestionComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;filterPurchased;&componentRef
 
 # CMS SearchBox Components
@@ -137,6 +136,7 @@ INSERT_UPDATE LanguageCurrencyComponent;$contentCV[unique=true];uid[unique=true]
 
 # CMS Product Refinement Component
 INSERT_UPDATE ProductRefinementComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;RefinementFacetComponent;Product Refinement Facet Component;RefinementFacetComponent
 
 # CMS Product List Component
 INSERT_UPDATE CMSProductListComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
@@ -163,6 +163,7 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents
 ;;SearchBoxSlot;SearchBox
 ;;VariantSelectorSlot;VariantSelector
 ;;AddToCartSlot;AddToCart
+;;ProductLeftRefinements;RefinementFacetComponent
 
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
@@ -698,6 +699,7 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents
 
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
 ;;Section4Slot-HomePage;Section4;;BrandStoreComponentSlot
+
 
 
 
