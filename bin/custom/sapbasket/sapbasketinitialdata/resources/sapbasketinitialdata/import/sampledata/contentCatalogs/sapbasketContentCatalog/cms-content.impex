@@ -117,7 +117,6 @@ INSERT_UPDATE ProductVariantSelectorComponent;$contentCV[unique=true];uid[unique
 
 INSERT_UPDATE ProductAddToCartComponent;$contentCV[unique=true];uid[unique=true];name;actions(&actionRef);&componentRef
 ;;AddToCart;Product Add To Cart;AddToCartAction;AddToCart
-;;AddToCart;Product Add To Cart;AddToCartAction;AddToCart
 
 # CMS ProductReferences Components
 INSERT_UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;&componentRef
@@ -263,13 +262,22 @@ INSERT_UPDATE ViewStoreAction;$contentCV[unique=true];uid[unique=true];url;name;
 
 ##### Jsp Include Component #####
 INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
-;;ReturningCustomerLoginComponent;Returning Customer Login Component;accountReturningCustomerLogin.jsp;;ReturningCustomerLoginComponent
-;;NewCustomerLoginComponent;New Customer Login Component;accountNewCustomerLogin.jsp;;NewCustomerLoginComponent
+;;ReturningCustomerLoginComponent;Returning Customer Login Component;accountReturningCustomerLogin.jsp;ReturningCustomerLoginComponent
+;;NewCustomerLoginComponent;New Customer Login Component;accountNewCustomerLogin.jsp;NewCustomerLoginComponent
 ;;UpdateProfileComponent;Update Profile Component;accountProfileEditPage.jsp;UpdateProfileComponent
 ;;AccountAddressBookComponent;Account Address Book Component;accountAddressBookPage.jsp;AccountAddressBookComponent
 ;;UpdateEmailComponent;Update Email Component;accountProfileEmailEditPage.jsp;UpdateEmailComponent
 ;;UpdatePasswordComponent;Update Password Component;accountChangePasswordPage.jsp;UpdatePasswordComponent
 ;;AccountAddEditAddressComponent;Account Add Edit Address Component;accountEditAddressPage.jsp;AccountAddEditAddressComponent
+;;CartComponent;Cart Display Component;cartDisplay.jsp;CartComponent
+;;CartTotalsComponent;Cart Totals Display Component;cartTotalsDisplay.jsp;CartTotalsComponent
+;;PromotionsComponent;Promotions Component;cartPromotionsDisplay.jsp;PromotionsComponent
+;;PotentialPromotionsComponent;Potential Promotions Component;potentialPromotionsDisplay.jsp;PotentialPromotionsComponent
+;;CheckoutComponent;Checkout Display Component;checkoutDisplay.jsp;CheckoutComponent
+;;NewCustomerCheckoutLoginComponent;New Customer Checkout Login Component;checkoutNewCustomerLogin.jsp;;NewCustomerCheckoutLoginComponent
+;;ReturningCustomerCheckoutLoginComponent;Returning Customer Checkout Login Component;checkouReturningCustomerLogin.jsp;;ReturningCustomerCheckoutLoginComponent
+;;GuestCheckoutLoginComponent;Guest Checkout Login Component;checkoutGuestLogin.jsp;;GuestCheckoutLoginComponent
+
 
 
 
@@ -307,20 +315,47 @@ INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];positi
 
 ###### Cart Page ######
 
-INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
+# SimpleBannerComponent 
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
+;;FreeDeliverySimpleBannerComponent;Free Delivery Simple Banner Component;FreeDeliverySimpleBannerComponent;;;;
+;;HelpWithCheckoutSimpleBannerComponent;Help With Checkout Simple Banner Component;HelpWithCheckoutSimpleBannerComponent;;;;
 
-INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
 
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+#INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
 
+# CMSParagraphComponent 
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
+;;EmptyCartParagraphComponent;Empty Cart Paragraph Component;EmptyCartParagraphComponent;;;;
+;;HelpParagraphComponent;Help Paragraph Component;HelpParagraphComponent;;;;
+
+# ContentSlot 
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
+;;EmptyCartMiddleContent;Middle Slot for Cart Page;true;EmptyCartParagraphComponent
+;;TopContentSlot;Top Content Slot for Cart Page;true;FreeDeliverySimpleBannerComponent,CartComponent
+;;CenterLeftContentSlot;Center Left Content Slot for Cart Page;true;PromotionsComponent,PotentialPromotionsComponent
+;;CenterRightContentSlot;Center Right Content Slot for Cart Page;true;CartTotalsComponent
+;;BottomContentSlot;Bottom Content Slot for Cart Page;true;CheckoutComponent
+
+# ContentSlotForPage 
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='cartPage'];contentSlot(uid,$contentCV)[unique=true]
+;;EmptyCartMiddleForCartPage;EmptyCartMiddleContent;;EmptyCartMiddleContent
+;;TopContentSlotForCartPage;TopContent;;TopContentSlot
+;;CenterLeftContentSlotForCartPage;CenterLeftContentSlot;;CenterLeftContentSlot
+;;CenterRightContentSlotForCartPage;CenterRightContentSlot;;CenterRightContentSlot
+;;BottomContentSlotForCartPage;BottomContentSlot;;BottomContentSlot
+
 
 ###### Checkout Login Page ######
 
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;LeftContentSlot-checkout-login;Left Content Slot for Checkout Login;true;ReturningCustomerCheckoutLoginComponent;;;
+;;CenterContentSlot-checkout-login;Center Content Slot for Checkout Login;true;NewCustomerCheckoutLoginComponent;;;
+;;RightContentSlot-checkout-login;Right Content Slot for Checkout Login;true;GuestCheckoutLoginComponent;;;
 
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='checkout-login'];contentSlot(uid,$contentCV)[unique=true]
-
+;;LeftContentSlot-checkout-login;LeftContentSlot;;LeftContentSlot-checkout-login;;;
+;;CenterContentSlot-checkout-login;CenterContentSlot;;CenterContentSlot-checkout-login;;;
+;;RightContentSlot-checkout-login;RightContentSlot;;RightContentSlot-checkout-login;;;
 ###### Checkout Summary / Proceed to Checkout Page ######
 
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
