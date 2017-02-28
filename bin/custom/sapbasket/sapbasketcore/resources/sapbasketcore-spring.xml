@@ -26,7 +26,8 @@
 	<import resource="classpath:/sapbasketcore/integration/hot-folder-store-electronics-spring.xml"/>
 	<import resource="classpath:/sapbasketcore/integration/hot-folder-store-apparel-spring.xml"/>
 	<import resource="classpath:/sapbasketcore/integration/hot-folder-common-spring.xml"/>
-
+	<import resource="classpath:/sapbasketcore/integration/hot-folder-store-sapbasket-spring.xml"/>
+	
 	<!-- SystemSetup for the SapbasketCore -->
 	<bean id="acceleratorCoreSystemSetup" class="com.sap.sapbasket.core.setup.CoreSystemSetup"
 	       parent="abstractCoreSystemSetup"/>
