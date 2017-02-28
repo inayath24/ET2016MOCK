@@ -11,10 +11,11 @@
  */
 package com.sap.sapbasket.storefront.controllers.pages;
 
+import de.hybris.platform.acceleratorstorefrontcommons.controllers.ThirdPartyConstants;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractPageController;
+import de.hybris.platform.acceleratorstorefrontcommons.controllers.util.GlobalMessages;
 import de.hybris.platform.cms2.exceptions.CMSItemNotFoundException;
 import de.hybris.platform.cms2.model.pages.AbstractPageModel;
-import de.hybris.platform.acceleratorstorefrontcommons.controllers.util.GlobalMessages;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 /**
  * Controller for home page
@@ -36,8 +38,7 @@ public class HomePageController extends AbstractPageController
 	{
 		if (logout)
 		{
-			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.INFO_MESSAGES_HOLDER,
-					"account.confirmation.signout.title");
+			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.INFO_MESSAGES_HOLDER, "account.confirmation.signout.title");
 			return REDIRECT_PREFIX + ROOT;
 		}
 
@@ -52,4 +53,23 @@ public class HomePageController extends AbstractPageController
 	{
 		storeContentPageTitleInModel(model, getPageTitleResolver().resolveHomePageTitle(cmsPage.getTitle()));
 	}
+
+	@RequestMapping(value = "/about-us", method = RequestMethod.GET)
+	public String aboutUs(final Model model, final RedirectAttributes redirectModel) throws CMSItemNotFoundException
+	{
+		storeCmsPageInModel(model, getContentPageForLabelOrId("AboutUSakku"));
+		setUpMetaDataForContentPage(model, getContentPageForLabelOrId("AboutUSakku"));
+		model.addAttribute(ThirdPartyConstants.SeoRobots.META_ROBOTS, ThirdPartyConstants.SeoRobots.NOINDEX_NOFOLLOW);
+		return getViewForPage(model);
+	}
+
+	@RequestMapping(value = "/contact-us", method = RequestMethod.GET)
+	public String contactUs(final Model model, final RedirectAttributes redirectModel) throws CMSItemNotFoundException
+	{
+		storeCmsPageInModel(model, getContentPageForLabelOrId("ContactUsakku1"));
+		setUpMetaDataForContentPage(model, getContentPageForLabelOrId("ContactUsakku1"));
+		model.addAttribute(ThirdPartyConstants.SeoRobots.META_ROBOTS, ThirdPartyConstants.SeoRobots.NOINDEX_NOFOLLOW);
+		return getViewForPage(model);
+	}
+
 }

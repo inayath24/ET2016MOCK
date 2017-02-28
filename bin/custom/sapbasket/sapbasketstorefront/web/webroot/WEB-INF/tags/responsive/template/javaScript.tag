@@ -87,6 +87,9 @@
 		<script type="text/javascript" src="${commonResourcePath}/js/jquery.waitforimages.min.js"></script>
 		
 		
+		<script type="text/javascript" src="${commonResourcePath}/js/unload.js"></script>
+		
+				
 		<%-- Cms Action JavaScript files --%>
 		<c:forEach items="${cmsActionsJsFiles}" var="actionJsFile">
 		    <script type="text/javascript" src="${commonResourcePath}/js/cms/${actionJsFile}"></script>
