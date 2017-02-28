@@ -50,7 +50,7 @@
 	</enumtypes>
 
 	<itemtypes>
-				<itemtype code="Customer" autocreate="false" generate="false">
+		<itemtype code="Customer" autocreate="false" generate="false">
 			<description>Extending the Customer type from core with additional attributes.</description>
 			<attributes>
 				<attribute type="java.lang.String" qualifier="email">
@@ -86,7 +86,7 @@
 		</itemtype>
 		
 
-<typegroup name="Sapbasket">
+		<typegroup name="Sapbasket">
 				<itemtype code="SapbasketVariantProduct" extends="VariantProduct"
 			          autocreate="true" generate="true"
 			          jaloclass="com.sap.sapbasket.core.jalo.SapbasketVariantProduct">
@@ -108,9 +108,21 @@
 				</attributes>
 				
 			</itemtype>
+			
+			<itemtype code="TabComponent" generate="true"
+			    jaloclass="de.hybris.platform.yacceleratorcore.jalo.cms2.components.TabComponent"
+			    extends="CMSTabParagraphComponent" autocreate="true">
+			    <description>It represents paragraph component with an additional media attribute.</description>
+			    <attributes>
+			        <attribute qualifier="media" generate="true" autocreate="true" type="localized:Media">
+			           <persistence type="property" />
+			           <description>Attribute that stores the localized media of the paragraph.</description>
+			        </attribute>
+			    </attributes>
+			</itemtype>
+
 		</typegroup>
-		
-		
+				
 		<typegroup name="Apparel">
 			<itemtype code="ApparelProduct" extends="Product"
 			          autocreate="true" generate="true"

@@ -18,5 +18,7 @@
     <extension name='promotionengineatddtests' />
     <extension name="promotionenginetrail"/>
     
+	<extension name="electronicsstore"/>
+	
   </extensions>
 </hybrisconfig>

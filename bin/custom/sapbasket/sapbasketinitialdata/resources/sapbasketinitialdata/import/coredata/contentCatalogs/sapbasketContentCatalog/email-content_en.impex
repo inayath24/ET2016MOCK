@@ -39,5 +39,5 @@ UPDATE RendererTemplate;code[unique=true];description[lang=$lang];templateScript
 # Email Pages
 UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];fromEmail[lang=$lang];fromName[lang=$lang]
 ;;CustomerRegistrationEmail;"customerservices@hybris.com";"Customer Services Team"
-
 ;;UpdateProfileEmail;"customerservices@hybris.com";"Customer Services Team"
+;;ForgottenPasswordEmail;"customerservices@hybris.com";"Customer Services Team"

@@ -39,7 +39,7 @@ UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$
 ;;SBSpecialityLink;"SB Specialty"
 ;;MoreStoresCategoryLink;"More Stores"
 ;;AboutAcceleratorLink;"About Commerce Accelerator"
-;;AboutHybrisLink;"About hybris"
+;;AboutHybrisLink;"About Us"
 ;;AgileCommerceBlogLink;"Agile Commerce Blog"
 ;;ContactUsLink;"Contact Us"
 ;;FAQLink;"FAQ"
