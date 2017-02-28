@@ -24,7 +24,9 @@ $emailPackageName=$config-emailContextPackageName
 # Email page Template
 INSERT_UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];name;active;frontendTemplateName;subject(code);htmlTemplate(code);restrictedPageTypes(code)
 ;;CustomerRegistrationEmailTemplate;Customer Registration Email Template;true;customerRegistrationEmail;electronics_Email_Customer_Registration_Subject;electronics_Email_Customer_Registration_Body;EmailPage
+
 ;;ForgottenPasswordEmailTemplate;Forgotten Password Email Template;true;forgottenPasswordEmail;electronics_Email_Forgotten_Password_Subject;electronics_Email_Forgotten_Password_Body;EmailPage
+
 ;;OrderConfirmationEmailTemplate;Order Confirmation Email Template;true;orderConfirmationEmail;electronics_Email_Order_Confirmation_Subject;electronics_Email_Order_Confirmation_Body;EmailPage
 ;;DeliverySentEmailTemplate;Delivery Sent Email Template;true;deliverySentEmail;electronics_Email_Delivery_Sent_Subject;electronics_Email_Delivery_Sent_Body;EmailPage
 ;;ReadyForPickupEmailTemplate;Ready For Pickup Email Template;true;readyForPickupEmail;electronics_Email_Ready_For_Pickup_Subject;electronics_Email_Ready_For_Pickup_Body;EmailPage
@@ -38,11 +40,13 @@ INSERT_UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];name;ac
 
 ;;UpdateProfileEmailTemplate;Update Profile Email Template;true;UpdateProfileEmailTemplate;sapbasket_Email_Update_Profile_Subject;sapbasket_Email_Update_Profile_Body;EmailPage
 
+
 # Templates for CMS Cockpit Page Edit
 UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];velocityTemplate[translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
 ;;CustomerRegistrationEmailTemplate;$jarResourceCms/structure-view/structure_customerRegistrationEmailTemplate.vm
-
+;;ForgottenPasswordEmailTemplate;$jarResourceCms/structure-view/structure_forgottenPasswordEmailTemplate.vm
 #;;UpdateProfileEmailTemplate;
+
 
 INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='CustomerRegistrationEmailTemplate'];validComponentTypes(code)
 ;SiteLogo;;;logo
@@ -180,6 +184,7 @@ INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];po
 # Email Pages
 INSERT_UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved']
 ;;CustomerRegistrationEmail;Customer Registration Email;CustomerRegistrationEmailTemplate;true;
+;;ForgottenPasswordEmail;Forgotten Password Email;ForgottenPasswordEmailTemplate;true;
 
 ;;UpdateProfileEmail;Update Profile Email;UpdateProfileEmailTemplate;true;
 
@@ -198,6 +203,8 @@ INSERT_UPDATE RendererTemplate;code[unique=true];contextClass;rendererType(code)
 ;sapbasket_Email_Customer_Registration_Body;$emailPackageName.CustomerEmailContext
 ;sapbasket_Email_Customer_Registration_Subject;$emailPackageName.CustomerEmailContext
 
+;electronics_Email_Forgotten_Password_Body;$emailPackageName.ForgottenPasswordEmailContext
+
 ;sapbasket_Email_Update_Profile_Subject;$emailPackageName.CustomerEmailContext
 ;sapbasket_Email_Update_Profile_Body;$emailPackageName.CustomerEmailContext
 
@@ -207,3 +214,4 @@ INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;
 
 UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV)
 ;;CustomerRegistrationEmail;EmailPageModel_preview
+;;ForgottenPasswordEmail;EmailPageModel_preview

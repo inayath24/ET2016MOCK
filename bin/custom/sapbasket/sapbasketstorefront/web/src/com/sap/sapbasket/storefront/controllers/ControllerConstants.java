@@ -23,6 +23,7 @@ import de.hybris.platform.acceleratorcms.model.components.SimpleResponsiveBanner
 import de.hybris.platform.acceleratorcms.model.components.SubCategoryListComponentModel;
 import de.hybris.platform.cms2.model.contents.components.CMSLinkComponentModel;
 import de.hybris.platform.cms2lib.model.components.ProductCarouselComponentModel;
+import de.hybris.platform.yacceleratorcore.model.cms2.components.TabComponentModel;
 
 import com.sap.sapbasket.core.model.StoreBannerComponentModel;
 
@@ -65,6 +66,7 @@ public interface ControllerConstants
 			String SimpleResponsiveBannerComponent = _Prefix + SimpleResponsiveBannerComponentModel._TYPECODE + _Suffix; // NOSONAR
 			String StoreBannerComponent = _Prefix + StoreBannerComponentModel._TYPECODE + _Suffix; // NOSONAR
 
+			String TabComponent = _Prefix + TabComponentModel._TYPECODE + _Suffix; // NOSONAR
 		}
 	}
 

@@ -1,3 +1,6 @@
+.sonar/
+sonar-project.properties
+
 /bin/ext-*/
 /bin/platform/
 
@@ -5,11 +8,10 @@
 /temp/
 /data/
 /log/
+
 **/Generated.*java
-
-**/web/commonwebsrc/
+/bin/custom/sapbasket/sapbasketstorefront/web/commonwebsrc/acceleratorstorefrontcommons/de/hybris/platform/acceleratorstorefrontcommons/
 **/web/testclasses/
-
 **/jalo/
 
 .project
@@ -18,6 +20,7 @@ hybris/sampleconfigurations/
 hybris-oms/
 Mobile-Commerce-SDK/
 pom.xml
+
 
 **/bin/**/bin
 **/gensrc/
