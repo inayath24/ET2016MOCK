@@ -19,6 +19,7 @@ $jarResourceCms=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/
 
 # CMS Site Settings
 INSERT_UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);defaultPreviewProduct(code, $productCV)
+
 # Site Logo
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
 ;;/images/theme/logo-bigbasket.png;logo-bigbasket.png;$siteResource/images/theme/logo-bigbasket.png;image/png;SAP Basket;
@@ -44,13 +45,16 @@ INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url
 ;;SBSpecialityLink;SB Speciality Link;/SBSpeciality;SBSpecialityLink;SBSpecialityLink;;SBSpecialty;;
 ;;MoreStoresCategoryLink;More Stores Category Link;/MoreStoresCategory;MoreStoresCategoryLink;MoreStoresCategoryLink;;MoreStores;;
 ;;AboutAcceleratorLink;About Accelerator Link;"http://www.hybris.com/multichannel-accelerator";AboutAcceleratorLink;AboutAcceleratorLink;newWindow;;;
-;;AboutHybrisLink;About Hybris Link;"http://www.hybris.com";AboutHybrisLink;AboutHybrisLink;newWindow;;;
-;;ContactUsLink;Contact Us Link;"http://www.hybris.com/contact";ContactUsLink;ContactUsLink;newWindow;;;
+
+;;AboutHybrisLink;About Hybris Link;/about-us;AboutHybrisLink;AboutHybrisLink;;;;
+;;ContactUsLink;Contact Us Link;/contact-us;ContactUsLink;ContactUsLink;;;;
+
 ;;FacebookLink;Facebook Link;"http://www.facebook.com/hybrissoftware";FacebookLink;FacebookLink;newWindow;;;
 ;;TwitterLink;Twitter Link;"http://twitter.com/#!/hybris_software";TwitterLink;TwitterLink;newWindow;;;
 ;;AgileCommerceBlogLink;Agile Commerce Blog Link;"http://www.agile-commerce.com/";AgileCommerceBlogLink;AgileCommerceBlogLink;newWindow;;;
 ;;LinkedInLink;Linked In Link;"http://www.linkedin.com/company/97435";LinkedInLink;LinkedInLink;newWindow;;;
 ;;FAQLink;FAQ Link;/faq;FAQLink;FAQLin;;;;
+
 ;;AccountHomeLink;Account Home Link;/my-account;AccountHomeLink;AccountHomeLink;;;;
 ;;AccountProfileLink;AccountProfileLink;/my-account/profile;AccountProfileLink;AccountProfileLink;;;;
 ;;AccountPersonalDetailsLink;AccountPersonalDetailsLink;/my-account/profile;AccountPersonalDetailsLink;AccountPersonalDetailsLink;;;;
@@ -124,7 +128,7 @@ INSERT_UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true
 # CMS PurchasedCategorySuggestionComponent Components
 INSERT_UPDATE PurchasedCategorySuggestionComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;filterPurchased;category(code, $productCV);&componentRef
 
-# CMS CartSuggestion Component
+# CMS CartSuggestion Components
 INSERT_UPDATE CartSuggestionComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;filterPurchased;&componentRef
 
 # CMS SearchBox Components
@@ -148,9 +152,10 @@ INSERT_UPDATE ProductGridComponent;$contentCV[unique=true];uid[unique=true];name
 # CMS Search Results List Component
 INSERT_UPDATE SearchResultsListComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
 
-# CMS Search Results Grid Component
 INSERT_UPDATE SearchResultsGridComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
 ;;SearchResultsGrid;Search Result Grid Component;;SearchResultsGrid
+
+
 # Content Slots
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
 ;;SiteLogoSlot;SiteLogoComponent
@@ -211,7 +216,6 @@ INSERT_UPDATE NavigationBarComponent;$contentCV[unique=true];uid[unique=true];na
 # Update CMS Footer Component with Nav Nodes
 INSERT_UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];navigationNodes(&nodeRef)
 ;;FooterComponent;AcceleratorNavNode,HybrisNavNode,FollowUsNavNode
-
 
 
 # Preview Image for use in the CMS Cockpit for special ContentPages
@@ -285,8 +289,80 @@ INSERT_UPDATE BreadcrumbComponent;$contentCV[unique=true];uid[unique=true];name;
 
 
 
-###### Category Landing Page ######
+###### About Us Page ######
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+;;AboutUsMedia;$siteResource/images/theme/aboutusmedia.jpg;;;"About Us Media"
+;;WhySAPB;$siteResource/images/theme/whybb.jpg;;;"Why SAP Basket"
 
+
+INSERT_UPDATE TabComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef;content;media(code,$contentCV);title
+
+;;tabc1;Tab Component 1;;tabc1;"SAP Basket(Innovative Retail Concepts Private Limited) is India’s largest online food and grocery store.With over 18,000 products and 1000 brands in our grocery list you
+will find everything you are looking for. Right from fresh fruits and vegetables, rice and daals, spices and seasonings to packaged bread, bakery and dairy products online and other branded foods online
+- we have it all.Save time and money, shop at sapbasket - the best online fruit & vegetable store, meat store, provisions store - an all-encompassing online groceries store of India.";AboutUsMedia;What is SAP Basket?
+
+;;tabc2;Tab Component 2;;tabc2;"SAP Basket allows you to walk away from the drudgery of grocery shopping and welcome an easy relaxed way of browsing and shopping for groceries.India's Best Online Supermarket India
+Shopping with sapbasket, the best online grocery and food shopping store Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Noida, Mysore, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Lucknow-Kanpur,
+Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Ludhiana and Jalandhar. It is very simple and easy. No more standing in lines, carrying heavy bags and looking for parking!
+Get started with online grocery shopping at India’s favourite online grocery store. Choose from a wide range of options in every groceries list, exclusively handpicked to help you find the best quality 
+available at the lowest prices. Select a time slot for home delivery and your order will be delivered at your doorstep, anywhere in Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Noida, Mysore, Coimbatore, 
+Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Ludhiana and Jalandhar. 
+In future we are expanding to other cities in India. You can pay by cash, card or food coupons. We guarantee on time delivery and the best quality! Happy Shopping!";WhySAPB;Why SAP Basket? 
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+;;contentslotfortabc;tabc1,tabc2
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];masterTemplate(uid,$contentCV);name;title;label
+;;AboutUSakku;AccountPageTemplate;About Us;About Us | sapbasket.com;/about-us
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='AboutUSakku'];contentSlot(uid,$contentCV)[unique=true]
+;;AboutUsCSP;BodyContent;;contentslotfortabc
+
+
+
+###### Contact Us Page ######
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];masterTemplate(uid,$contentCV);name;title;label
+;;ContactUsakku1;AccountPageTemplate;Contact Us;Contact Us | sapbasket.com;/contact-us
+
+INSERT_UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content;title 
+;;TabParaComp;Tab Para Component Instance;TabParaComp;"Address: Devarabisanahalli, Bellandur, Bengaluru, Karnataka
+Phone:080 4000 4000";Office Address
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+;;ContactUsCS;TabParaComp
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true];;;
+;;ContactUsR;BodyContent;ContactUsakku1;ContactUsCS
+
+
+###### About Contact Us Page ######
+INSERT_UPDATE AccountNavigationComponent;$contentCV[unique=true];uid[unique=true];name;navigationNode(&nodeRef);styleClass;&componentRef
+;;AboutUsLeftNavComponent;About Us Left Navigation Component;AboutUsLeftNavNode;;AboutUsLeftNavComponent
+;;ContactUsLeftNavComponent;Contact Us Left Navigation Component;ContactUsLeftNavNode;;ContactUsLeftNavComponent
+
+
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&linkRef);&nodeRef
+;AboutUsLeftNavNode;;About Us Left Nav Node;SiteRootNode;Link1,Link2;AboutUsLeftNavNode
+;ContactUsLeftNavNode;;Contact Us Left Nav Node;SiteRootNode;ContactUsLink;ContactUsLeftNavNode
+
+
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;&componentRef;target(code)[default='sameWindow'];$category;$product;
+;;Link1;Link1;/about-us;Link1;Link1;;;;
+;;Link2;Link2;/about-us;Link2;Link2;;;;
+;;ContactUsLink;ContactUsLink;/contact-us;ContactUsLink;ContactUsLink;;;;
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-about;Side Content Slot for About Contact Us;true;AboutUsLeftNavComponent,ContactUsLeftNavComponent;;;
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContentRel;SideContent;AboutUSakku;SideContent-about;;;
+;;SideContentRel1;SideContent;ContactUsakku1;SideContent-about;;;
+
+
+###### Category Landing Page ######
 INSERT_UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];previewImage(code, $contentCV)
 
 INSERT_UPDATE CMSCategoryRestriction;$contentCV[unique=true];uid[unique=true];name;categories(code, $productCV);pages(uid, $contentCV)
@@ -503,8 +579,8 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;c
 # ContentSlot
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
 
-##### SearchResultGridPage #####
-# ContentSlot
+
+#### SearchResultGridPage
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
 ;;SearchResultsGridSlot;Search Result Grid Slot for Search List;true;SearchResultsGrid;;;
 
@@ -565,7 +641,6 @@ INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=
 ;;RecipeMedia;$siteResource/images/banners/homepage/recipeoftheweek.jpg;;;"Recipe"
 ;;MartiniMedia;$siteResource/images/banners/homepage/Martini.jpg;;;"Martini"
 ;;StarterMedia;$siteResource/images/banners/homepage/starter.jpg;;;"Starter"
-
 
 
 INSERT_UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink;media(code,$contentCV)
@@ -700,7 +775,5 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents
 
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
 ;;Section4Slot-HomePage;Section4;;BrandStoreComponentSlot
-
-
 
 
