@@ -76,4 +76,58 @@
 		<property name="type" value="Customer"/>
 	</bean>
 	
+	<bean id="batchSapbasketPriceConverterMapping" 
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+		  p:mapping="base_price" 
+		  p:converter-ref="batchSapbasketPriceConverter"/>
+	
+	<bean id="batchSapbasketPriceConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value># defaultImpexPriceRowHeader
+				# ImpEx for importing data into $CATALOG$
+				# $catalogVersion=catalogversion(catalog(id[default=$CATALOG$]),version[default='Staged'])[unique=true]
+				# $approved=approvalstatus(code)[default='check']
+				# $lang=$LANGUAGE$
+				#Insert Product Prices
+				INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{2};{3};{4}</value>
+		</property>
+		<property name="rowFilter">
+			<bean class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+				<property name="expression" value="row[1]"/>
+			</bean>
+		</property>
+		<property name="type" value="PriceRow"/>
+	</bean>
+	
+		<bean id="batchSapbasketStockConverterMapping" 
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+		  p:mapping="base_stocklevel" 
+		  p:converter-ref="batchSapbasketStockConverter"/>
+	
+	<bean id="batchSapbasketStockConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value># defaultImpexStockLevelHeader
+				# ImpEx for importing data into $CATALOG$
+				# $catalogVersion=catalogversion(catalog(id[default=$CATALOG$]),version[default='Staged'])[unique=true]
+				# $approved=approvalstatus(code)[default='check']
+				# $lang=$LANGUAGE$
+				#Insert Product Stocklevel
+				INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{2};{3};{4};{5};{6};{7};{8};{9}</value>
+		</property>
+		<property name="rowFilter">
+			<bean class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+				<property name="expression" value="row[1]"/>
+			</bean>
+		</property>
+		<property name="type" value="StockLevel"/>
+	</bean>
+	
 </beans>
