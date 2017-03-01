@@ -152,6 +152,7 @@ INSERT_UPDATE ProductGridComponent;$contentCV[unique=true];uid[unique=true];name
 # CMS Search Results List Component
 INSERT_UPDATE SearchResultsListComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
 
+# CMS Search Results Grid Component
 INSERT_UPDATE SearchResultsGridComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
 ;;SearchResultsGrid;Search Result Grid Component;;SearchResultsGrid
 
