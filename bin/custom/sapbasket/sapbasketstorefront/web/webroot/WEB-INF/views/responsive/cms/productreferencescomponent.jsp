@@ -16,18 +16,19 @@
 			<div class="headline">${component.title}</div>
 
 			<div class="carousel js-owl-carousel js-owl-lazy-reference js-owl-carousel-reference">
+			<!-- The code snippet below was takes us to a pop up from which we ca go to the pdp page. To disable the double redirect it has been commented -->
 				
-				<div id="quickViewTitle" class="quickView-header display-none">
-					<div class="headline">		
-						<span class="headline-text"><spring:theme code="popup.quick.view.select"/></span>
-					</div>
-				</div>
+<!-- 				<div id="quickViewTitle" class="quickView-header display-none"> -->
+<!-- 					<div class="headline">		 -->
+<%-- 						<span class="headline-text"><spring:theme code="popup.quick.view.select"/></span> --%>
+<!-- 					</div> -->
+<!-- 				</div> -->
 				
 				<c:forEach end="${component.maximumNumberProducts}"
 					items="${productReferences}" var="productReference">
-					<c:url value="${productReference.target.url}/quickView" var="productUrl"/>
+					<c:url value="${productReference.target.url}" var="productUrl"/>
 					<div class="item">
-						<a href="${productUrl}" class="js-reference-item" data-quickview-title="<spring:theme code="popup.quick.view.select"/></span>">
+						<a href="${productUrl}" class="" data-quickview-title="<spring:theme code="popup.quick.view.select"/></span>">
                             <div class="thumb">
                                 <product:productPrimaryReferenceImage product="${productReference.target}" format="product" />
                             </div>

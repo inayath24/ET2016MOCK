@@ -113,6 +113,7 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 		/*
 		 * Add import data for each site you have configured
 		 */
+
 		importImpexFile(context, "/sapbasketinitialdata/import/coredata/common/essential-data.impex");
 		importImpexFile(context,
 				"/sapbasketinitialdata/import/sampledata/productCatalogs/sapbasketProductCatalog/categories.impex");
@@ -131,6 +132,8 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 				"/sapbasketinitialdata/import/sampledata/productCatalogs/sapbasketProductCatalog/products-stocklevels.impex");
 		importImpexFile(context,
 				"/sapbasketinitialdata/import/sampledata/productCatalogs/sapbasketProductCatalog/products-prices.impex");
+		importImpexFile(context,
+				"/sapbasketinitialdata/import/sampledata/productCatalogs/sapbasketProductCatalog/products-relations.impex");
 		//importImpexFile(context, "/sapbasketinitialdata/import/coredata/stores/sapbasket/solr.impex");
 		final List<ImportData> importData = new ArrayList<ImportData>();
 		try

@@ -15,7 +15,31 @@
 $productCatalog=sapbasketProductCatalog
 $productCatalogName=SapBasket Product Catalog
 
+$contentCatalog=sapbasketContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='approved']
 
-# Insert Product References
 INSERT_UPDATE ProductReference;source(code,$catalogVersion)[unique=true];target(code,$catalogVersion)[unique=true];referenceType(code);active[default=true];preselected[default=false]
+;Groundnut;Mustard;CROSSELLING
+;Groundnut;Olive;CROSSELLING
+;Groundnut;Sunflower;CROSSELLING
+;Groundnut;Ghee;CROSSELLING
+;Mustard;Olive;CROSSELLING
+;Mustard;Sunflower;CROSSELLING
+;Mustard;Groundnut;CROSSELLING
+;Mustard;Ghee;CROSSELLING
+;Olive;Ghee;CROSSELLING
+;Olive;Sunflower;CROSSELLING
+;Olive;Groundnut;CROSSELLING
+;Olive;Mustard;CROSSELLING
+;Sunflower;Olive;CROSSELLING
+;Sunflower;Mustard;CROSSELLING
+;Sunflower;Groundnut;CROSSELLING
+;Sunflower;Ghee;CROSSELLING
+;Ghee;Olive;CROSSELLING
+;Ghee;Sunflower;CROSSELLING
+;Ghee;Groundnut;CROSSELLING
+;Ghee;Mustard;CROSSELLING
