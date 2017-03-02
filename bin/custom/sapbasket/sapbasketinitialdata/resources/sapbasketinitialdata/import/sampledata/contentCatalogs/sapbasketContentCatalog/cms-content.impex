@@ -408,7 +408,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];nam
 # ContentSlot 
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
 ;;EmptyCartMiddleContent;Middle Slot for Cart Page;true;EmptyCartParagraphComponent
-;;TopContentSlot;Top Content Slot for Cart Page;true;FreeDeliverySimpleBannerComponent,CartComponent
+;;TopContentSlot;Top Content Slot for Cart Page;true;CartComponent
 ;;CenterLeftContentSlot;Center Left Content Slot for Cart Page;true;PromotionsComponent,PotentialPromotionsComponent
 ;;CenterRightContentSlot;Center Right Content Slot for Cart Page;true;CartTotalsComponent
 ;;BottomContentSlot;Bottom Content Slot for Cart Page;true;CheckoutComponent

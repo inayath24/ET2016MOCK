@@ -64,10 +64,10 @@
 							</c:forEach>
 						</ol>
 
-						<c:if test="${not empty lightboxBannerComponent && lightboxBannerComponent.visible}">
+						<%-- <c:if test="${not empty lightboxBannerComponent && lightboxBannerComponent.visible}">
 							<cms:component component="${lightboxBannerComponent}" evaluateRestriction="true"  />
 						</c:if>
-
+ --%>
 						<div class="mini-cart-totals">
 							<div class="key"><spring:theme code="popup.cart.total"/></div>
 							<div class="value"><format:price priceData="${cartData.totalPrice}"/></div>
