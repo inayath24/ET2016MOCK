@@ -37,10 +37,10 @@ INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=piec
 ;ChannaDal;pieces;INR;140
 ;ChannaDal_500;pieces;INR;70
 ;ChannaDal_1;pieces;INR;140
-;ChannaDal_harvest;pieces;INR;140
+;ChannaDal_harvest;pieces;INR;150
 ;ChannaDal_harvest_500;pieces;INR;750
 ;ChannaDal_harvest_1;pieces;INR;150
-;ChannaDal_sbroyal;pieces;INR;140
+;ChannaDal_sbroyal;pieces;INR;160
 ;ChannaDal_sbroyal_500;pieces;INR;80
 ;ChannaDal_sbroyal_1;pieces;INR;160
 
@@ -88,7 +88,7 @@ INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=piec
 ;UncleChips;pieces;INR;10
 ;UncleChips_100;pieces;INR;10
 
-;Cashew;pieces;INR;100
+;Cashew;pieces;INR;200
 ;Cashew_50;pieces;INR;100
 ;Cashew_100;pieces;INR;200
 
@@ -114,11 +114,11 @@ INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=piec
 ;Tetley_50;pieces;INR;110
 ;Tetley_100;pieces;INR;220
 
-;Netscafe;pieces;INR;120
+;Netscafe;pieces;INR;240
 ;Netscafe_50;pieces;INR;120
 ;Netscafe_100;pieces;INR;240
 
-;BruInstant;pieces;INR;80
+;BruInstant;pieces;INR;160
 ;BruInstant_50;pieces;INR;80
 ;BruInstant_100;pieces;INR;160
 
@@ -134,15 +134,15 @@ INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=piec
 ;Horlicks_500;pieces;INR;150
 ;Horlicks_1;pieces;INR;300
 
-;FruitJam;pieces;INR;125
+;FruitJam;pieces;INR;250
 ;FruitJam_50;pieces;INR;125
 ;FruitJam_100;pieces;INR;250
 
-;Mayonnaise;pieces;INR;75
+;Mayonnaise;pieces;INR;150
 ;Mayonnaise_50;pieces;INR;75
 ;Mayonnaise_100;pieces;INR;150
 
-;Pickle;pieces;INR;60
+;Pickle;pieces;INR;180
 ;Pickle_50;pieces;INR;60
 ;Pickle_100;pieces;INR;180
 
