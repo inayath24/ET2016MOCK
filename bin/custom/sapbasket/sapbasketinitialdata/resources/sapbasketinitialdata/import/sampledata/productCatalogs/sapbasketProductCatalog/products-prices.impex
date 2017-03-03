@@ -71,9 +71,9 @@ INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=piec
 ;Cookies_1;pieces;INR;40
 ;Cookies_3;pieces;INR;110
 
-;CreamBisuits;pieces;INR;30
-;CreamBisuits_1;pieces;INR;30
-;CreamBisuits_3;pieces;INR;85
+;CreamBiscuits;pieces;INR;85
+;CreamBiscuits_1;pieces;INR;30
+;CreamBiscuits_3;pieces;INR;85
 
 ;Digestive;pieces;INR;25
 ;Digestive_1;pieces;INR;25

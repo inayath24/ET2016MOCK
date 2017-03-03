@@ -86,7 +86,7 @@
 
 
             <a href="" class="btn btn-default btn-block js-mini-cart-close-button">
-                <spring:theme code="cart.page.continue"/>
+                <spring:theme text="Continue Shopping" code="cart.page.continue"/>
             </a>
 		</div>
 	</ycommerce:testId>
