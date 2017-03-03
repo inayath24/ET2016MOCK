@@ -38,15 +38,17 @@ INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;fronten
 ;;LandingPage5Template;Landing Page 5 Template;layout/landingLayout5Page;CategoryPage,ContentPage
 ;;LandingPage6Template;Landing Page 6 Template;layout/landingLayout6Page;CategoryPage,ContentPage
 ;;ContentPage1Template;Content Page 1 Template;layout/contentLayout1Page;ContentPage
-;;AccountPageTemplate;Account Page Template;account/accountLayoutPage;ContentPage;false;
-;;StoreFinderPageTemplate;Store Finder Page Template;storeFinder/storeFinderSearchPage;ContentPage;false;
+;;AccountPageTemplate;Account Page Template;account/accountLayoutPage;ContentPage
+;;StoreFinderPageTemplate;Store Finder Page Template;storeFinder/storeFinderSearchPage;ContentPage
 
 # Templates without a frontendTemplateName
 ;;CartPageTemplate;Cart Page Template;;ContentPage;false;
 ;;LoginPageTemplate;Login Page Template;;ContentPage;false;
 ;;CheckoutLoginPageTemplate;Checkout Login Page Template;;ContentPage;false;
 ;;MultiStepCheckoutSummaryPageTemplate;Multi Step Checkout Summary Page Template;;ContentPage;false;
-;;OrderConfirmationPageTemplate;Order Confirmation Page Template;;ContentPage;false;
+
+;;OrderConfirmationPageTemplate;Order Confirmation Page Template;checkout/checkoutConfirmationLayoutPage;ContentPage
+
 ;;ErrorPageTemplate;Error Page Template;;ContentPage;false;
 
 # Add Velocity templates that are in the CMS Cockpit. These give a better layout for editing pages

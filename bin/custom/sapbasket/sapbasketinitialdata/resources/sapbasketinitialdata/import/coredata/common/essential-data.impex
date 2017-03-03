@@ -127,3 +127,16 @@ INSERT_UPDATE Tax;code[unique=true];value;currency(isocode)
 INSERT_UPDATE ServicelayerJob;code[unique=true];springId[unique=true]
 ;cartRemovalJob;cartRemovalJob
 ;siteMapMediaJob;siteMapMediaJob
+
+
+
+
+INSERT_UPDATE Tax;code[unique=true];value
+;taxakku;5
+
+INSERT_UPDATE ProductTaxGroup;code[unique=true]
+;ptgrpakku
+
+INSERT_UPDATE UserTaxGroup;code[unique=true]
+;utgrpakku
+
