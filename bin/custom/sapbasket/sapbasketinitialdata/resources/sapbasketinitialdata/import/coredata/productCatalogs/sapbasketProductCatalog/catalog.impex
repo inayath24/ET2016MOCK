@@ -38,3 +38,4 @@ INSERT_UPDATE ClassificationSystemVersion;catalog(id)[unique=true];version[uniqu
 # Create default tax row for all products in product catalog
 INSERT_UPDATE TaxRow;$catalogVersion;tax(code)[unique=true];pg(code)[unique=true];ug(code)[unique=true]
 ;;jp-vat-full;jp-vat-full;jp-taxes
+;;taxakku;ptgrpakku;utgrpakku

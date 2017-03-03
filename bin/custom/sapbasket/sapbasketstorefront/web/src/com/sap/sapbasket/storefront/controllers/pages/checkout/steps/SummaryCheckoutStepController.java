@@ -28,7 +28,6 @@ import de.hybris.platform.commercefacades.product.data.ProductData;
 import de.hybris.platform.commerceservices.order.CommerceCartModificationException;
 import de.hybris.platform.order.InvalidCartException;
 import de.hybris.platform.payment.AdapterException;
-import com.sap.sapbasket.storefront.controllers.ControllerConstants;
 
 import java.util.Arrays;
 
@@ -42,6 +41,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.sap.sapbasket.storefront.controllers.ControllerConstants;
 
 
 @Controller
@@ -78,8 +79,8 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 		model.addAttribute("paymentInfo", cartData.getPaymentInfo());
 
 		// Only request the security code if the SubscriptionPciOption is set to Default.
-		final boolean requestSecurityCode = CheckoutPciOptionEnum.DEFAULT.equals(getCheckoutFlowFacade()
-				.getSubscriptionPciOption());
+		final boolean requestSecurityCode = CheckoutPciOptionEnum.DEFAULT
+				.equals(getCheckoutFlowFacade().getSubscriptionPciOption());
 		model.addAttribute("requestSecurityCode", Boolean.valueOf(requestSecurityCode));
 
 		model.addAttribute(new PlaceOrderForm());
@@ -196,17 +197,17 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 
 		if (!getCheckoutFacade().containsTaxValues())
 		{
-			LOGGER.error(String
-					.format(
-							"Cart %s does not have any tax values, which means the tax cacluation was not properly done, placement of order can't continue",
-							cartData.getCode()));
+			LOGGER.error(String.format(
+					"Cart %s does not have any tax values, which means the tax calculation was not properly done, placement of order can't continue",
+					cartData.getCode()));
 			GlobalMessages.addErrorMessage(model, "checkout.error.tax.missing");
 			invalid = true;
 		}
 
 		if (!cartData.isCalculated())
 		{
-			LOGGER.error(String.format("Cart %s has a calculated flag of FALSE, placement of order can't continue", cartData.getCode()));
+			LOGGER.error(
+					String.format("Cart %s has a calculated flag of FALSE, placement of order can't continue", cartData.getCode()));
 			GlobalMessages.addErrorMessage(model, "checkout.error.cart.notcalculated");
 			invalid = true;
 		}

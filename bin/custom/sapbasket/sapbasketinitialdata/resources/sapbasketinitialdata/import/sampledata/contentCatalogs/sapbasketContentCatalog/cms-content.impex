@@ -171,7 +171,6 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents
 ;;AddToCartSlot;AddToCart
 ;;ProductLeftRefinements;RefinementFacetComponent
 
-
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
 
 # Category Pages
@@ -282,7 +281,7 @@ INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;
 ;;NewCustomerCheckoutLoginComponent;New Customer Checkout Login Component;checkoutNewCustomerLogin.jsp;NewCustomerCheckoutLoginComponent
 ;;ReturningCustomerCheckoutLoginComponent;Returning Customer Checkout Login Component;checkouReturningCustomerLogin.jsp;ReturningCustomerCheckoutLoginComponent
 ;;GuestCheckoutLoginComponent;Guest Checkout Login Component;checkoutGuestLogin.jsp;GuestCheckoutLoginComponent
-
+;;StoreFinderComponent;Store Finder Component;storeFinderContent.jsp;ViewStoreAction;StoreFinderComponent
 
 
 
@@ -363,6 +362,29 @@ INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];positi
 ;;SideContentRel1;SideContent;ContactUsakku1;SideContent-about;;;
 
 
+######## Order Confirmation Page Start #######
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV);&componentRef
+;;OrderConfirmationThankMessageComponent;Order Confirmation Thank You Message Component;checkoutConfirmationThankMessage.jsp;;OrderConfirmationThankMessageComponent
+;;OrderConfirmationOverviewComponent;Order Confirmation Overview Info Component;/WEB-INF/views/responsive/pages/account/accountOrderDetailOverview.jsp;;OrderConfirmationOverviewComponent
+;;OrderConfirmationTotalsComponent;Order Confirmation Totals Component;/WEB-INF/views/responsive/pages/account/accountOrderDetailOrderTotals.jsp;;OrderConfirmationTotalsComponent
+;;OrderConfirmationShippingComponent;Order Confirmation Shipping Info Component;/WEB-INF/views/responsive/pages/account/accountOrderDetailShippingInfo.jsp;;OrderConfirmationShippingComponent
+;;OrderConfirmationItemsComponent;Order Confirmation Items Info Component;/WEB-INF/views/responsive/pages/account/accountOrderDetailItems.jsp;;OrderConfirmationItemsComponent
+;;OrderConfirmationContinueButtonComponent;Order Confirmation Continue Button Component;checkoutConfirmationContinueButton.jsp;;OrderConfirmationContinueButtonComponent
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='orderConfirmationPage'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-orderConfirmation;SideContent;;SideContent-orderConfirmation;;;
+;;BodyContent-orderConfirmation;BodyContent;;BodyContent-orderConfirmation;;;
+
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-orderConfirmation;Side Content Slot for Order Confirmation;true;;;;
+;;BodyContent-orderConfirmation;Body Content Slot for Order Confirmation;true;OrderConfirmationThankMessageComponent,OrderConfirmationOverviewComponent,OrderConfirmationItemsComponent,OrderConfirmationShippingComponent,OrderConfirmationTotalsComponent,OrderConfirmationContinueButtonComponent;;;
+
+######## Order Confirmation Page End #######
+
+
 ###### Category Landing Page ######
 INSERT_UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];previewImage(code, $contentCV)
 
@@ -413,13 +435,14 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;c
 ;;CenterRightContentSlot;Center Right Content Slot for Cart Page;true;CartTotalsComponent
 ;;BottomContentSlot;Bottom Content Slot for Cart Page;true;CheckoutComponent
 
+
 # ContentSlotForPage 
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='cartPage'];contentSlot(uid,$contentCV)[unique=true]
 ;;EmptyCartMiddleForCartPage;EmptyCartMiddleContent;;EmptyCartMiddleContent
-;;TopContentSlotForCartPage;TopContent;;TopContentSlot
-;;CenterLeftContentSlotForCartPage;CenterLeftContentSlot;;CenterLeftContentSlot
-;;CenterRightContentSlotForCartPage;CenterRightContentSlot;;CenterRightContentSlot
-;;BottomContentSlotForCartPage;BottomContentSlot;;BottomContentSlot
+;;TopContentSlotForCartPage1;TopContent;;TopContentSlot
+;;CenterLeftContentSlotForCartPage1;CenterLeftContentSlot;;CenterLeftContentSlot
+;;CenterRightContentSlotForCartPag1e;CenterRightContentSlot;;CenterRightContentSlot
+;;BottomContentSlotForCartPage1;BottomContentSlot;;BottomContentSlot
 
 
 ###### Checkout Login Page ######
@@ -441,9 +464,14 @@ INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];positi
 
 ###### Store Finder Page ######
 
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)[unique=true]
+;;SideContent-StoreFinderPage;Side Slot for Store Finder Page;true;
+;;MiddleContent-StoreFinderPage1;Middle Slot for Store Finder Page;true;StoreFinderComponent
 
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='storefinderPage'];contentSlot(uid,$contentCV)[unique=true]
+;;Side-StoreFinderPage;SideContent;;SideContent-StoreFinderPage
+;;Middle-StoreFinderPage;MiddleContent;;MiddleContent-StoreFinderPage1
+
 
 ###### FAQ Page ######
  
