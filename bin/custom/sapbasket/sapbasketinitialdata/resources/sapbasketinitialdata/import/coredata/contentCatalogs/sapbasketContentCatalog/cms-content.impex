@@ -38,7 +38,9 @@ INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;fronten
 ;;LandingPage5Template;Landing Page 5 Template;layout/landingLayout5Page;CategoryPage,ContentPage
 ;;LandingPage6Template;Landing Page 6 Template;layout/landingLayout6Page;CategoryPage,ContentPage
 ;;ContentPage1Template;Content Page 1 Template;layout/contentLayout1Page;ContentPage
+
 ;;AccountPageTemplate;Account Page Template;account/accountLayoutPage;ContentPage
+
 ;;StoreFinderPageTemplate;Store Finder Page Template;storeFinder/storeFinderSearchPage;ContentPage
 
 # Templates without a frontendTemplateName
@@ -724,7 +726,7 @@ INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];po
 ;;NavigationBar-OrderConfirmationPage;NavigationBar;;NavigationBarSlot;true
 ;;MiniCart-OrderConfirmationPage;MiniCart;;MiniCartSlot;true
 ;;Footer-OrderConfirmationPage;Footer;;FooterSlot;true
-;;HeaderLinks-OrderConfirmationPage;HeaderLinks;;HeaderLinksSlot;true
+;;HeaderLinks-ConfirmationPage;HeaderLinks;;HeaderLinksSlot;true
 ;;SearchBox-OrderConfirmationPage;SearchBox;;SearchBoxSlot;true
 ;;TopHeaderSlot-OrderConfirmationPage;TopHeaderSlot;;TopHeaderSlot;true
 ;;BottomHeaderSlot-OrderConfirmationPage;BottomHeaderSlot;;BottomHeaderSlot;true

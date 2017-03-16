@@ -18,7 +18,7 @@
 		<collectiontype code="GenderList" elementtype="Gender" autocreate="true" generate="true" type="list"/>
 		<collectiontype code="SwatchColorSet" elementtype="SwatchColorEnum" autocreate="true" generate="true"
 		                type="set"/>
-	<collectiontype code="StoreBannerSet" elementtype="BannerComponent" autocreate="true" generate="true"
+		<collectiontype code="StoreBannerSet" elementtype="BannerComponent" autocreate="true" generate="true"
 		                type="set"/>
 	</collectiontypes>
 
