@@ -42,9 +42,9 @@ public class HomePageController extends AbstractPageController
 			return REDIRECT_PREFIX + ROOT;
 		}
 
-		storeCmsPageInModel(model, getContentPageForLabelOrId(null));
-		setUpMetaDataForContentPage(model, getContentPageForLabelOrId(null));
-		updatePageTitle(model, getContentPageForLabelOrId(null));
+		storeCmsPageInModel(model, getContentPageForLabelOrId(null));//
+		setUpMetaDataForContentPage(model, getContentPageForLabelOrId(null));//
+		updatePageTitle(model, getContentPageForLabelOrId(null));//?
 
 		return getViewForPage(model);
 	}
@@ -55,7 +55,7 @@ public class HomePageController extends AbstractPageController
 	}
 
 	@RequestMapping(value = "/about-us", method = RequestMethod.GET)
-	public String aboutUs(final Model model, final RedirectAttributes redirectModel) throws CMSItemNotFoundException
+	public String aboutUs(final Model model) throws CMSItemNotFoundException
 	{
 		storeCmsPageInModel(model, getContentPageForLabelOrId("AboutUSakku"));
 		setUpMetaDataForContentPage(model, getContentPageForLabelOrId("AboutUSakku"));
@@ -64,7 +64,7 @@ public class HomePageController extends AbstractPageController
 	}
 
 	@RequestMapping(value = "/contact-us", method = RequestMethod.GET)
-	public String contactUs(final Model model, final RedirectAttributes redirectModel) throws CMSItemNotFoundException
+	public String contactUs(final Model model) throws CMSItemNotFoundException
 	{
 		storeCmsPageInModel(model, getContentPageForLabelOrId("ContactUsakku1"));
 		setUpMetaDataForContentPage(model, getContentPageForLabelOrId("ContactUsakku1"));
