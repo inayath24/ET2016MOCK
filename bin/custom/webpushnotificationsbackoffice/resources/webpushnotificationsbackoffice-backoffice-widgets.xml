@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2016 SAP SE
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+  -->
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widgets.xsd">
+
+    <widget-extension widgetId="backofficeMainSlot">
+        <widget id="webpushnotificationsbackoffice-perspective" widgetDefinitionId="com.sap.webpushnotifications.widgets.webpushnotificationsbackofficewidget"
+            template="false" slotId="perspectives" title="Hello webpushnotificationsbackoffice">
+            <setting key="perspectiveImageUrl" value="/cng/images/perspective.png"
+                type="String" />
+        </widget>
+    </widget-extension>
+
+    <widget-connection sourceWidgetId="webpushnotificationsbackoffice-explorer-tree" outputId="nodeSelected" targetWidgetId="webpushnotificationsbackoffice-tree-node-adapter" inputId="input"/>
+    <widget-connection sourceWidgetId="webpushnotificationsbackoffice-tree-node-adapter" outputId="true" targetWidgetId="webpushnotificationsbackoffice-typecode-extractor" inputId="genericInput"/>
+    <widget-connection sourceWidgetId="webpushnotificationsbackoffice-tree-node-adapter" outputId="true" targetWidgetId="webpushnotificationsbackoffice-search-enabler" inputId="genericInput"/>
+    <widget-connection sourceWidgetId="webpushnotificationsbackoffice-tree-node-adapter" outputId="false" targetWidgetId="webpushnotificationsbackoffice-search-disabler" inputId="genericInput"/>
+    <widget-connection sourceWidgetId="webpushnotificationsbackoffice-typecode-extractor" outputId="genericOutput" targetWidgetId="webpushnotificationsbackoffice-search-logic" inputId="type"/>
+    <widget-connection sourceWidgetId="webpushnotificationsbackoffice-search-enabler" outputId="genericOutput" targetWidgetId="webpushnotificationsbackoffice-text-search" inputId="enabled"/>
+    <widget-connection sourceWidgetId="webpushnotificationsbackoffice-search-disabler" outputId="genericOutput" targetWidgetId="webpushnotificationsbackoffice-text-search" inputId="enabled"/>
+    <widget-connection sourceWidgetId="webpushnotificationsbackoffice-text-search" outputId="query" targetWidgetId="webpushnotificationsbackoffice-search-logic" inputId="searchtext"/>
+    <widget-connection sourceWidgetId="webpushnotificationsbackoffice-search-logic" outputId="pageable" targetWidgetId="webpushnotificationsbackoffice-simple-list" inputId="pageable"/>
+
+</widgets>

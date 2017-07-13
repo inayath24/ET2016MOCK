@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<widget xmlns="http://www.zkoss.org/2005/zul"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                xmlns:h="http://www.w3.org/1999/xhtml"
+                                xmlns:w="http://www.zkoss.org/2005/zk/client"
+                                xmlns:zk="http://www.zkoss.org/2005/zk"
+                                xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.hybris.com/schema/cockpitng/zul/zul.xsd"
+                                xmlns:n="http://www.zkoss.org/2005/zk/native">
+                               <style>
+                               
+                               #test1{
+                               	background:green;
+                               	display:inline-block;
+                               	padding-left:20px;
+                               }
+                              
+                              label{
+                              border: none; background-color: red; margin-left: 20px; margin-bottom: 30px; padding-left: 20px;
+                              }
+                               </style>
+                               
+                <div id="test1" style="text-align: center;" >
+                                <div style="text-align: center;" >
+                                                <n:h1><label id="label" value="Push Notification Configuration" /></n:h1><n:br></n:br>
+                                </div>
+                                
+                                <div>
+                                                <label id="label_title" value="Title" style="padding-right:250px;"/><n:br></n:br>
+                                                <textbox id="title" rows="1" cols="40" placeholder="Enter the title of the message"/>
+                                </div>
+                                <n:br></n:br>
+                                <div>
+                                                <label id="label_body" value="Body" style="padding-right:250px;"/><n:br></n:br>
+                                                <textbox id="body" rows="5" cols="40" placeholder="Enter the message description"/>
+                                </div>
+                                <n:br></n:br>
+                                <div>
+                                                <label id="label_link" value="Link" style="padding-right:250px;"/><n:br></n:br>	 	
+                                                <textbox id="link" rows="1" cols="40"  placeholder="Enter the link to be added (if any)"/>
+                                </div>
+                       
+       							<n:br></n:br>
+                                <div>
+                                                <button  id="send" label="SEND"/>
+                                </div>
+                </div>
+</widget>

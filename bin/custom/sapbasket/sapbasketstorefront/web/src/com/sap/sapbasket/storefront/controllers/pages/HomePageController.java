@@ -49,6 +49,7 @@ public class HomePageController extends AbstractPageController
 		return getViewForPage(model);
 	}
 
+
 	protected void updatePageTitle(final Model model, final AbstractPageModel cmsPage)
 	{
 		storeContentPageTitleInModel(model, getPageTitleResolver().resolveHomePageTitle(cmsPage.getTitle()));
@@ -72,4 +73,9 @@ public class HomePageController extends AbstractPageController
 		return getViewForPage(model);
 	}
 
+	@RequestMapping(value = "/gettoken", method = RequestMethod.POST)
+	public void getSignFaces(@RequestParam(required = true) final String json)
+	{
+		//stuff you want to do
+	}
 }

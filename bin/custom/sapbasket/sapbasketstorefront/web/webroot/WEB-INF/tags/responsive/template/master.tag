@@ -33,7 +33,11 @@
 	<%-- Favourite Icon --%>
 	<spring:theme code="img.favIcon" text="/" var="favIconPath"/>
     <link rel="shortcut icon" type="image/x-icon" media="all" href="${originalContextPath}${favIconPath}" />
-
+    
+    
+    <link rel="manifest" href="${commonResourcePath}/js/manifest.json">
+	
+	
 	<%-- CSS Files Are Loaded First as they can be downloaded in parallel --%>
 	<template:styleSheets/>
 
@@ -54,15 +58,30 @@
 	</form>
 	<div id="ariaStatusMsg" class="skip" role="status" aria-relevant="text" aria-live="polite"></div>
 
+
+
 	<%-- Load JavaScript required by the site --%>
+<!-- 		
+	<script type="text/javascript" src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-messaging.js"></script>
+	
+	<script type="text/javascript" src="/firebase-messaging-sw.js"></script>
+	
+	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-database.js"></script> -->
+	
 	<template:javaScript/>
+
+	<%-- <script type="text/javascript" src="${commonResourcePath}/js/unload.js"></script>
+ --%>
+
 	
 	<%-- Inject any additional JavaScript required by the page --%>
 	<jsp:invoke fragment="pageScripts"/>
 
 	<%-- Inject CMS Components from addons using the placeholder slot--%>
 	<addonScripts:addonScripts/>
-
 
 </body>
 

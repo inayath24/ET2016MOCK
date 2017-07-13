@@ -2,23 +2,23 @@
 <hybrisconfig xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../bin/platform/resources/schemas/extensions.xsd'>
   <extensions>
     <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
-    <path dir="${HYBRIS_BIN_DIR}/custom/sapbasket" autoload="true"/>
+    <path dir="${HYBRIS_BIN_DIR}/custom" autoload="true"/>
 
     
 	<extension name='mcc' />
     <extension name="hmc"/>
     <extension name="backoffice"/>
     <extension name='rulebuilderbackoffice' />
-	<extension name="yaddon"/>
+	
 	<extension name="ycommercewebservices"/>
     <extension name='couponbackoffice' />
     <extension name='droolsruleengineservices' />
-    <extension name='couponfacades' />
     <extension name='promotionenginesamplesaddon' />
     <extension name='promotionengineatddtests' />
     <extension name="promotionenginetrail"/>
-    
-	<extension name="electronicsstore"/>
+	<extension dir="C:\SAPBasket\hybris\bin/custom/pushnotificationaddon"/>
+	<extension name="webpushnotificationsbackoffice"/>
+	
 	
   </extensions>
 </hybrisconfig>
