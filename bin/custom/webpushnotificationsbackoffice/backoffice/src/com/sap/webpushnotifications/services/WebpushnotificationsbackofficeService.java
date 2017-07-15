@@ -16,7 +16,6 @@ import de.hybris.platform.servicelayer.model.ModelService;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -81,14 +80,16 @@ public class WebpushnotificationsbackofficeService
 		final JSONObject notificationObj = new JSONObject();
 		notificationObj.put("title", title);
 		notificationObj.put("body", body);
-		final String s = WebpushnotificationsbackofficeService.class.getClassLoader().getResource("firebase.png").toString();
-
-		final File file = new File(s);
-		//FileUtils.copyURLToFile(WebpushnotificationsbackofficeService.class.getClassLoader().getResource("firebase.png"), file);*/
-		notificationObj.put("icon", file);
-		notificationObj.put("icon",
-				WebpushnotificationsbackofficeService.class.getClassLoader().getResourceAsStream("firebase.png"));
-
+		notificationObj.put("click_action", link);
+		notificationObj.put("icon", "https://upload.wikimedia.org/wikipedia/en/c/ca/Hybris_company_%28SAP%29_logo.jpg");
+		/*
+		 * final String s =
+		 * WebpushnotificationsbackofficeService.class.getClassLoader().getResource("firebase.png").toString();
+		 * 
+		 * final File file = new File(s);
+		 * //FileUtils.copyURLToFile(WebpushnotificationsbackofficeService.class.getClassLoader().getResource(
+		 * "firebase.png"), file); notificationObj.put("icon", file);
+		 */
 		/*
 		 * notificationObj.put("icon",
 		 * "file:///C:/SAPBasket/hybris/bin/custom/pushnotificationaddon/acceleratoraddon/web/webroot/_ui/responsive/common/images/firebase.png"
@@ -123,7 +124,7 @@ public class WebpushnotificationsbackofficeService
 				final JSONObject message = new JSONObject();
 				message.put("notification", notificationObj);
 				//System.out.println(tokens.get(k));
-				System.out.println(tokens + "" + k + "the tokens are");
+				LOG.info(tokens + "" + k + "the tokens are");
 				//message.put("to", "sdfsdfsfdsd");
 				message.put("to", tokens.get(k));
 				//message.put("to", "eaQN_Y3_5s0:APA91bFM0KSL5aCGkPBY6TLnopBcxFn7TuX1h8SKPX5YyURMY5l8XlhLYATdsm6WwGXzbBwtUwk41qs4YYyqivcm5SDjzYXaS9JYulUj5NyhNnDs0lrfMqh3dJ1mq19MLPIXxFOqwc9P");
@@ -136,37 +137,35 @@ public class WebpushnotificationsbackofficeService
 			}
 			catch (final MalformedURLException e)
 			{
-				//Log.e(TAG, "MalformedURLException: " + e.getMessage());
+				LOG.info(e);
 			}
 			catch (final ProtocolException e)
+
 			{
-				//Log.e(TAG, "ProtocolException: " + e.getMessage());
+				LOG.info(e);
 			}
 			catch (final IOException e)
 			{
-				//Log.e(TAG, "IOException: " + e.getMessage());
+				LOG.info(e);
 			}
 			catch (final Exception e)
 			{
-				//Log.e(TAG, "Exception: " + e.getMessage());
+				LOG.info(e);
 			}
-			System.out.println(response + "response");
-			final JSONObject removeInvalidToken = new JSONObject(response);
-			final JSONArray invalidTokens = removeInvalidToken.getJSONArray("results");
-			final JSONObject temp = invalidTokens.getJSONObject(0);
-			if (temp.has("error") && response != null)
+			LOG.info(response + "response");
+			if (response != null)
 			{
-				removeTokens.add(tokens.get(k));
+				final JSONObject removeInvalidToken = new JSONObject(response);
+				final JSONArray invalidTokens = removeInvalidToken.getJSONArray("results");
+				final JSONObject temp = invalidTokens.getJSONObject(0);
+				if (temp.has("error"))
+				{
+					removeTokens.add(tokens.get(k));
 
+				}
 			}
-			else
-			{
-
-				LOG.info("do nothing");
-			}
-
-
 		}
+
 		if (!removeTokens.isEmpty())
 
 		{
