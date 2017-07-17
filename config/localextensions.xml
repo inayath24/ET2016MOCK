@@ -4,7 +4,6 @@
     <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
     <path dir="${HYBRIS_BIN_DIR}/custom" autoload="true"/>
 
-    
 	<extension name='mcc' />
     <extension name="hmc"/>
     <extension name="backoffice"/>
@@ -15,10 +14,9 @@
     <extension name='droolsruleengineservices' />
     <extension name='promotionenginesamplesaddon' />
     <extension name='promotionengineatddtests' />
-    <extension name="promotionenginetrail"/>
-	<extension dir="C:\SAPBasket\hybris\bin/custom/pushnotificationaddon"/>
-	<extension name="webpushnotificationsbackoffice"/>
-	
+   
+	<!--<extension name="webpushnotificationsbackoffice"/>
+	<extension name="pushnotificationaddon"/>-->
 	
   </extensions>
 </hybrisconfig>

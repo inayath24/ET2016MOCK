@@ -9,7 +9,7 @@
 	<classpathentry kind="src" output="eclipsebin/classes" path="testsrc"/>
 	<classpathentry kind="src" output="eclipsebin/classes" path="gensrc"/>
 	<classpathentry kind="src" path="/pushnotificationaddon"/>
-	<classpathentry kind="lib" path="C:/Users/I329189/Downloads/SOFTWARES&amp;ZIPS/java-json.jar/org.json-0.jar"/>
 	<classpathentry exported="true" kind="lib" path="/solrfacetsearch/lib/httpcore-4.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/i329299/Desktop/org.json.jar/org.json.jar"/>
 	<classpathentry kind="output" path="eclipsebin/notused"/>
 </classpath>

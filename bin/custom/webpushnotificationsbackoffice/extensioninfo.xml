@@ -9,7 +9,8 @@
   ~ ("Confidential Information"). You shall not disclose such Confidential
   ~ Information and shall use it only in accordance with the terms of the
   ~ license agreement you entered into with hybris.
-  --><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+  -->
+<extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
 
 	<extension abstractclassprefix="Generated" classprefix="Webpushnotificationsbackoffice" managername="WebpushnotificationsbackofficeManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="webpushnotificationsbackoffice" usemaven="false">
 
@@ -19,10 +20,7 @@
 		<requires-extension name="backoffice"/>
 		<requires-extension name="npmancillary"/>
 		
-		
-
 		<coremodule generated="true" manager="com.sap.webpushnotifications.jalo.WebpushnotificationsbackofficeManager" packageroot="com.sap.webpushnotifications"/>
-
 		<meta key="backoffice-module" value="true"/>
 		
 	</extension>

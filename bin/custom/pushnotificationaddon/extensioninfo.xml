@@ -15,9 +15,9 @@
 
 		<!-- you should add all required extensions to this list, except platform extensions which are automatically required -->         
 		<requires-extension name="addonsupport"/>
-		<requires-extension name="webpushnotificationsbackoffice"/>
+		<!-- <requires-extension name="webpushnotificationsbackoffice"/>
+		 -->
 		<coremodule generated="true" manager="com.hybris.pushnotification.jalo.PushnotificationaddonManager" packageroot="com.hybris.pushnotification"/>
-
 		
 		<meta key="classpathgen" value="false"/>
 

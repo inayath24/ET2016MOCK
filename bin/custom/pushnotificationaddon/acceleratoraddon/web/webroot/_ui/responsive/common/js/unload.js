@@ -17,19 +17,33 @@ $(document).ready(function () {
     if ('serviceWorker' in navigator && 'PushManager' in window) {
         console.log('Service Worker and Push is supported');
 
-        navigator.serviceWorker.register('/sapbasketstorefront/_ui/addons/pushnotificationaddon/responsive/common/js/firebase-messaging-sw.js')
+        navigator.serviceWorker.register('/sapbasketstorefront/_ui/addons/pushnotificationaddon/responsive/common/js/firebase-messaging-sw.js')//.scope()...
             .then(function (registration) {
+            	
                 console.log(registration);
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);//
+                
                 messaging.useServiceWorker(registration);
 
                 messaging.requestPermission().then(function () {
+                	
                     console.log("Got Permission");
-                    return messaging.getToken()
                     
-                        .then(function (currentToken) {
+                    return messaging.getToken().then(function (currentToken) {
+                    	
                         console.log(currentToken);
                         if (currentToken) {
-                            $.ajax({
+
+                        	if(window.localStorage.getItem('currentToken')!=currentToken)
+                        		{
+                        		window.localStorage.setItem('currentToken', currentToken);
+                        		setTokenSentToServer(false);
+                        		sendTokenToServer(currentToken);//
+                        		}
+                        	
+                        	//sendTokenToServer(currentToken);
+                                
+                        	/*$.ajax({
         	                    url: ACC.config.encodedContextPath + "/notification/gettoken",
         	                    dataType: "json",
         	                    type: 'POST',
@@ -38,14 +52,14 @@ $(document).ready(function () {
         	                        json: currentToken
         	                    },
         	                    success: function( data ) {
-        	                    	 alert(data)
+        	                    	 alert(data);//
+        	                    	 setTokenSentToServer(true);
         	                    },
         	                    error:function(response){
         	                    	 alert("Failure"+response.status)
         	                    }
-        	                });
-                            //sendTokenToServer(currentToken);
-                            ////updateUIForPushEnabled(currentToken);
+        	                });*/
+                        
                         } else {
                             // Show permission request.
                             console.log('No Instance ID token available. Request permission to generate one.');
@@ -56,7 +70,6 @@ $(document).ready(function () {
 
                         }).catch(function (err) {
                             console.log('An error occurred while retrieving token. ', err);
-                            //showToken('Error retrieving Instance ID token. ', err);
                             setTokenSentToServer(false);
                         });
                 });
@@ -100,13 +113,14 @@ $(document).ready(function () {
                 // [START refresh_token]
                 // Callback fired if Instance ID token is updated.
                 messaging.onTokenRefresh(function () {
-                    messaging.getToken()
-                        .then(function (refreshedToken) {
-                            console.log('Token refreshed.');
+                    
+                	messaging.getToken().then(function (refreshedToken) {
+                            
+                		console.log('Token refreshed.');
                             // Indicate that the new Instance ID token has not yet been sent to the
                             // app server.
                             setTokenSentToServer(false);
-                            $.ajax({
+                            /*$.ajax({
         	                    url: ACC.config.encodedContextPath + "/notification/gettoken",
         	                    dataType: "json",
         	                    type: 'POST',
@@ -121,9 +135,25 @@ $(document).ready(function () {
         	                    	 alert("Failure"+response.status)
         	                    }
         	                });
+                            */
                             
+                            // Get updated InstanceID token.
+                            /*String refreshedToken = FirebaseInstanceId.getInstance().getToken();//try catch...?
+                            console.log("Refreshed token: " + refreshedToken);
+*/
+                            // TODO: Implement this method to send any registration to your app's servers.
                             // Send Instance ID token to app server.
-                            //sendTokenToServer(refreshedToken);
+                            if (refreshedToken) {
+                            	sendTokenToServer(refreshedToken);
+                            }
+                            /*else {
+                                // Show permission request.
+                                console.log('No Instance ID token available. Request permission to generate one.');
+                                // Show permission UI.
+                                ////updateUIForPushPermissionRequired();
+                                setTokenSentToServer(false);
+                            }*/
+                            
                             // [START_EXCLUDE]
                             // Display new Instance ID token and clear UI of all previous messages.
                             //resetUI();
@@ -131,7 +161,7 @@ $(document).ready(function () {
                         })
                         .catch(function (err) {
                             console.log('Unable to retrieve refreshed token ', err);
-                            //showToken('Unable to retrieve refreshed token ', err);
+                            //setTokenSentToServer(false);// 
                         });
                 });
                 // [END refresh_token]
@@ -150,11 +180,29 @@ $(document).ready(function () {
 // - send messages back to this app
 // - subscribe/unsubscribe the token from topics
 function sendTokenToServer(currentToken) {
+	
     if (!isTokenSentToServer()) {
         console.log('Sending token to server...');
 
+        $.ajax({
+            url: ACC.config.encodedContextPath + "/notification/gettoken",
+            dataType: "json",
+            type: 'POST',
+            
+            data: {
+                json: currentToken
+            },
+            success: function( data ) {
+            	 alert(data);//
+            	 setTokenSentToServer(true);//
+            },
+            error:function(response){
+            	 alert("Failure"+response.status)
+            }
+        });
+        
         // TODO(developer): Send the current token to your server.
-        var xhr = new XMLHttpRequest();
+/*        var xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -165,13 +213,13 @@ function sendTokenToServer(currentToken) {
 
        
         var id_token = {
-            /*"notification": {
+            "notification": {
             	"title": "SAP Basket notification",
         	    "body": "from unload.js",
                 "icon": "https://localhost:9002/sapbasketstorefront/_ui/addons/sapbasketstorefrontAddOn/responsive/common/images/download.png",
                 "click_action": "https://localhost:9002"
             },
-*/
+
             "to": currentToken
         }
 
@@ -181,14 +229,13 @@ function sendTokenToServer(currentToken) {
         xhr.setRequestHeader('Authorization', 'key=AIzaSyB6VvEGXdzYlDTkOeWZ23JXHvD37nhzo_k');
 
         xhr.send(JSON.stringify(id_token));//
-
+*/
 
         //setTokenSentToServer(true);//
     } else {
         console.log('Token already sent to server so won\'t send it again ' +
             'unless it changes');
     }
-
 }
 
 function isTokenSentToServer() {

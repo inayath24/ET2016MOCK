@@ -28,7 +28,8 @@ public class WebpushnotificationsbackofficeController extends DefaultWidgetContr
 	private Textbox title;
 	private Textbox body;
 	private Textbox link;
-	private Textbox image;
+
+	private Textbox image;//
 
 	@WireVariable
 	private WebpushnotificationsbackofficeService webpushnotificationsbackofficeService;

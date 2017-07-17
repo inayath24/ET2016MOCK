@@ -22,7 +22,7 @@
 
 	<context component="explorer-tree">
 		<explorer-tree:explorer-tree>
-			<explorer-tree:navigation-node id="Push_notifications">
+			<explorer-tree:navigation-node id="Web Push Notifications">
 			</explorer-tree:navigation-node>
 		</explorer-tree:explorer-tree>
 	</context>

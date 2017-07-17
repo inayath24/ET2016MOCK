@@ -37,23 +37,19 @@ import com.hybris.pushnotification.dao.NotificationTokenDao;
 import com.sap.webpushnotifications.model.NotificationTokensModel;
 
 
-
 public class WebpushnotificationsbackofficeService
 {
 
-
 	private static final Logger LOG = Logger.getLogger(WebpushnotificationsbackofficeService.class);
+
 
 	private NotificationTokenDao notificationTokenDao;
 
 	@Resource
 	private ModelService modelService;
 
-
-
-
-
 	private RestTemplate restTemplate;
+
 
 	public String send(final String title, final String body, final String link) throws Exception
 	{
@@ -82,11 +78,11 @@ public class WebpushnotificationsbackofficeService
 		notificationObj.put("body", body);
 		notificationObj.put("click_action", link);
 		notificationObj.put("icon", "https://upload.wikimedia.org/wikipedia/en/c/ca/Hybris_company_%28SAP%29_logo.jpg");
+		//"https://localhost:9002/sapbasketstorefront/_ui/addons/sapbasketstorefrontAddOn/responsive/common/images/firebase.png"
 		/*
 		 * final String s =
-		 * WebpushnotificationsbackofficeService.class.getClassLoader().getResource("firebase.png").toString();
-		 * 
-		 * final File file = new File(s);
+		 * WebpushnotificationsbackofficeService.class.getClassLoader().getResource("firebase.png").toString(); final File
+		 * file = new File(s);
 		 * //FileUtils.copyURLToFile(WebpushnotificationsbackofficeService.class.getClassLoader().getResource(
 		 * "firebase.png"), file); notificationObj.put("icon", file);
 		 */
@@ -121,17 +117,17 @@ public class WebpushnotificationsbackofficeService
 
 				// Send POST output.
 				printout[0] = new DataOutputStream(conn.getOutputStream());
+
 				final JSONObject message = new JSONObject();
 				message.put("notification", notificationObj);
 				//System.out.println(tokens.get(k));
 				LOG.info(tokens + "" + k + "the tokens are");
-				//message.put("to", "sdfsdfsfdsd");
-				message.put("to", tokens.get(k));
-				//message.put("to", "eaQN_Y3_5s0:APA91bFM0KSL5aCGkPBY6TLnopBcxFn7TuX1h8SKPX5YyURMY5l8XlhLYATdsm6WwGXzbBwtUwk41qs4YYyqivcm5SDjzYXaS9JYulUj5NyhNnDs0lrfMqh3dJ1mq19MLPIXxFOqwc9P");
+				message.put("to", tokens.get(k));//try with registration_ids...
 
 				printout[0].writeBytes(message.toString());
 				printout[0].flush();
 				printout[0].close();
+
 				final InputStream in = new BufferedInputStream(conn.getInputStream());
 				response = convertStreamToString(in);
 			}
@@ -152,13 +148,14 @@ public class WebpushnotificationsbackofficeService
 			{
 				LOG.info(e);
 			}
+
 			LOG.info(response + "response");
 			if (response != null)
 			{
 				final JSONObject removeInvalidToken = new JSONObject(response);
 				final JSONArray invalidTokens = removeInvalidToken.getJSONArray("results");
 				final JSONObject temp = invalidTokens.getJSONObject(0);
-				if (temp.has("error"))
+				if (temp.has("error"))//
 				{
 					removeTokens.add(tokens.get(k));
 
@@ -174,10 +171,6 @@ public class WebpushnotificationsbackofficeService
 
 		}
 		return "sent";
-
-
-
-
 	}
 
 	public RestTemplate getRestTemplate()

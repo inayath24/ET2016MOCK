@@ -63,12 +63,13 @@
 
 			</attributes>
 		</itemtype> -->
-		<itemtype generate="true"
+		
+		<itemtype 
+		generate="true"
 		code="NotificationTokens"
 		extends="GenericItem"
-		autocreate="true"
+		autocreate="true">
 		
-		>
 		<deployment table="NotificationTokens" typecode="23000"/>
 		<attributes>
 			<attribute qualifier="notifcationToken" type="java.lang.String">

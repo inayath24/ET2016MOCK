@@ -9,27 +9,17 @@
  ("Confidential Information"). You shall not disclose such Confidential
  Information and shall use it only in accordance with the terms of the
  license agreement you entered into with SAP.
---><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+-->
+<extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
 
 	<extension abstractclassprefix="Generated" classprefix="SapbasketStorefront" name="sapbasketstorefront" usemaven="false">		
         
-
-
-
-
-
-
-
-
-
-
-<requires-extension name="pushnotificationaddon"/>
-<requires-extension name="acceleratorstorefrontcommons"/>
+		<requires-extension name="pushnotificationaddon"/>
+		<requires-extension name="acceleratorstorefrontcommons"/>
 		<requires-extension name="sapbasketfacades"/>
 
 		<webmodule jspcompile="false" webroot="/sapbasketstorefront"/>
 
-		
 		<meta key="extgen-template-extension" value="true"/>
 
 	</extension>

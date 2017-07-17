@@ -16,9 +16,9 @@
 
     <widget-extension widgetId="backofficeMainSlot">
         <widget id="webpushnotificationsbackoffice-perspective" widgetDefinitionId="com.sap.webpushnotifications.widgets.webpushnotificationsbackofficewidget"
-            template="false" slotId="perspectives" title="Hello webpushnotificationsbackoffice">
-            <setting key="perspectiveImageUrl" value="/cng/images/perspective.png"
-                type="String" />
+            template="false" slotId="perspectives"> <!-- title="Hello webpushnotificationsbackoffice"> -->
+            <!-- <setting key="perspectiveImageUrl" value="/cng/images/perspective.png"
+                type="String" /> -->
         </widget>
     </widget-extension>
 

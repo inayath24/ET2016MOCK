@@ -38,7 +38,7 @@
                                 <n:br></n:br>
                                 <div>
                                                 <label id="label_link" value="Link" style="padding-right:250px;"/><n:br></n:br>	 	
-                                                <textbox id="link" rows="1" cols="40"  placeholder="Enter the link to be added (if any)"/>
+                                                <textbox id="link" rows="1" cols="40"  placeholder="Enter a URL to redirect"/>
                                 </div>
                        
        							<n:br></n:br>

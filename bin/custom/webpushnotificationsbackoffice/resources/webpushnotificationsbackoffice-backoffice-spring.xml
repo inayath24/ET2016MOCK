@@ -16,12 +16,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!-- 	<bean id="webpushnotificationsbackofficeService" class="com.sap.webpushnotifications.services.WebpushnotificationsbackofficeService" />
- -->
- <bean id="defaultGenericDaoImpl" class="de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao">
+ 	<bean id="defaultGenericDaoImpl" class="de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao">
         <constructor-arg value="Type"/>
     </bean>
+    
 	<bean id="webpushnotificationRestTemplate" class="org.springframework.web.client.RestTemplate"/>
+	
 	<bean id="notificationTokenDao" class="com.hybris.pushnotification.dao.impl.DefaultNotificationTokenDao" parent="defaultGenericDaoImpl"/>
 	
 	<bean id="webpushnotificationsbackofficeService" class="com.sap.webpushnotifications.services.WebpushnotificationsbackofficeService" >
@@ -34,5 +34,4 @@
   		<property name="name" value="labels"/>
   	</bean> 
   	
-
 </beans>
