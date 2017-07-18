@@ -101,7 +101,7 @@ public class WebpushnotificationsbackofficeService
 				final URL url = new URL(reqUrl);
 				final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-				conn.setConnectTimeout(10000);//
+				conn.setConnectTimeout(10000);
 				//urlc.setReadTimeout(10000);//?
 
 				conn.setDoInput(true);
@@ -119,7 +119,8 @@ public class WebpushnotificationsbackofficeService
 				printout[0] = new DataOutputStream(conn.getOutputStream());
 
 				final JSONObject message = new JSONObject();
-				message.put("notification", notificationObj);
+				//message.put("notification", notificationObj);
+				message.put("data", notificationObj);
 				//System.out.println(tokens.get(k));
 				LOG.info(tokens + "" + k + "the tokens are");
 				message.put("to", tokens.get(k));//try with registration_ids...
@@ -157,7 +158,7 @@ public class WebpushnotificationsbackofficeService
 				final JSONObject temp = invalidTokens.getJSONObject(0);
 				if (temp.has("error"))//
 				{
-					removeTokens.add(tokens.get(k));
+					removeTokens.add(tokens.get(k));//messaging.deleteToken(token) in unload.js...?
 
 				}
 			}
