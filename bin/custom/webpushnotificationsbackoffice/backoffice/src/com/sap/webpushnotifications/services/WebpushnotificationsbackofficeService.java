@@ -78,6 +78,8 @@ public class WebpushnotificationsbackofficeService
 		notificationObj.put("body", body);
 		notificationObj.put("click_action", link);
 		notificationObj.put("icon", "https://upload.wikimedia.org/wikipedia/en/c/ca/Hybris_company_%28SAP%29_logo.jpg");
+		notificationObj.put("image", "https://upload.wikimedia.org/wikipedia/en/c/ca/Hybris_company_%28SAP%29_logo.jpg");
+
 		//"https://localhost:9002/sapbasketstorefront/_ui/addons/sapbasketstorefrontAddOn/responsive/common/images/firebase.png"
 		/*
 		 * final String s =
