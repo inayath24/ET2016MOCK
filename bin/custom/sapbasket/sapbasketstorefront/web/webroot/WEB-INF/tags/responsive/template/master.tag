@@ -34,10 +34,6 @@
 	<spring:theme code="img.favIcon" text="/" var="favIconPath"/>
     <link rel="shortcut icon" type="image/x-icon" media="all" href="${originalContextPath}${favIconPath}" />
     
-    
-    <link rel="manifest" href="${commonResourcePath}/js/manifest.json">
-	
-	
 	<%-- CSS Files Are Loaded First as they can be downloaded in parallel --%>
 	<template:styleSheets/>
 

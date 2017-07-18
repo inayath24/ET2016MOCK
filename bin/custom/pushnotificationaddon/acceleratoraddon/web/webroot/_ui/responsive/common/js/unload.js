@@ -38,10 +38,10 @@ $(document).ready(function () {
                         		{
                         		window.localStorage.setItem('currentToken', currentToken);
                         		setTokenSentToServer(false);
-                        		sendTokenToServer(currentToken);//
+                        		sendTokenToServer(currentToken);//here console log won't b printed
                         		}
                         	
-                        	//sendTokenToServer(currentToken);
+                        	//sendTokenToServer(currentToken);//console log will b printed here
                                 
                         	/*$.ajax({
         	                    url: ACC.config.encodedContextPath + "/notification/gettoken",
@@ -73,28 +73,7 @@ $(document).ready(function () {
                             setTokenSentToServer(false);
                         });
                 });
-                /*
-                .then(function (token) {
-                    console.log(token);
-                })
-                .catch(function (err) {
-                    console.log(err);
-                });*/
-
-                /*navigator.serviceWorker.ready
-                    .then(function (serviceWorkerRegistration) {
-                        console.log('asd');
-                        serviceWorkerRegistration.pushManager.subscribe()
-                            .then(function (subscription) {
-                                endpoint = subscription.endpoint;
-                                console.log('subscription endpoint: ', subscription.endpoint);
-                            })
-                            .catch(function (e) {
-                                console.log(e);
-                            });
-                    });
-                */
-
+               
                 // [START receive_message]
                 // Handle incoming messages. Called when:
                 // - a message is received while the app has focus
@@ -197,7 +176,8 @@ function sendTokenToServer(currentToken) {
             	 setTokenSentToServer(true);//
             },
             error:function(response){
-            	 alert("Failure"+response.status)
+            	 alert("Failure"+response.status)//;
+            	 setTokenSentToServer(false);//
             }
         });
         
