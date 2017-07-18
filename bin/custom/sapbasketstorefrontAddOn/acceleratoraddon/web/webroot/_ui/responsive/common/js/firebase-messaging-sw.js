@@ -31,12 +31,7 @@ messaging.setBackgroundMessageHandler(function(payload) {
 	  const notificationTitle = 'SAP Basket';
 	  const notificationOptions = {
 	    body: 'from sw.js',
-	    icon: "https://localhost:9002/sapbasketstorefront/_ui/addons/pushnotificationaddon/responsive/common/images/firebase.png",
-	    image: "https://localhost:9002/sapbasketstorefront/_ui/addons/pushnotificationaddon/responsive/common/images/firebase.png",
-	    badge: "https://localhost:9002/sapbasketstorefront/_ui/addons/pushnotificationaddon/responsive/common/images/firebase.png",
-	    vibrate: "[200,0,200,0,200]",
-	    sound: "",
-	    dir: "ltr"
+	    icon: "https://localhost:9002/sapbasketstorefront/_ui/addons/sapbasketstorefrontAddOn/responsive/common/images/download.png",
 	  };
 
 	  return self.registration.showNotification(notificationTitle,notificationOptions);
@@ -44,7 +39,7 @@ messaging.setBackgroundMessageHandler(function(payload) {
 
 self.addEventListener('notificationclick', function(event) {
 	  event.notification.close();
-	  event.waitUntil(self.clients.openWindow("https://localhost:9002/sapbasketstorefront/sapbasket/en/sapbasket?site=sapbasket"));
+	  event.waitUntil(self.clients.openWindow("https://localhost:9002"));
 	});
 
 /*You can also do the same with the notificationclose event:
@@ -52,12 +47,7 @@ self.addEventListener('notificationclick', function(event) {
 	self.addEventListener('notificationclose', function(event) {
 	  ... Do your stuff here.
 	});*/
-/*
-self.addEventListener('fetch', function(event) {
 
-	console.log(event.request.url);
-
-	});*/
 /*
 self.addEventListener('push', function(event) {
   //console.log('[Service Worker] Push Received.');
