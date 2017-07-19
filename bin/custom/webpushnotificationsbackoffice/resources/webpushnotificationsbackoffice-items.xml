@@ -18,52 +18,6 @@
 			xsi:noNamespaceSchemaLocation="items.xsd">
 
 	<itemtypes>
-<!--
-		<itemtype generate="true"
-		   code="MyProduct"
-		   jaloclass="com.hybris.backoffice.jalo.MyProduct"
-		   extends="Product"
-		   autocreate="true"
-	   >
-			<attributes>
-				<attribute qualifier="myExampleInitialStringField" type="java.lang.String">
-					<description>My Example Initial String Value</description>
-					<modifiers initial="true"/>
-					<persistence type="property"/>
-				</attribute>
-
-				<attribute qualifier="myExampleBooleanField" type="java.lang.Boolean">
-					<description>Example Initial Boolean Field</description>
-               <persistence type="property"/>
-				</attribute>
-
-				<attribute qualifier="media" type="Media">
-					<persistence type="property"/>
-				</attribute>
-
-			</attributes>
-		</itemtype>
--->
-
-		<!-- <itemtype generate="true"
-		   code="UserNotification"
-		   jaloclass="com.hybris.backoffice.jalo.UserNotification"
-		   extends="User"
-		   autocreate="true"
-	   >
-			<attributes>
-				<attribute qualifier="allowNotification" type="java.lang.Boolean">
-
-					<persistence type="property"/>
-					<defaultvalue>Boolean.TRUE</defaultvalue>
-				</attribute>
-				<attribute qualifier="serviceWorkerToken" type="java.lang.String">
-					<persistence type="property"/>
-				</attribute>
-
-			</attributes>
-		</itemtype> -->
-		
 		<itemtype 
 		generate="true"
 		code="NotificationTokens"

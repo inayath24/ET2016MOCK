@@ -85,23 +85,6 @@ public class NotificationServiceImpl implements NotificationService
 	}
 
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see com.hybris.pushnotification.service.NotificationService#getToken()
-	 */
-	//@Override
-	/*
-	 * public List<NotificationTokensModel> getTokens() {
-	 *
-	 *
-	 * // YTODO Auto-generated method stub return notificationTokenDao.getAllTokens(); }
-	 */
-
-
-
-	// YTODO Auto-generated method stub
-
 
 
 }

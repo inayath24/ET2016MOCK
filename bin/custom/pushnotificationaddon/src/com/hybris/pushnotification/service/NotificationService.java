@@ -12,5 +12,4 @@ public interface NotificationService
 
 	public void setToken(String currentToken);
 
-	//public List<NotificationTokensModel> getTokens();
 }

@@ -29,11 +29,10 @@ public class NotificationPopUpController
 
 	@RequestMapping(value = "/gettoken", method = RequestMethod.POST)
 	@ResponseBody
-	public String removeAddress(@RequestParam("json") final String json)
+	public String setToken(@RequestParam("json") final String json)
 	{
-		//	console.log("Success")
+
 		defaultNotificationTokenFacade.setToken(json);
-		LOG.info("The notifcation token is being sent");
 
 		return "success";
 

@@ -29,7 +29,6 @@ public class WebpushnotificationsbackofficeController extends DefaultWidgetContr
 	private Textbox body;
 	private Textbox link;
 
-	private Textbox image;//
 
 	@WireVariable
 	private WebpushnotificationsbackofficeService webpushnotificationsbackofficeService;
@@ -41,7 +40,7 @@ public class WebpushnotificationsbackofficeController extends DefaultWidgetContr
 	@ViewEvent(componentID = "send", eventName = Events.ON_CLICK)
 	public void doSearch() throws WrongValueException, Exception
 	{
-		final String result = webpushnotificationsbackofficeService.send(title.getText(), body.getText(), link.getText());
-		System.out.println(result);
+		webpushnotificationsbackofficeService.send(title.getText(), body.getText(), link.getText());
+
 	}
 }

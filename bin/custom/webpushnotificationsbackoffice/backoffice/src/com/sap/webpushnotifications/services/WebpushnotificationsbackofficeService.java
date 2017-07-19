@@ -109,6 +109,9 @@ public class WebpushnotificationsbackofficeService
 				conn.setDoInput(true);
 				conn.setDoOutput(true);
 
+				/*
+				 * Customer Sprcific firebase API key
+				 */
 				conn.setRequestProperty("AUTHORIZATION",
 						"key=AAAA5dKG7Q4:APA91bGgHwpxhdLcafISaylMnZjx8H4mudwfkY9VK5zxmWALeOFY7Z1bMlIavKHNYZMnfE-XPUpSWPHezd9npcwnxyREvVh1o6pjryj9XpTDs6aT_qNwmQI_1NxXRnW-gVisWBoevMJS");
 				conn.setRequestProperty("Content-type", "application/json");
@@ -123,8 +126,7 @@ public class WebpushnotificationsbackofficeService
 				final JSONObject message = new JSONObject();
 				//message.put("notification", notificationObj);
 				message.put("data", notificationObj);
-				//System.out.println(tokens.get(k));
-				LOG.info(tokens + "" + k + "the tokens are");
+				//LOG.info(tokens + "" + k + "the tokens are");
 				message.put("to", tokens.get(k));//try with registration_ids...
 
 				printout[0].writeBytes(message.toString());
@@ -173,13 +175,12 @@ public class WebpushnotificationsbackofficeService
 			modelService.removeAll(invalidTokensModel);
 
 		}
-		return "sent";
+		return "Notification SENT";
 	}
 
 	public RestTemplate getRestTemplate()
 	{
 		return restTemplate;
-	}
 
 	public void setRestTemplate(final RestTemplate restTemplate)
 	{

@@ -1,6 +1,9 @@
 $(document).ready(function () {
     // Initialize Firebase
-    // TODO: Replace with your project's customized code snippet
+	
+	/*
+	 * Customer Sprcific firebase project settings
+	 * */
     var config = {
         apiKey: "AIzaSyAQB2YQ2g4gWIwFHZIBEV1gy7s3xGNISUo",
         authDomain: "push-906.firebaseapp.com",
@@ -44,25 +47,9 @@ $(document).ready(function () {
                         		sendTokenToServer(currentToken);//here console log won't b printed
                         		}
                         	
-                        	//sendTokenToServer(currentToken);//console log will b printed here
+                        	
                                 
-                        	/*$.ajax({
-        	                    url: ACC.config.encodedContextPath + "/notification/gettoken",
-        	                    dataType: "json",
-        	                    type: 'POST',
-        	                    
-        	                    data: {
-        	                        json: currentToken
-        	                    },
-        	                    success: function( data ) {
-        	                    	 alert(data);//
-        	                    	 setTokenSentToServer(true);
-        	                    },
-        	                    error:function(response){
-        	                    	 alert("Failure"+response.status)
-        	                    }
-        	                });*/
-                        
+                        	
                         } else {
                             // Show permission request.
                             console.log('No Instance ID token available. Request permission to generate one.');
@@ -103,28 +90,12 @@ $(document).ready(function () {
                             // Indicate that the new Instance ID token has not yet been sent to the
                             // app server.
                             setTokenSentToServer(false);
-                            /*$.ajax({
-        	                    url: ACC.config.encodedContextPath + "/notification/gettoken",
-        	                    dataType: "json",
-        	                    type: 'POST',
-        	                    
-        	                    data: {
-        	                        json: refreshedToken
-        	                    },
-        	                    success: function( data ) {
-        	                    	 alert(data)
-        	                    },
-        	                    error:function(response){
-        	                    	 alert("Failure"+response.status)
-        	                    }
-        	                });
-                            */
+                           
                             
                             // Get updated InstanceID token.
                             /*String refreshedToken = FirebaseInstanceId.getInstance().getToken();//try catch...?
                             console.log("Refreshed token: " + refreshedToken);
 */
-                            // TODO: Implement this method to send any registration to your app's servers.
                             // Send Instance ID token to app server.
                             if (refreshedToken) {
                             	sendTokenToServer(refreshedToken);
@@ -176,7 +147,7 @@ function sendTokenToServer(currentToken) {
                 json: currentToken
             },
             success: function( data ) {
-            	 alert(data);//
+            	 //alert(data);
             	 setTokenSentToServer(true);//
             },
             error:function(response){
@@ -185,37 +156,7 @@ function sendTokenToServer(currentToken) {
             }
         });
         
-        // TODO(developer): Send the current token to your server.
-/*        var xhr = new XMLHttpRequest();
 
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                //console.log("wah"); //Outputs a DOMString by default
-                setTokenSentToServer(true);//
-            }
-        };
-
-       
-        var id_token = {
-            "notification": {
-            	"title": "SAP Basket notification",
-        	    "body": "from unload.js",
-                "icon": "https://localhost:9002/sapbasketstorefront/_ui/addons/sapbasketstorefrontAddOn/responsive/common/images/download.png",
-                "click_action": "https://localhost:9002"
-            },
-
-            "to": currentToken
-        }
-
-        xhr.open('POST', 'https://fcm.googleapis.com/fcm/send');
-
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.setRequestHeader('Authorization', 'key=AIzaSyB6VvEGXdzYlDTkOeWZ23JXHvD37nhzo_k');
-
-        xhr.send(JSON.stringify(id_token));//
-*/
-
-        //setTokenSentToServer(true);//
     } else {
         console.log('Token already sent to server so won\'t send it again ' +
             'unless it changes');
