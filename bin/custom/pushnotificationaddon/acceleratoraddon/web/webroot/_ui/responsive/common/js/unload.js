@@ -83,7 +83,8 @@ $(document).ready(function () {
                 // - the user clicks on an app notification created by a sevice worker
                 //   `messaging.setBackgroundMessageHandler` handler.
                 messaging.onMessage(function (payload) {
-                    console.log("Message received. ", payload);
+                    alert("Payload received");
+                	console.log("Message received. ", payload);
                     // [START_EXCLUDE]
                     // Update the UI to include the received message.
                     //appendMessage(payload);
