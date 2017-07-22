@@ -30,10 +30,8 @@ public class DefaultNotificationTokenFacade implements NotificationTokenFacade
 	@Override
 	public void setToken(final String currentToken)
 	{
-		LOG.info("Notification token facade");
 		notificationService.setToken(currentToken);
-		// YTODO Auto-generated method stub
-		//return null;
+
 	}
 
 }

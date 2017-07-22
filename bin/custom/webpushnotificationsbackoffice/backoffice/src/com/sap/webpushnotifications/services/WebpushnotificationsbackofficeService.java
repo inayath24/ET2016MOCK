@@ -109,6 +109,9 @@ public class WebpushnotificationsbackofficeService
 				conn.setDoInput(true);
 				conn.setDoOutput(true);
 
+				/*
+				 * Customer Sprcific firebase API key
+				 */
 				conn.setRequestProperty("AUTHORIZATION",
 						"key=AAAA5dKG7Q4:APA91bGgHwpxhdLcafISaylMnZjx8H4mudwfkY9VK5zxmWALeOFY7Z1bMlIavKHNYZMnfE-XPUpSWPHezd9npcwnxyREvVh1o6pjryj9XpTDs6aT_qNwmQI_1NxXRnW-gVisWBoevMJS");
 				conn.setRequestProperty("Content-type", "application/json");
@@ -173,13 +176,12 @@ public class WebpushnotificationsbackofficeService
 			modelService.removeAll(invalidTokensModel);
 
 		}
-		return "sent";
+		return "Notification SENT";
 	}
 
 	public RestTemplate getRestTemplate()
 	{
 		return restTemplate;
-	}
 
 	public void setRestTemplate(final RestTemplate restTemplate)
 	{
