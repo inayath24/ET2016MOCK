@@ -70,7 +70,7 @@ public class WebpushnotificationsbackofficeService
 		for (final NotificationTokensModel n : notificationTokensModel)
 		{
 
-			tokens.add(n.getNotifcationToken());
+			tokens.add(n.getNotificationToken());
 		}
 
 		final JSONObject notificationObj = new JSONObject();
@@ -121,10 +121,10 @@ public class WebpushnotificationsbackofficeService
 				printout[0] = new DataOutputStream(conn.getOutputStream());
 
 				final JSONObject message = new JSONObject();
-				//message.put("notification", notificationObj);
 				message.put("data", notificationObj);
-				//System.out.println(tokens.get(k));
+
 				LOG.info(tokens + "" + k + "the tokens are");
+
 				message.put("to", tokens.get(k));//try with registration_ids...
 
 				printout[0].writeBytes(message.toString());

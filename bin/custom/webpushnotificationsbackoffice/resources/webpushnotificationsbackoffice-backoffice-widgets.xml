@@ -14,14 +14,14 @@
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widgets.xsd">
 
-    <widget-extension widgetId="backofficeMainSlot">
+    <!-- <widget-extension widgetId="backofficeMainSlot">
         <widget id="webpushnotificationsbackoffice-perspective" widgetDefinitionId="com.sap.webpushnotifications.widgets.webpushnotificationsbackofficewidget"
-            template="false" slotId="perspectives"> <!-- title="Hello webpushnotificationsbackoffice"> -->
-            <!-- <setting key="perspectiveImageUrl" value="/cng/images/perspective.png"
-                type="String" /> -->
+            template="false" slotId="perspectives"> title="Hello webpushnotificationsbackoffice">
+            <setting key="perspectiveImageUrl" value="/cng/images/perspective.png"
+                type="String" />
         </widget>
     </widget-extension>
-
+ -->
     <widget-connection sourceWidgetId="webpushnotificationsbackoffice-explorer-tree" outputId="nodeSelected" targetWidgetId="webpushnotificationsbackoffice-tree-node-adapter" inputId="input"/>
     <widget-connection sourceWidgetId="webpushnotificationsbackoffice-tree-node-adapter" outputId="true" targetWidgetId="webpushnotificationsbackoffice-typecode-extractor" inputId="genericInput"/>
     <widget-connection sourceWidgetId="webpushnotificationsbackoffice-tree-node-adapter" outputId="true" targetWidgetId="webpushnotificationsbackoffice-search-enabler" inputId="genericInput"/>

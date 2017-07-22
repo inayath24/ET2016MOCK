@@ -3,7 +3,6 @@
  */
 package com.hybris.pushnotification.service.impl;
 
-
 import de.hybris.platform.servicelayer.model.ModelService;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
 
@@ -13,7 +12,6 @@ import org.apache.log4j.Logger;
 
 import com.hybris.pushnotification.service.NotificationService;
 import com.sap.webpushnotifications.model.NotificationTokensModel;
-
 
 
 /**
@@ -29,7 +27,6 @@ public class NotificationServiceImpl implements NotificationService
 
 	@Resource
 	private FlexibleSearchService flexibleSearchService;
-
 
 
 	/**
@@ -79,29 +76,7 @@ public class NotificationServiceImpl implements NotificationService
 	public void setToken(final String currentToken)
 	{
 		final NotificationTokensModel notificationToken = new NotificationTokensModel();
-		notificationToken.setNotifcationToken(currentToken);
-
+		notificationToken.setNotificationToken(currentToken);
 		modelService.save(notificationToken);
 	}
-
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see com.hybris.pushnotification.service.NotificationService#getToken()
-	 */
-	//@Override
-	/*
-	 * public List<NotificationTokensModel> getTokens() {
-	 *
-	 *
-	 * // YTODO Auto-generated method stub return notificationTokenDao.getAllTokens(); }
-	 */
-
-
-
-	// YTODO Auto-generated method stub
-
-
-
 }

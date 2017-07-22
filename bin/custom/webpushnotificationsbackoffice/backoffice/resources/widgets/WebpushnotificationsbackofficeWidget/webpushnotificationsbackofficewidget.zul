@@ -23,7 +23,7 @@
                                
                 <div id="test1" style="text-align: center;" >
                                 <div style="text-align: center;" >
-                                                <n:h1><label id="label" value="Push Notification Configuration" /></n:h1><n:br></n:br>
+                                                <n:h1><label id="label" value="Configuration" /></n:h1><n:br></n:br>
                                 </div>
                                 
                                 <div>
@@ -33,7 +33,7 @@
                                 <n:br></n:br>
                                 <div>
                                                 <label id="label_body" value="Body" style="padding-right:250px;"/><n:br></n:br>
-                                                <textbox id="body" rows="5" cols="40" placeholder="Enter the message description"/>
+                                                <textbox id="body" style="resize:none" rows="5" cols="40" placeholder="Enter the message description"/>
                                 </div>
                                 <n:br></n:br>
                                 <div>

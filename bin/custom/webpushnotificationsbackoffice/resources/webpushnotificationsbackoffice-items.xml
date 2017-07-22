@@ -72,7 +72,7 @@
 		
 		<deployment table="NotificationTokens" typecode="23000"/>
 		<attributes>
-			<attribute qualifier="notifcationToken" type="java.lang.String">
+			<attribute qualifier="notificationToken" type="java.lang.String">
 				<persistence type="property"/>
 			</attribute>
 		</attributes>

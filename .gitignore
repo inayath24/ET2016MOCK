@@ -10,7 +10,7 @@ sonar-project.properties
 /log/
 
 **/Generated.*java
-/bin/custom/sapbasket/sapbasketstorefront/web/commonwebsrc/acceleratorstorefrontcommons/de/hybris/platform/acceleratorstorefrontcommons/
+bin/custom/sapbasket/sapbasketstorefront/web/commonwebsrc/acceleratorstorefrontcommons/de/hybris/platform/acceleratorstorefrontcommons/
 **/web/testclasses/
 **/jalo/
 

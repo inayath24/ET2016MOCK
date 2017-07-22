@@ -5,8 +5,8 @@
     <path dir="${HYBRIS_BIN_DIR}/custom" autoload="true"/>
 
 	<extension name='mcc' />
-    <extension name="hmc"/>
-    <extension name="backoffice"/>
+    <extension name="hmc"/><!-- 
+    <extension name="backoffice"/> -->
     <extension name='rulebuilderbackoffice' />
 	
 	<extension name="ycommercewebservices"/>
