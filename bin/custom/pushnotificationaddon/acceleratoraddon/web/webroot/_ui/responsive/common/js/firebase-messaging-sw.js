@@ -11,7 +11,7 @@ importScripts('https://www.gstatic.com/firebasejs/4.0.0/firebase-messaging.js');
 
 
 /*
- * Customer Sprcific firebase project settings
+ * Customer Specific firebase project settings
  * */
 var config = {
 	    apiKey: "AIzaSyAQB2YQ2g4gWIwFHZIBEV1gy7s3xGNISUo",

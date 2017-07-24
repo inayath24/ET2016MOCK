@@ -42,7 +42,6 @@ public class WebpushnotificationsbackofficeService
 
 	private static final Logger LOG = Logger.getLogger(WebpushnotificationsbackofficeService.class);
 
-
 	private NotificationTokenDao notificationTokenDao;
 
 	@Resource
@@ -55,21 +54,16 @@ public class WebpushnotificationsbackofficeService
 	{
 		final String reqUrl = "https://fcm.googleapis.com/fcm/send";
 
-		final List<String> removeTokens = new ArrayList<String>();
 
+		final List<String> removeTokens = new ArrayList<String>();
 
 		final List<NotificationTokensModel> notificationTokensModel = notificationTokenDao.getAllTokens();
 
-
 		final ArrayList<String> tokens = new ArrayList<String>();
-		/*
-		 * final List<NotificationTokensModel> notificationTokensModel = notificationTokenDao.getAllTokens(); final
-		 * ArrayList<String> tokens = new ArrayList<String>();
-		 */
+
 
 		for (final NotificationTokensModel n : notificationTokensModel)
 		{
-
 			tokens.add(n.getNotificationToken());
 		}
 
@@ -182,6 +176,7 @@ public class WebpushnotificationsbackofficeService
 	public RestTemplate getRestTemplate()
 	{
 		return restTemplate;
+	}
 
 	public void setRestTemplate(final RestTemplate restTemplate)
 	{
