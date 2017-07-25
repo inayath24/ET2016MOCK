@@ -5,18 +5,14 @@
     <path dir="${HYBRIS_BIN_DIR}/custom" autoload="true"/>
 
 	<extension name='mcc' />
-    <extension name="hmc"/><!-- 
-    <extension name="backoffice"/> -->
-    <extension name='rulebuilderbackoffice' />
+    <extension name="hmc"/>
 	
 	<extension name="ycommercewebservices"/>
+    <!--<extension name='rulebuilderbackoffice' />
     <extension name='couponbackoffice' />
     <extension name='droolsruleengineservices' />
     <extension name='promotionenginesamplesaddon' />
-    <extension name='promotionengineatddtests' />
-   
-	<!--<extension name="webpushnotificationsbackoffice"/>
-	<extension name="pushnotificationaddon"/>-->
+    <extension name='promotionengineatddtests' />-->
 	
   </extensions>
 </hybrisconfig>
