@@ -14,7 +14,8 @@
 	<extension abstractclassprefix="Generated" classprefix="SapbasketStorefront" name="sapbasketstorefront" usemaven="false">		
         
 		
-		<requires-extension name="pushnotificationaddon"/>
+		
+<requires-extension name="pushnotificationaddon"/>
 <requires-extension name="acceleratorstorefrontcommons"/>
 		<requires-extension name="sapbasketfacades"/>
 
