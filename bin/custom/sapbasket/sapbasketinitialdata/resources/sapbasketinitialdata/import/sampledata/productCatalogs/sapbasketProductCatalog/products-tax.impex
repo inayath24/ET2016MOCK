@@ -1,0 +1,117 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2000-2016 SAP SE or an SAP affiliate company.
+# All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Product taxex into the Store
+
+$productCatalog=sapbasketProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
+
+INSERT_UPDATE Product;code[unique=true];Europe1PriceFactory_PTG(code[unique=true]);$catalogVersion
+;ToorDal_500;ptgrpakku;
+;ToorDal_1;ptgrpakku;
+;ToorDal_harvest_500;ptgrpakku;
+;ToorDal_harvest_1;ptgrpakku;
+;ToorDal_sbroyal_1;ptgrpakku;
+;ToorDal_sbroyal_500;ptgrpakku;
+
+;ChannaDal_500;ptgrpakku;
+;ChannaDal_1;ptgrpakku;
+;ChannaDal_harvest_500;ptgrpakku;
+;ChannaDal_sbroyal_1;ptgrpakku;
+;ChannaDal_harvest_1;ptgrpakku;
+;ChannaDal_sbroyal_500;ptgrpakku;
+
+;MoongDal_500;ptgrpakku;
+;MoongDal_1;ptgrpakku;
+;UradDal_500;ptgrpakku;
+;UradDal_1;ptgrpakku;
+;Peanuts_500;ptgrpakku;
+;Peanuts_1;ptgrpakku;
+
+;Olive_500;ptgrpakku;
+;Olive_1;ptgrpakku;
+;Sunflower_500;ptgrpakku;
+;Sunflower_1;ptgrpakku;
+;Groundnut_500;ptgrpakku;
+;Mustard_1;ptgrpakku;
+;Ghee_500;ptgrpakku;
+;Ghee_1;ptgrpakku;
+
+;Cookies_1;ptgrpakku;
+;Cookies_3;ptgrpakku;
+;CreamBiscuits_1;ptgrpakku;
+;CreamBiscuits_3;ptgrpakku;
+;Digestive_1;ptgrpakku;
+;Digestive_3;ptgrpakku;
+;Lays_100;ptgrpakku;
+;Kurkure_100;ptgrpakku;
+;UncleChips_100;ptgrpakku;
+;Cashew_50;ptgrpakku;
+;Cashew_100;ptgrpakku;
+;Almonds_50;ptgrpakku;
+;Almonds_100;ptgrpakku;
+;Pista_50;ptgrpakku;
+;Pista_100;ptgrpakku;
+;Walnuts_50;ptgrpakku;
+;Walnuts_100;ptgrpakku;
+
+;RedLabel_50;ptgrpakku;
+;RedLabel_100;ptgrpakku;
+;RedLabel_250;ptgrpakku;
+;RedLabel_500;ptgrpakku;
+;RedLabel_1;ptgrpakku;
+;Tetley_50;ptgrpakku;
+;Tetley_100;ptgrpakku;
+;Netscafe_50;ptgrpakku;
+;Netscafe_100;ptgrpakku;
+;BruInstant_50;ptgrpakku;
+;BruInstant_100;ptgrpakku;
+;FilterCoffeePowder_50;ptgrpakku;
+;FilterCoffeePowder_100;ptgrpakku;
+;Boost_500;ptgrpakku;
+;Boost_1;ptgrpakku;
+;Horlicks_500;ptgrpakku;
+;Horlicks_1;ptgrpakku;
+
+;FruitJam_50;ptgrpakku;
+;FruitJam_100;ptgrpakku;
+;Mayonnaise_50;ptgrpakku;
+;Mayonnaise_100;ptgrpakku;
+;Pickle_50;ptgrpakku;
+;Pickle_100;ptgrpakku;
+;Ketchup_250;ptgrpakku;
+;Ketchup_500;ptgrpakku;
+
+
+
+# Insert Product taxes for US
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for JP
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for GB
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes fo FR
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for PL
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for DE
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for CA
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for CN
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]

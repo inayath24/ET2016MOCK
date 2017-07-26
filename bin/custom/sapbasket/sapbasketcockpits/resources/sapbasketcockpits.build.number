@@ -1,0 +1,9 @@
+#Ant properties
+#Thu Dec 15 17:07:02 CET 2016
+builddate=20161215 1706
+description=sapbasketcockpits
+name=sapbasketcockpits
+releasedate=20160923 1341
+vendor=hybris
+version=6.2.0.2
+version.api=6.2.0

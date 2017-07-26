@@ -1,0 +1,151 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2000-2016 SAP SE or an SAP affiliate company.
+# All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Prices
+
+# Macros / Replacement Parameter definitions
+$productCatalog=sapbasketProductCatalog
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default='$productCatalog:Staged']
+$prices=Europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
+
+# Set product approval status to Approved only for those products that have prices.
+$approved=approvalstatus(code)[default='approved']
+
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;Europe1PriceFactory_PTG(code)
+
+# Insert Product prices
+
+INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price
+;ToorDal;pieces;INR;150
+;ToorDal_500;pieces;INR;75
+;ToorDal_1;pieces;INR;150
+;ToorDal_harvest;pieces;INR;160
+;ToorDal_harvest_500;pieces;INR;80
+;ToorDal_harvest_1;pieces;INR;160
+;ToorDal_sbroyal;pieces;INR;180
+;ToorDal_sbroyal_500;pieces;INR;90
+;ToorDal_sbroyal_1;pieces;INR;180
+;ChannaDal;pieces;INR;140
+;ChannaDal_500;pieces;INR;70
+;ChannaDal_1;pieces;INR;140
+;ChannaDal_harvest;pieces;INR;150
+;ChannaDal_harvest_500;pieces;INR;750
+;ChannaDal_harvest_1;pieces;INR;150
+;ChannaDal_sbroyal;pieces;INR;160
+;ChannaDal_sbroyal_500;pieces;INR;80
+;ChannaDal_sbroyal_1;pieces;INR;160
+
+;MoongDal;pieces;INR;130
+;MoongDal_500;pieces;INR;65
+;MoongDal_1;pieces;INR;130
+;UradDal;pieces;INR;120
+;UradDal_500;pieces;INR;60
+;UradDal_1;pieces;INR;120
+;Peanuts;pieces;INR;100
+;Peanuts_500;pieces;INR;50
+;Peanuts_1;pieces;INR;100
+;Olive;pieces;INR;1000
+;Olive_500;pieces;INR;500
+;Olive_1;pieces;INR;1000
+;Sunflower;pieces;INR;100
+;Sunflower_500;pieces;INR;50
+;Sunflower_1;pieces;INR;100
+;Groundnut;pieces;INR;110
+;Groundnut_500;pieces;INR;55
+;Mustard;pieces;INR;120
+;Mustard_500;pieces;INR;60
+;Mustard_1;pieces;INR;120
+;Ghee;pieces;INR;500
+;Ghee_500;pieces;INR;250
+;Ghee_1;pieces;INR;500
+;Cookies;pieces;INR;40
+;Cookies_1;pieces;INR;40
+;Cookies_3;pieces;INR;110
+
+;CreamBiscuits;pieces;INR;85
+;CreamBiscuits_1;pieces;INR;30
+;CreamBiscuits_3;pieces;INR;85
+
+;Digestive;pieces;INR;25
+;Digestive_1;pieces;INR;25
+;Digestive_3;pieces;INR;70
+
+;Lays;pieces;INR;10
+;Lays_100;pieces;INR;10
+
+;Kurkure;pieces;INR;10
+;Kurkure_100;pieces;INR;10
+
+;UncleChips;pieces;INR;10
+;UncleChips_100;pieces;INR;10
+
+;Cashew;pieces;INR;200
+;Cashew_50;pieces;INR;100
+;Cashew_100;pieces;INR;200
+
+;Almonds;pieces;INR;100
+;Almonds_50;pieces;INR;50
+;Almonds_100;pieces;INR;100
+
+;Pista;pieces;INR;100
+;Pista_50;pieces;INR;50
+;Pista_100;pieces;INR;100
+
+;Walnuts;pieces;INR;100
+;Walnuts_50;pieces;INR;50
+;Walnuts_100;pieces;INR;100
+
+;RedLabel;pieces;INR;150
+;RedLabel_50;pieces;INR;20
+;RedLabel_100;pieces;INR;40
+;RedLabel_250;pieces;INR;75
+;RedLabel_500;pieces;INR;150
+
+;Tetley;pieces;INR;110
+;Tetley_50;pieces;INR;110
+;Tetley_100;pieces;INR;220
+
+;Netscafe;pieces;INR;240
+;Netscafe_50;pieces;INR;120
+;Netscafe_100;pieces;INR;240
+
+;BruInstant;pieces;INR;160
+;BruInstant_50;pieces;INR;80
+;BruInstant_100;pieces;INR;160
+
+;FilterCoffeePowder;pieces;INR;180
+;FilterCoffeePowder_50;pieces;INR;90
+;FilterCoffeePowder_100;pieces;INR;180
+
+;Boost;pieces;INR;200
+;Boost_500;pieces;INR;100
+;Boost_1;pieces;INR;200
+
+;Horlicks;pieces;INR;300
+;Horlicks_500;pieces;INR;150
+;Horlicks_1;pieces;INR;300
+
+;FruitJam;pieces;INR;250
+;FruitJam_50;pieces;INR;125
+;FruitJam_100;pieces;INR;250
+
+;Mayonnaise;pieces;INR;150
+;Mayonnaise_50;pieces;INR;75
+;Mayonnaise_100;pieces;INR;150
+
+;Pickle;pieces;INR;180
+;Pickle_50;pieces;INR;60
+;Pickle_100;pieces;INR;180
+
+;Ketchup;pieces;INR;40
+;Ketchup_250;pieces;INR;40
+;Ketchup_500;pieces;INR;120

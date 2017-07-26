@@ -1,0 +1,829 @@
+$contentCatalog=sapbasketContentCatalog
+$contentCatalogName=sapbasketContentCatalog
+$productCatalog=sapbasketProductCatalog
+$productCatalogName=sapbasketProductCatalog
+
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$picture=media(code, $contentCV);
+$image=image(code, $contentCV);
+$media=media(code, $contentCV);
+$page=page(uid, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$contentPage=contentPage(uid, $contentCV);
+$siteResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$productResource=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/sampledata/productCatalogs/$productCatalog
+$jarResourceCms=jar:com.sap.sapbasket.initialdata.setup.InitialDataSystemSetup&/sapbasketinitialdata/import/cockpits/cmscockpit
+
+
+# CMS Site Settings
+INSERT_UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);defaultPreviewProduct(code, $productCV)
+
+
+# Site Logo
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
+;;/images/theme/logo-bigbasket.png;logo-bigbasket.png;$siteResource/images/theme/logo-bigbasket.png;image/png;"SAP Basket";
+
+
+# Site Logo Component
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
+;;SiteLogoComponent;Site Logo Component;SiteLogoComponent;"/"
+
+
+# CMS Link Components
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;&componentRef;target(code)[default='sameWindow'];$category;$product;
+;;HomepageNavLink;Home Page Nav Link;/;HomepageNavLink;HomepageNavLink;;;;
+;;StoreFinderLink;Store Finder Link;/store-finder;StoreFinderLink;StoreFinderLink;;;;
+;;LoginLink;Login Link;/login;LoginLink;LoginLink;;;;
+
+;;ShopByCategoryLink;Shop By Category Link;/Category/c/category;ShopByCategoryLink;ShopByCategoryLink;;Food;;
+;;Oils&EdibleLink;Oils & Edible Link;/Category/Oils-&-Edible;Oils&EdibleLink;Oils&EdibleLink;;Oils&Edible;;
+;;SnackFoodLink;Snack Food Link;/Category/Snack-Food;SnackFoodLink;SnackFoodLink;;SnackFood;;
+;;RiceFlour&PulsesLink;Rice Flour & Pulses Link;/Category/Rice-Flour-&-Pulses;RiceFlour&PulsesLink;RiceFlour&PulsesLink;;RiceFlour&Pulses;;
+;;Jams&PicklesLink;Jams & Pickles Link;/Category/Jams-&-Pickles;Jams&PicklesLink;Jams&PicklesLink;;Jams&Pickles;;
+;;CoffeeTea&BeveragesLink;Coffee Tea & Beverages Link;/Category/Coffee-Tea-&-Beverages;CoffeeTea&BeveragesLink;CoffeeTea&BeveragesLink;;CoffeeTea&Beverages;;
+
+;;SBExpressLink;SB Express Link;/SBExpress;SBExpressLink;SBExpressLink;;SBExpress;;
+;;OffersLink;Offers Link;/Offers;OffersLink;OffersLink;;Offers;;
+;;SBSpecialityLink;SB Speciality Link;/SBSpeciality;SBSpecialityLink;SBSpecialityLink;;SBSpecialty;;
+
+;;MoreStoresCategoryLink;More Stores Category Link;/MoreStoresCategory;MoreStoresCategoryLink;MoreStoresCategoryLink;;MoreStores;;
+;;AboutAcceleratorLink;About Accelerator Link;"http://www.hybris.com/multichannel-accelerator";AboutAcceleratorLink;AboutAcceleratorLink;newWindow;;;
+;;FacebookLink;Facebook Link;"http://www.facebook.com/hybrissoftware";FacebookLink;FacebookLink;newWindow;;;
+;;TwitterLink;Twitter Link;"http://twitter.com/#!/hybris_software";TwitterLink;TwitterLink;newWindow;;;
+;;AgileCommerceBlogLink;Agile Commerce Blog Link;"http://www.agile-commerce.com/";AgileCommerceBlogLink;AgileCommerceBlogLink;newWindow;;;
+;;LinkedInLink;Linked In Link;"http://www.linkedin.com/company/97435";LinkedInLink;LinkedInLink;newWindow;;;
+;;FAQLink;FAQ Link;/faq;FAQLink;FAQLink;;;;
+
+;;AccountHomeLink;Account Home Link;/my-account;AccountHomeLink;AccountHomeLink;;;;
+;;AccountProfileLink;AccountProfileLink;/my-account/profile;AccountProfileLink;AccountProfileLink;;;;
+;;AccountPersonalDetailsLink;AccountPersonalDetailsLink;/my-account/profile;AccountPersonalDetailsLink;AccountPersonalDetailsLink;;;;
+;;AccountOrderHistoryLink;AccountOrderHistoryLink;/my-account/orders;AccountOrderHistoryLink;AccountOrderHistoryLink;;;;
+;;AccountViewOrderHistoryLink;AccountViewOrderHistoryLink;/my-account/orders;AccountViewOrderHistoryLink;AccountViewOrderHistoryLink;;;;
+
+;;AccountUpdatePasswordLink;AccountUpdatePasswordLink;/my-account/update-password;AccountUpdatePasswordLink;AccountUpdatePasswordLink;;;;
+;;AccountAddressBookLink;AccountAddressBookLink;/my-account/address-book;AccountAddressBookLink;AccountAddressBookLink;;;;
+;;AccountUpdateEmailLink;AccountUpdateEmailLink;/my-account/update-email;AccountUpdateEmailLink;AccountUpdateEmailLink;;;;
+;;AccountUpdateProfileLink;AccountUpdateProfileLink;/my-account/update-profile;AccountUpdateProfileLink;AccountUpdateProfileLink;;;;
+
+
+# Lightbox Banner for Mini Cart
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
+;;LightboxHomeDeliveryBannerComponent;Lightbox Home Delivery Banner Component;LightboxHomeDeliveryBannerComponent;
+
+# CMS Mini Cart Component
+INSERT_UPDATE MiniCartComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;totalDisplay(code);shownProductCount;lightboxBannerComponent(&componentRef)
+;;MiniCart;Mini Cart;MiniCart;SUBTOTAL;3;LightboxHomeDeliveryBannerComponent
+
+
+# Navigation Bar Component
+INSERT_UPDATE NavigationBarComponent;$contentCV[unique=true];uid[unique=true];name;wrapAfter;link(uid, $contentCV);styleClass;&componentRef
+;;ShopByCategoryBarComponent;Shop By Category Bar Component;10;ShopByCategoryLink;;ShopByCategoryBarComponent
+;;SBExpressBarComponent;SB Express Bar Component;10;SBExpressLink;;SBExpressBarComponent
+;;OffersBarComponent;Offers Bar Component;10;OffersLink;;OffersBarComponent
+;;SBSpecialityBarComponent;SB Speciality Bar Component;10;SBSpecialityLink;;SBSpecialityBarComponent
+;;MoreStoresCategoryBarComponent;More Stores Category Bar Component;10;MoreStoresCategoryLink;;MoreStoresCategoryBarComponent
+
+# Navigation Bar Component
+INSERT_UPDATE NavigationBarCollectionComponent;$contentCV[unique=true];uid[unique=true];name;components(uid, $contentCV);&componentRef
+;;NavBarComponent;Navigation Bar Collection Component;ShopByCategoryBarComponent,SBExpressBarComponent,OffersBarComponent,SBSpecialityBarComponent,MoreStoresCategoryBarComponent;NavBarComponent
+
+
+INSERT_UPDATE AccountNavigationComponent;$contentCV[unique=true];uid[unique=true];name;navigationNode(&nodeRef);styleClass;&componentRef
+;;AccountLeftNavigationComponent;Account Left Navigation Component;AccountLeftNavNode;;AccountLeftNavigationComponent
+;;AccountProfileNavigationComponent;Account Profile Navigation Component;AccountProfileNavNode;;AccountProfileNavigationComponent
+#;;AccountOrderHistoryNavigationComponent;Account Order History Navigation Component;AccountOrderHistoryNavNode;;AccountOrderHistoryNavigationComponent
+
+# Account Navigation Bar Component
+INSERT_UPDATE AccountNavigationCollectionComponent;$contentCV[unique=true];uid[unique=true];name;components(uid, $contentCV);&componentRef
+;;AccountHomepageComponent;Account Homepage Component;AccountProfileNavigationComponent,AccountOrderHistoryNavigationComponent;AccountHomepageComponent
+
+
+# CMS tabs components
+INSERT_UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];name;visible;&componentRef
+;;deliveryTab;Delivery tab;true;deliveryTab
+
+INSERT_UPDATE CMSTabParagraphContainer;$contentCV[unique=true];uid[unique=true];name;visible;simpleCMSComponents(uid, $contentCV);&componentRef
+;;TabPanelContainer;Tab container;true;deliveryTab;TabPanelContainer
+
+# CMS Footer Component
+INSERT_UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];wrapAfter;&componentRef
+;;FooterComponent;2;FooterComponent
+
+# CMS Paragraph Component (Contact information)
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;ContactInfo;Contact information;ContactInfo
+
+# CMS VariantSelector Components
+INSERT_UPDATE ProductVariantSelectorComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;VariantSelector;Product Variant Selector;VariantSelector
+#??
+
+# CMS ProductAddToCart Components
+INSERT_UPDATE ProductAddToCartComponent;$contentCV[unique=true];uid[unique=true];name;actions(&actionRef);&componentRef
+;;AddToCart;Product Add To Cart;AddToCartAction;AddToCart
+
+# CMS ProductReferences Components
+INSERT_UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;&componentRef
+
+# CMS PurchasedCategorySuggestionComponent Components
+INSERT_UPDATE PurchasedCategorySuggestionComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;filterPurchased;category(code, $productCV);&componentRef
+
+# CMS CartSuggestion Components
+INSERT_UPDATE CartSuggestionComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;filterPurchased;&componentRef
+
+# CMS SearchBox Components
+INSERT_UPDATE SearchBoxComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;SearchBox;Search Box;SearchBox
+
+# CMS Language and Currency Component
+INSERT_UPDATE LanguageCurrencyComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+
+# CMS Product Refinement Component
+INSERT_UPDATE ProductRefinementComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;RefinementFacetComponent;Product Refinement Facet Component;RefinementFacetComponent
+
+# CMS Product List Component
+INSERT_UPDATE CMSProductListComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
+
+# CMS Product Grid Component
+INSERT_UPDATE ProductGridComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
+;;ProductGridComponent;Product Grid Component;;ProductGridComponent
+
+# CMS Search Results List Component
+INSERT_UPDATE SearchResultsListComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
+
+# CMS Search Results Grid Component
+INSERT_UPDATE SearchResultsGridComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
+;;SearchResultsGrid;Search Result Grid Component;;SearchResultsGrid
+
+
+# Content Slots
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+;;SiteLogoSlot;SiteLogoComponent
+;;HomepageNavLinkSlot;HomepageNavLink
+;;MiniCartSlot;MiniCart
+;;NavigationBarSlot;NavBarComponent
+#;;TabsSlot;TabPanelContainer
+;;FooterSlot;FooterComponent
+#;;HeaderLinksSlot;ContactInfo
+;;SearchBoxSlot;SearchBox
+;;VariantSelectorSlot;VariantSelector
+;;AddToCartSlot;AddToCart
+;;ProductLeftRefinements;RefinementFacetComponent
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+
+
+# Category Pages
+INSERT_UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];previewImage(code, $contentCV)
+;;productGrid;Product Grid;ProductGridPageTemplate;true;;;
+
+# Category Page Restrictions
+INSERT_UPDATE CMSCategoryRestriction;$contentCV[unique=true];uid[unique=true];name;categories(code, $productCV);pages(uid, $contentCV)
+
+
+# CMS Navigation Nodes #
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;children(uid,$contentCV)[mode=append]
+;root;;root;;
+
+# CMS Navigation Nodes
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&linkRef);&nodeRef
+;SiteRootNode;;SiteRootNode;root;;SiteRootNode
+
+;SapBasketNavNode;;SapBasket Site;SiteRootNode;HomepageNavLink;SapBasketNavNode
+;ShopByCategoryNavNode;;Category Links;SapBasketNavNode;ShopByCategoryLink;ShopByCategoryNavNode
+;ShopByCategoryLinksNavNode;;Category Links;ShopByCategoryNavNode;Oils&EdibleLink,SnackFoodLink,RiceFlour&PulsesLink,Jams&PicklesLink,CoffeeTea&BeveragesLink;ShopByCategoryLinksNavNode
+;OffersNavNode;;Offers Category;SapBasketNavNode;OffersLink;OffersNavNode
+;SBExpressNavNode;;SB Express Category;SapBasketNavNode;SBExpressLink;SBExpressNavNode
+;SBSpecialityNavNode;;SB Speciality Category;SapBasketNavNode;SBSpecialityLink;SBSpecialityNavNode
+
+;MoreStoresNavNode;;More Stores Category;SapBasketNavNode;MoreStoresCategoryLink;MoreStoresNavNode
+;AcceleratorNavNode;;Accelerator Pages;SapBasketNavNode;AboutAcceleratorLink,FAQLink;AcceleratorNavNode
+;HybrisNavNode;;Hybris Pages;SapBasketNavNode;AboutHybrisLink,ContactUsLink;HybrisNavNode
+;FollowUsNavNode;;Follow Us Pages;SapBasketNavNode;AgileCommerceBlogLink,LinkedInLink,FacebookLink,TwitterLink;FollowUsNavNode
+
+;AccountLeftNavNode;;My Account;SiteRootNode;AccountUpdateProfileLink,AccountAddressBookLink,AccountUpdatePasswordLink,AccountUpdateEmailLink;AccountLeftNavNode
+;AccountProfileNavNode;;Profile;AccountLeftNavNode;AccountPersonalDetailsLink;AccountProfileNavNode
+
+#;AccountOrderHistoryNavNode;;Order History;AccountLeftNavNode;AccountViewOrderHistoryLink;AccountOrderHistoryNavNode
+
+
+# Navigation Bar Component
+INSERT_UPDATE NavigationBarComponent;$contentCV[unique=true];uid[unique=true];navigationNode(&nodeRef);dropDownLayout(code)
+;;ShopByCategoryBarComponent;ShopByCategoryNavNode
+;;SBExpressBarComponent;SBExpressNavNode
+;;OffersBarComponent;OffersNavNode
+;;SBSpecialityBarComponent;SBSpecialityNavNode
+;;MoreStoresCategoryBarComponent;MoreStoresNavNode
+
+INSERT_UPDATE NavigationBarComponent;$contentCV[unique=true];uid[unique=true];name;wrapAfter;navigationNode(&nodeRef);link(uid, $contentCV);styleClass;dropDownLayout(code);&componentRef
+;;ShopByCategoryBarComponent;All Categories;10;ShopByCategoryNavNode;ShopByCategoryLink;;AUTO;ShopByCategoryBarComponent
+
+# Update CMS Footer Component with Nav Nodes
+INSERT_UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];navigationNodes(&nodeRef)
+;;FooterComponent;AcceleratorNavNode,HybrisNavNode,FollowUsNavNode
+
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+
+# Site-wide Homepage
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);linkComponents(uid, $contentCV)
+
+# Functional Content Pages
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV)
+
+# Simple Content Pages 
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);linkComponents(uid, $contentCV)
+
+#UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);linkComponents(uid, $contentCV)
+
+# Product Details Page
+UPDATE ProductPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV)
+
+# Category Pages
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV)
+
+####  CMS ACTIONS ######
+# CMS Action Restrictions
+INSERT_UPDATE CMSActionRestriction;$contentCV[unique=true];uid[unique=true];name;
+
+# CMS AddToCart Action
+INSERT_UPDATE AddToCartAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+;;AddToCartAction;/cart/add;Product Add To Cart Action;;AddToCartAction
+
+# CMS ListAddToCartAction
+INSERT_UPDATE ListAddToCartAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+
+# CMS ListOrderForm Action
+INSERT_UPDATE ListOrderFormAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+
+# CMS PickUpInStoreAction Action
+INSERT_UPDATE PickUpInStoreAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+
+# CMS ShareOnSocialNetwork Action
+INSERT_UPDATE ShareOnSocialNetworkAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+
+# CMS View Order Action
+INSERT_UPDATE ViewOrderAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+
+# CMS View Store Action
+INSERT_UPDATE ViewStoreAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+
+##### Jsp Include Component #####
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
+;;ReturningCustomerLoginComponent;Returning Customer Login Component;accountReturningCustomerLogin.jsp;ReturningCustomerLoginComponent
+;;NewCustomerLoginComponent;New Customer Login Component;accountNewCustomerLogin.jsp;NewCustomerLoginComponent
+;;UpdateProfileComponent;Update Profile Component;accountProfileEditPage.jsp;UpdateProfileComponent
+;;AccountAddressBookComponent;Account Address Book Component;accountAddressBookPage.jsp;AccountAddressBookComponent
+;;UpdateEmailComponent;Update Email Component;accountProfileEmailEditPage.jsp;UpdateEmailComponent
+;;UpdatePasswordComponent;Update Password Component;accountChangePasswordPage.jsp;UpdatePasswordComponent
+;;AccountAddEditAddressComponent;Account Add Edit Address Component;accountEditAddressPage.jsp;AccountAddEditAddressComponent
+;;CartComponent;Cart Display Component;cartDisplay.jsp;CartComponent
+;;CartTotalsComponent;Cart Totals Display Component;cartTotalsDisplay.jsp;CartTotalsComponent
+;;PromotionsComponent;Promotions Component;cartPromotionsDisplay.jsp;PromotionsComponent
+;;PotentialPromotionsComponent;Potential Promotions Component;potentialPromotionsDisplay.jsp;PotentialPromotionsComponent
+;;CheckoutComponent;Checkout Display Component;checkoutDisplay.jsp;CheckoutComponent
+;;NewCustomerCheckoutLoginComponent;New Customer Checkout Login Component;checkoutNewCustomerLogin.jsp;NewCustomerCheckoutLoginComponent
+;;ReturningCustomerCheckoutLoginComponent;Returning Customer Checkout Login Component;checkouReturningCustomerLogin.jsp;ReturningCustomerCheckoutLoginComponent
+;;GuestCheckoutLoginComponent;Guest Checkout Login Component;checkoutGuestLogin.jsp;GuestCheckoutLoginComponent
+;;StoreFinderComponent;Store Finder Component;storeFinderContent.jsp;ViewStoreAction;StoreFinderComponent
+
+
+
+INSERT_UPDATE BreadcrumbComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+
+
+
+###### About Us Page ######
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;&componentRef;target(code)[default='sameWindow'];$category;$product;
+;;AboutHybrisLink;About Hybris Link;/about-us;AboutHybrisLink;AboutHybrisLink;;;;
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];masterTemplate(uid,$contentCV);name;title;label
+;;AboutUSakku;AccountPageTemplate;About Us;About Us;/about-us
+
+INSERT_UPDATE TabComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef;content;media(code,$contentCV);title
+;;tabc1;Tab Component 1;;tabc1;"SAP Basket(Innovative Retail Concepts Private Limited) is India’s largest online food and grocery store.With over 18,000 products and 1000 brands in our grocery list you
+will find everything you are looking for. Right from fresh fruits and vegetables, rice and daals, spices and seasonings to packaged bread, bakery and dairy products online and other branded foods online
+- we have it all.Save time and money, shop at sapbasket - the best online fruit & vegetable store, meat store, provisions store - an all-encompassing online groceries store of India.";AboutUsMedia;What is SAP Basket?
+
+;;tabc2;Tab Component 2;;tabc2;"SAP Basket allows you to walk away from the drudgery of grocery shopping and welcome an easy relaxed way of browsing and shopping for groceries.India's Best Online Supermarket India
+Shopping with sapbasket, the best online grocery and food shopping store Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Noida, Mysore, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Lucknow-Kanpur,
+Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Ludhiana and Jalandhar. It is very simple and easy. No more standing in lines, carrying heavy bags and looking for parking!
+Get started with online grocery shopping at India’s favourite online grocery store. Choose from a wide range of options in every groceries list, exclusively handpicked to help you find the best quality 
+available at the lowest prices. Select a time slot for home delivery and your order will be delivered at your doorstep, anywhere in Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Noida, Mysore, Coimbatore, 
+Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Ludhiana and Jalandhar. 
+In future we are expanding to other cities in India. You can pay by cash, card or food coupons. We guarantee on time delivery and the best quality! Happy Shopping!";WhySAPB;Why SAP Basket? 
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+;;contentslotfortabc;tabc1,tabc2
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='AboutUSakku'];contentSlot(uid,$contentCV)[unique=true]
+;;AboutUsCSP;BodyContent;;contentslotfortabc
+
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+;;AboutUsMedia;$siteResource/images/theme/aboutusmedia.jpg;;;"About Us Media"
+;;WhySAPB;$siteResource/images/theme/whybb.jpg;;;"Why SAP Basket"
+
+
+###### Contact Us Page ######
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;&componentRef;target(code)[default='sameWindow'];$category;$product;
+;;ContactUsLink;Contact Us Link;/contact-us;ContactUsLink;ContactUsLink;;;;
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];masterTemplate(uid,$contentCV);name;title;label
+;;ContactUsakku1;AccountPageTemplate;Contact Us;Contact Us;/contact-us
+
+INSERT_UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content;title 
+;;TabParaComp;Tab Para Component Instance;TabParaComp;"Address: Devarabisanahalli, Bellandur, Bengaluru, Karnataka
+Phone:080 4000 4000";"Office Address"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+;;ContactUsCS;TabParaComp
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true];;;
+;;ContactUsR;BodyContent;ContactUsakku1;ContactUsCS
+
+
+###### About Contact Us Page ######
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;&componentRef;target(code)[default='sameWindow'];$category;$product;
+;;Link1;Link1;/about-us;Link1;Link1;;;;
+;;Link2;Link2;/about-us;Link2;Link2;;;;
+;;ContactUsLink;ContactUsLink;/contact-us;ContactUsLink;ContactUsLink;;;;
+
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&linkRef);&nodeRef
+;AboutUsLeftNavNode;;About Us Left Nav Node;SiteRootNode;Link1,Link2;AboutUsLeftNavNode
+;ContactUsLeftNavNode;;Contact Us Left Nav Node;SiteRootNode;ContactUsLink;ContactUsLeftNavNode
+
+INSERT_UPDATE AccountNavigationComponent;$contentCV[unique=true];uid[unique=true];name;navigationNode(&nodeRef);styleClass;&componentRef
+;;AboutUsLeftNavComponent;About Us Left Navigation Component;AboutUsLeftNavNode;;AboutUsLeftNavComponent
+;;ContactUsLeftNavComponent;Contact Us Left Navigation Component;ContactUsLeftNavNode;;ContactUsLeftNavComponent
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-about;Side Content Slot for About Contact Us;true;AboutUsLeftNavComponent,ContactUsLeftNavComponent;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContentRel;SideContent;AboutUSakku;SideContent-about;;;
+;;SideContentRel1;SideContent;ContactUsakku1;SideContent-about;;;
+
+
+######## Order Confirmation Page Start #######
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV);&componentRef
+;;OrderConfirmationThankMessageComponent;Order Confirmation Thank You Message Component;checkoutConfirmationThankMessage.jsp;;OrderConfirmationThankMessageComponent
+;;OrderConfirmationOverviewComponent;Order Confirmation Overview Info Component;/WEB-INF/views/responsive/pages/account/accountOrderDetailOverview.jsp;;OrderConfirmationOverviewComponent
+;;OrderConfirmationTotalsComponent;Order Confirmation Totals Component;/WEB-INF/views/responsive/pages/account/accountOrderDetailOrderTotals.jsp;;OrderConfirmationTotalsComponent
+;;OrderConfirmationShippingComponent;Order Confirmation Shipping Info Component;/WEB-INF/views/responsive/pages/account/accountOrderDetailShippingInfo.jsp;;OrderConfirmationShippingComponent
+;;OrderConfirmationItemsComponent;Order Confirmation Items Info Component;/WEB-INF/views/responsive/pages/account/accountOrderDetailItems.jsp;;OrderConfirmationItemsComponent
+;;OrderConfirmationContinueButtonComponent;Order Confirmation Continue Button Component;checkoutConfirmationContinueButton.jsp;;OrderConfirmationContinueButtonComponent
+
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+#;;SideContent-orderConfirmation;Side Content Slot for Order Confirmation;true;;;;
+;;BodyContent-orderConfirmation;Body Content Slot for Order Confirmation;true;OrderConfirmationThankMessageComponent,OrderConfirmationOverviewComponent,OrderConfirmationItemsComponent,OrderConfirmationShippingComponent,OrderConfirmationTotalsComponent,OrderConfirmationContinueButtonComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='orderConfirmationPage'];contentSlot(uid,$contentCV)[unique=true];;;
+#;;SideContent-orderConfirmation;SideContent;;SideContent-orderConfirmation;;;
+;;BodyContent-orderConfirmation;BodyContent;;BodyContent-orderConfirmation;;;
+
+######## Order Confirmation Page End #######
+
+
+###### Category Landing Page ######
+INSERT_UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];previewImage(code, $contentCV)
+
+INSERT_UPDATE CMSCategoryRestriction;$contentCV[unique=true];uid[unique=true];name;categories(code, $productCV);pages(uid, $contentCV)
+
+INSERT_UPDATE CategoryFeatureComponent;$contentCV[unique=true];uid[unique=true];name;category(code, $productCV);&componentRef
+
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='CamerasAccessoriesAndSuppliesCategoryPage'];contentSlot(uid,$contentCV)[unique=true]
+
+###### Search Results Page ######
+
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='search'];contentSlot(uid,$contentCV)[unique=true]
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='searchEmpty'];contentSlot(uid,$contentCV)[unique=true]
+
+###### Cart Page ######
+
+# SimpleBannerComponent 
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
+;;FreeDeliverySimpleBannerComponent;Free Delivery Simple Banner Component;FreeDeliverySimpleBannerComponent;;;;
+;;HelpWithCheckoutSimpleBannerComponent;Help With Checkout Simple Banner Component;HelpWithCheckoutSimpleBannerComponent;;;;
+
+
+#INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
+
+# CMSParagraphComponent 
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
+;;EmptyCartParagraphComponent;Empty Cart Paragraph Component;EmptyCartParagraphComponent;;;;
+;;HelpParagraphComponent;Help Paragraph Component;HelpParagraphComponent;;;;
+
+# ContentSlot 
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
+;;EmptyCartMiddleContent;Middle Slot for Cart Page;true;EmptyCartParagraphComponent
+;;TopContentSlot;Top Content Slot for Cart Page;true;CartComponent
+;;CenterLeftContentSlot;Center Left Content Slot for Cart Page;true;PromotionsComponent,PotentialPromotionsComponent
+;;CenterRightContentSlot;Center Right Content Slot for Cart Page;true;CartTotalsComponent
+;;BottomContentSlot;Bottom Content Slot for Cart Page;true;CheckoutComponent
+
+
+# ContentSlotForPage 
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='cartPage'];contentSlot(uid,$contentCV)[unique=true]
+;;EmptyCartMiddleForCartPage;EmptyCartMiddleContent;;EmptyCartMiddleContent
+;;TopContentSlotForCartPage1;TopContent;;TopContentSlot
+;;CenterLeftContentSlotForCartPage1;CenterLeftContentSlot;;CenterLeftContentSlot
+;;CenterRightContentSlotForCartPag1e;CenterRightContentSlot;;CenterRightContentSlot
+;;BottomContentSlotForCartPage1;BottomContentSlot;;BottomContentSlot
+
+
+###### Checkout Login Page ######
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;LeftContentSlot-checkout-login;Left Content Slot for Checkout Login;true;ReturningCustomerCheckoutLoginComponent;;;
+;;CenterContentSlot-checkout-login;Center Content Slot for Checkout Login;true;NewCustomerCheckoutLoginComponent;;;
+;;RightContentSlot-checkout-login;Right Content Slot for Checkout Login;true;GuestCheckoutLoginComponent;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='checkout-login'];contentSlot(uid,$contentCV)[unique=true]
+;;LeftContentSlot-checkout-login;LeftContentSlot;;LeftContentSlot-checkout-login;;;
+;;CenterContentSlot-checkout-login;CenterContentSlot;;CenterContentSlot-checkout-login;;;
+;;RightContentSlot-checkout-login;RightContentSlot;;RightContentSlot-checkout-login;;;
+###### Checkout Summary / Proceed to Checkout Page ######
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true]
+
+###### Store Finder Page ######
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)[unique=true]
+;;SideContent-StoreFinderPage;Side Slot for Store Finder Page;true;
+;;MiddleContent-StoreFinderPage1;Middle Slot for Store Finder Page;true;StoreFinderComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='storefinderPage'];contentSlot(uid,$contentCV)[unique=true]
+;;Side-StoreFinderPage;SideContent;;SideContent-StoreFinderPage
+;;Middle-StoreFinderPage;MiddleContent;;MiddleContent-StoreFinderPage1
+
+
+###### FAQ Page ######
+ 
+# CMSParagraphComponent 
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
+
+# ContentSlot 
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+# ContentSlotForPage 
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='faq'];contentSlot(uid,$contentCV)[unique=true];;;
+
+###### Terms and Conditions Page
+
+# CMSParagraphComponent
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
+
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='termsAndConditions'];contentSlot(uid,$contentCV)[unique=true];;;
+
+##### Account Home Page #####
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='account'];contentSlot(uid,$contentCV)[unique=true];;;
+
+###### Account Homepage ######
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='account'];contentSlot(uid,$contentCV)[unique=true];;;
+
+###### Account Profile ######
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='profile'];contentSlot(uid,$contentCV)[unique=true];;;
+
+
+
+###### Account Address Book ######
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-address-book;Side Content Slot for Account Address Book;true;AccountLeftNavigationComponent;;;
+;;BodyContent-address-book;Body Content Slot for Account Address Book;true;AccountAddressBookComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='address-book'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-address-book;SideContent;;SideContent-address-book;;;
+;;BodyContent-address-book;BodyContent;;BodyContent-address-book;;;
+
+###### Account Add Edit Address ######
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-add-edit-address;Side Content Slot for Add Edit Address;true;AccountLeftNavigationComponent;;;
+;;BodyContent-add-edit-address;Body Content Slot for Add Edit Address;true;AccountAddEditAddressComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='add-edit-address'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-add-edit-address;SideContent;;SideContent-add-edit-address;;;
+;;BodyContent-add-edit-address;BodyContent;;BodyContent-add-edit-address;;;
+
+###### Account Payment Detail Page ######
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='payment-details'];contentSlot(uid,$contentCV)[unique=true];;;
+
+###### Account Order History ######
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='orders'];contentSlot(uid,$contentCV)[unique=true];;;
+
+###### Account Order Details ######
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='order'];contentSlot(uid,$contentCV)[unique=true];;;
+
+###### Account Update Password ######
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-updatePassword;Side Content Slot for Update Password;true;AccountLeftNavigationComponent;;;
+;;BodyContent-updatePassword;Body Content Slot for Update Password;true;UpdatePasswordComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='updatePassword'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-updatePassword;SideContent;;SideContent-updatePassword;;;
+;;BodyContent-updatePassword;BodyContent;;BodyContent-updatePassword;;;
+
+###### Account Update Profile ######
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-update-profile;Side Content Slot for Update Profile;true;AccountLeftNavigationComponent;;;
+;;BodyContent-update-profile;Body Content Slot for Update Profile;true;UpdateProfileComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='update-profile'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-update-profile;SideContent;;SideContent-update-profile;;;
+;;BodyContent-update-profile;BodyContent;;BodyContent-update-profile;;;
+
+
+###### Account Update Email ######
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SideContent-update-email;Side Content Slot for Update Email;true;AccountLeftNavigationComponent;;;
+;;BodyContent-update-email;Body Content Slot for Update Email;true;UpdateEmailComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='update-email'];contentSlot(uid,$contentCV)[unique=true];;;
+;;SideContent-update-email;SideContent;;SideContent-update-email;;;
+;;BodyContent-update-email;BodyContent;;BodyContent-update-email;;;
+
+##### ProductListPage #####
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+##### ProductGridPage #####
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;ProductGridSlot;Product Grid Slot for Product List;true;ProductGridComponent;;;
+
+##### SearchResultListPage #####
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+
+#### SearchResultGridPage
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;SearchResultsGridSlot;Search Result Grid Slot for Search List;true;SearchResultsGrid;;;
+
+##### Customer Login #####
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV);;;
+;;LeftContentSlot;Left Content Slot for Customer Login;true;ReturningCustomerLoginComponent
+;;RightContentSlot;Right Content Slot for Customer Login;true;NewCustomerLoginComponent
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='login'];contentSlot(uid,$contentCV)[unique=true];;;
+
+##### Checkout Login #####
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='checkout-login'];contentSlot(uid,$contentCV)[unique=true];;;
+
+
+###### Homepage ######
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+;;BBRoyalHoneyMedia;$siteResource/images/banners/homepage/BBRoyalHoney.jpg;;;"BB Royal Honey"
+;;BBRoyalOrganicMedia;$siteResource/images/banners/homepage/BBRoyalOrganic.jpg;;;"BB Royal Organic"
+;;BloomsMedia;$siteResource/images/banners/homepage/Blooms.jpg;;;"Blooms"
+;;HealthyLivingMedia;$siteResource/images/banners/homepage/HealthyLiving.jpg;;;"Healthy Living"
+;;GiftingRangeMedia;$siteResource/images/banners/homepage/GiftingRange.jpg;;;"Gifing Range"
+;;GuaranteedMedia;$siteResource/images/banners/homepage/GuareenteImage.jpg;;;"Guaranteed"
+;;BeautyStore;$siteResource/images/banners/homepage/BeautyStore.jpg;;;"BB Royal Honey"
+;;OrganicStore;$siteResource/images/banners/homepage/OrganicStore.jpg;;;"BB Royal Organic"
+;;GourmetStore;$siteResource/images/banners/homepage/GourmetStore.jpg;;;"Gourment"
+;;ChocolateStore;$siteResource/images/banners/homepage/ChocolateStore.jpg;;;"Chocolate"
+;;CheeseColdCuts;$siteResource/images/banners/homepage/CheeseColdCuts.jpg;;;"CheeseColdCuts"
+;;DealsWeek;$siteResource/images/banners/homepage/DealsWeek.jpg;;;"DealsWeek"
+;;KitchenContainer;$siteResource/images/banners/homepage/kitchen-container.jpg;;;"kitchen"
+;;PetCare;$siteResource/images/banners/homepage/capture.jpg;;;"petcare"
+;;BabyCare;$siteResource/images/banners/homepage/babycare.jpg;;;"baby"
+;;breakfast;$siteResource/images/banners/homepage/break-fast.jpg;;;"breakfast"
+;;partyfood;$siteResource/images/banners/homepage/party-food.jpg;;;"partyfood"
+;;BigsaveBannerMedia;$siteResource/images/banners/homepage/bigsave.jpg;;;"BigsaveBanner"
+;;SavingsBannerMedia;$siteResource/images/banners/homepage/savingsbanner.png;;;"saveBanner"
+;;TastiesBannerMedia;$siteResource/images/banners/homepage/tastiesbanner.jpg;;;"TastiessaveBanner"
+;;BloomsBannerMedia;$siteResource/images/banners/homepage/bloomsbanner.jpg;;;"BloomsBanner"
+;;FreshoBannerMedia;$siteResource/images/banners/homepage/freshobanner.jpg;;;"BigsaveBanner"
+;;MobikwikTileMedia;$siteResource/images/banners/homepage/MobikwikTile.jpg;;;"Mobikwik Tile"
+;;PaytmTileMedia;$siteResource/images/banners/homepage/PaytmTile.jpg;;;"PaytmTile"
+;;PocketsTileMedia;$siteResource/images/banners/homepage/savings.jpg;;;"PocketsTile"
+;;ZivameTileMedia;$siteResource/images/banners/homepage/zivame.jpg;;;"ZivameTile"
+;;BigsaveBannerMedia;$siteResource/images/banners/homepage/bigsave.jpg;;;"BigsaveBanner"
+;;BloomsBannerMedia;$siteResource/images/banners/homepage/bloomsbanner.jpg;;;"BlooomsTile"
+;;NiveaBrandMedia;$siteResource/images/banners/homepage/NiveaBrand.jpg;;;"NiveaBrand"
+;;FreshoSignatureBrandMedia;$siteResource/images/banners/homepage/fresho.jpg;;;"FreshoSignatureBrand"
+;;HappychefBrandMedia;$siteResource/images/banners/homepage/happychef.jpg;;;"HappychefBrand"
+;;TastiesBrandMedia;$siteResource/images/banners/homepage/tasties.jpg;;;"TastiesBrand"
+;;CadburyBrandMedia;$siteResource/images/banners/homepage/CadburyBrand.jpg;;;"CadburyBrand"
+;;LindbergBrandMedia;$siteResource/images/banners/homepage/LindbergBrand.jpg;;;"LindbergBrand"
+;;RecipeMedia;$siteResource/images/banners/homepage/recipeoftheweek.jpg;;;"Recipe"
+;;MartiniMedia;$siteResource/images/banners/homepage/Martini.jpg;;;"Martini"
+;;StarterMedia;$siteResource/images/banners/homepage/starter.jpg;;;"Starter"
+
+
+INSERT_UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink;media(code,$contentCV)
+;;giftingrange;Gifting Range Banner;http://www.google.com;GiftingRangeMedia
+;;healthyliving;Healthy Living Banner;http://www.google.com;HealthyLivingMedia
+;;bbroyalorganic;BB Royal Organice Banner;http://www.google.com;BBRoyalOrganicMedia
+;;blooms;Blooms Banner;http://www.google.com;BloomsMedia
+;;bbroyalhoney;BB Royal Honey Banner;http://www.google.com;BBRoyalOrganicMedia
+;;guaranteedbanner;Guaranteed Banner;http://www.google.com;GuaranteedMedia
+;;CustomBanner1;Custom Banner;http://www.google.com;BeautyStore
+;;CustomBanner2;Custom Banner2;http://www.google.com;OrganicStore
+;;CustomBanner3;Custom Banner3;http://www.google.com;GourmetStore
+;;CustomBanner4;Custom Banner4;http://www.google.com;ChocolateStore
+;;CustomBanner5;Custom Banner5;http://www.google.com;CheeseColdCuts
+;;CustomBanner6;Custom Banner;http://www.google.com;DealsWeek
+;;babycarebanner;Baby Care Banner;http://www.google.com;BabyCare
+;;breakfastbanner;Breakfast Banner;http://www.google.com;breakfast
+;;petcarebanner;Pet Care Banner;http://www.google.com;PetCare
+;;kitchencontainerbanner;kitchen Banner;http://www.google.com;KitchenContainer
+;;PartyFoodBanner;PartyFood Banner;http://www.google.com;partyfood
+;;BigsaveBanner;Bigsave Banner;http://www.google.com;BigsaveBannerMedia
+;;FreshoBanner;Fresho Banner;http://www.google.com;FreshoBannerMedia
+;;TastiesBanner;Tasties Banner;http://www.google.com;TastiesBannerMedia
+;;ZivameBanner;Great Offers Tile Banner;http://www.google.com;ZivameTileMedia
+;;BloomsBanner;Bigsave Banner;http://www.google.com;BloomsBannerMedia
+;;SavingsBanner;Fresho Banner;http://www.google.com;SavingsBannerMedia
+;;MobikwikTileBanner;Mobikwik Tile Banner;http://www.google.com;MobikwikTileMedia
+;;PaytmTileBanner;Paytm Tile Banner;http://www.google.com;PaytmTileMedia
+;;PocketsTileBanner;Pockets Tile Banner;http://www.google.com;PocketsTileMedia
+;;BigsaveBanner;Bigsave Banner;http://www.google.com;BigsaveBannerMedia
+;;FreshoBanner;Fresho Banner;http://www.google.com;FreshoBannerMedia
+;;TastiesBanner;Tasties Banner;http://www.google.com;TastiesBannerMedia
+;;NiveaBrandBanner;Nivea Brand Banner;http://www.google.com;NiveaBrandMedia
+;;FreshoSignatureBrandBanner;Fresho Signature Brand Banner;http://www.google.com;FreshoSignatureBrandMedia
+;;HappychefBrandBanner;Happychef Brand Banner;http://www.google.com;HappychefBrandMedia
+;;TastiesBrandBanner;Tasties Brand Banner;http://www.google.com;TastiesBrandMedia
+;;CadburyBrandBanner;Cadbury Brand Banner;http://www.google.com;CadburyBrandMedia
+;;LindbergBrandBanner;Lindberg Brand Banner;http://www.google.com;LindbergBrandMedia
+;;StarterBanner;Starter Banner;http://www.google.com;StarterMedia
+;;MartiniBanner;Martini Banner;http://www.google.com;MartiniMedia
+;;RecipeBanner;Recipe Banner;http://www.google.com;RecipeMedia
+
+
+
+#section1
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;banners(uid,$contentCV);&componentRef
+;;SAPBasketHomepageRotatingComponent;SAPBasket Homepage Rotating Component;giftingrange,healthyliving,bbroyalorganic,blooms,bbroyalhoney;SAPBasketHomepageCarouselComponent
+
+INSERT_UPDATE StoreBannerComponent;$contentCV[unique=true];uid[unique=true];name;storebannerset(uid,$contentCV)
+;;SAPBasketStoreBannerComponent;SAPBasket StoreBanner Component;CustomBanner1,CustomBanner2,CustomBanner3,CustomBanner4,CustomBanner5,CustomBanner6
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content
+;;ExclusiveOffers;Offers Heading information;ExclusiveOffers;;;;<br><center><h2>ExclusiveOffers</h2></center><hr/><hr/><hr/>
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;Section1CustomSlot;SAPBasketHomepageRotatingComponent,guaranteedbanner,SAPBasketStoreBannerComponent,ExclusiveOffers;Section1
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section1CustomSlot-HomePage;Section1;;Section1CustomSlot
+
+
+
+
+#section2
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;Section2ACustomSlot;kitchencontainerbanner;Section2A
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;Section2BCustomSlot;breakfastbanner,PartyFoodBanner;Section2B
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;Section2CCustomSlot;petcarebanner,babycarebanner;Section2C
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section2ACustomSlot-HomePage;Section2A;;Section2ACustomSlot
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section2BCustomSlot-HomePage;Section2B;;Section2BCustomSlot
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section2CCustomSlot-HomePage;Section2C;;Section2CCustomSlot
+
+
+
+#section3
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;brandStoreParaComponent;Brandstore Heading information;Brandstore;;;;<br><center><h2>BrandStore</h2></center><hr/>; 
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;ShopMoreSaveMoreParaComponent;ShopMoreSaveMore Heading information;ShopMore;;;;<br><center><h2>Shop More - Save More</h2></center><hr/>;
+
+INSERT_UPDATE StoreBannerComponent;$contentCV[unique=true];uid[unique=true];name;storebannerset(uid,$contentCV)
+;;SAPBasketStoreBannerComponent2;SAPBasket StoreBanner Component2;ZivameBanner,MobikwikTileBanner,PaytmTileBanner,PocketsTileBanner
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;banners(uid,$contentCV)
+;;OffersHomepageRotatingComponent;Offers Homepage Rotating Component;BloomsBanner,TastiesBanner
+
+INSERT_UPDATE StoreBannerComponent;$contentCV[unique=true];uid[unique=true];name;storebannerset(uid,$contentCV)
+;;BrandComponent;Brand Component;NiveaBrandBanner,CadburyBrandBanner,TastiesBrandBanner,LindbergBrandBanner,HappychefBrandBanner
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;OffersRotatingImageComponentSlot;ShopMoreSaveMoreParaComponent,SAPBasketStoreBannerComponent2,OffersHomepageRotatingComponent,brandStoreParaComponent,BrandComponent;Section3
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section3Slot-HomePage;Section3;;OffersRotatingImageComponentSlot
+
+
+#section 4
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;bestsellersParaComponent;Best Sellers Heading information;BestSellers;;;;<br><center><h2>BestSellers</h2></center><hr/>; 
+
+
+INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);scroll(code);popup;&componentRef
+;;BestSellerCarouselComponent;Best Selling Products;Mayonnaise,Boost,Ghee,Groundnut,Almonds,Cashew,Cookies;allVisible;true;BestSellerCarouselComponent
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;featuredrecipesParaComponent;Featured Recipies information;featuredrecipes;;;;<br><center><h2>Featured Recipes</h2></center><hr/>
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;banners(uid,$contentCV)
+;;FeaturedRecipesRotatingComponent;featured recipesRotating Component;MartiniBanner,RecipeBanner,StarterBanner
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);currentposition
+;;BrandStoreComponentSlot;bestsellersParaComponent,BestSellerCarouselComponent,featuredrecipesParaComponent,FeaturedRecipesRotatingComponent;Section4
+
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true,default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section4Slot-HomePage;Section4;;BrandStoreComponentSlot
+
+
+
+#product reference component for product recommendations
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;content;
+;;CrossSellingheader;CrossSelling Heading information;CrossSellingheader;;;;<br><center><h2>You may also like</h2></center><hr/>; 
+
+INSERT_UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;&componentRef;;
+;;CrossSelling;CrossSelling;CROSSELLING;5;CrossSelling;;
+
+
+# ContentSlot 
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+;;CrossSellingSlot;CrossSellingheader,CrossSelling
