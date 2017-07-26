@@ -7,7 +7,6 @@ import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.SearchResult;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,8 +54,6 @@ public class DefaultNotificationTokenDao extends DefaultGenericDao<NotificationT
 		final Map<String, Object> params = new HashMap<String, Object>();
 		final String query = "SELECT {p:pk} FROM {NotificationTokens AS p} WHERE {p:NOTIFICATIONTOKEN} IN (?code)";
 		final FlexibleSearchQuery query1 = new FlexibleSearchQuery(query.toString());
-		final List<String> temp = new ArrayList<String>();
-		temp.add("athira");
 		params.put("code", tokens);
 		query1.addQueryParameters(params);
 		final SearchResult<NotificationTokensModel> result = getFlexibleSearchService().search(query1);

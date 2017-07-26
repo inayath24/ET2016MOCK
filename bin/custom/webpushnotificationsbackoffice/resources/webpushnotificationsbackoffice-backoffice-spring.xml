@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ [y] hybris Platform
-  ~
-  ~ Copyright (c) 2000-2016 SAP SE
-  ~ All rights reserved.
-  ~
-  ~ This software is the confidential and proprietary information of hybris
-  ~ ("Confidential Information"). You shall not disclose such Confidential
-  ~ Information and shall use it only in accordance with the terms of the
-  ~ license agreement you entered into with hybris.
-  -->
+	<!--
+	  ~ [y] hybris Platform
+	  ~
+	  ~ Copyright (c) 2000-2016 SAP SE
+	  ~ All rights reserved.
+	  ~
+	  ~ This software is the confidential and proprietary information of hybris
+	  ~ ("Confidential Information"). You shall not disclose such Confidential
+	  ~ Information and shall use it only in accordance with the terms of the
+	  ~ license agreement you entered into with hybris.
+	  -->
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+			   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
- 	<bean id="defaultGenericDaoImpl" class="de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao">
-        <constructor-arg value="Type"/>
-    </bean>
-    
-	<bean id="webpushnotificationRestTemplate" class="org.springframework.web.client.RestTemplate"/>
-	
-	<bean id="notificationTokenDao" class="com.hybris.pushnotification.dao.impl.DefaultNotificationTokenDao" parent="defaultGenericDaoImpl"/>
-	
-	<bean id="webpushnotificationsbackofficeService" class="com.sap.webpushnotifications.services.WebpushnotificationsbackofficeService" >
-	         <property name="restTemplate" ref="webpushnotificationRestTemplate"/>
-	         <property name="notificationTokenDao" ref="notificationTokenDao"/>
-	</bean>
-	
-	<bean id="sapbasketsfbackofficeLabelLocator" class="com.hybris.cockpitng.util.labels.ResourcesLabelLocator" scope="singleton" init-method="init" lazy-init="false">
-  		<property name="location" value="/sapbasketsfbackoffice-backoffice-labels/"/>
-  		<property name="name" value="labels"/>
-  	</bean> 
-  	
-</beans>
+		<bean id="defaultGenericDaoImpl" class="de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao">
+			<constructor-arg value="Type"/>
+		</bean>
+		
+		<bean id="webpushnotificationRestTemplate" class="org.springframework.web.client.RestTemplate"/>
+		
+		<bean id="notificationTokenDao" class="com.hybris.pushnotification.dao.impl.DefaultNotificationTokenDao" parent="defaultGenericDaoImpl">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		</bean>
+		
+		<bean id="webpushnotificationsbackofficeService" class="com.sap.webpushnotifications.services.WebpushnotificationsbackofficeService" >
+				 <property name="restTemplate" ref="webpushnotificationRestTemplate"/>
+				 <property name="notificationTokenDao" ref="notificationTokenDao"/>
+		</bean>
+		
+		<bean id="sapbasketsfbackofficeLabelLocator" class="com.hybris.cockpitng.util.labels.ResourcesLabelLocator" scope="singleton" init-method="init" lazy-init="false">
+			<property name="location" value="/sapbasketsfbackoffice-backoffice-labels/"/>
+			<property name="name" value="labels"/>
+		</bean> 
+		
+	</beans>

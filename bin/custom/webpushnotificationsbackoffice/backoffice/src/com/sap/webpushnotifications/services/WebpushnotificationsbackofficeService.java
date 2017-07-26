@@ -57,118 +57,132 @@ public class WebpushnotificationsbackofficeService
 
 		final List<String> removeTokens = new ArrayList<String>();
 
-		final List<NotificationTokensModel> notificationTokensModel = notificationTokenDao.getAllTokens();
-
-		final ArrayList<String> tokens = new ArrayList<String>();
-
-
-		for (final NotificationTokensModel n : notificationTokensModel)
+		try
 		{
-			tokens.add(n.getNotificationToken());
-		}
 
-		final JSONObject notificationObj = new JSONObject();
-		notificationObj.put("title", title);
-		notificationObj.put("body", body);
-		notificationObj.put("click_action", link);
-		notificationObj.put("icon", "https://upload.wikimedia.org/wikipedia/en/c/ca/Hybris_company_%28SAP%29_logo.jpg");
-		notificationObj.put("image", "https://upload.wikimedia.org/wikipedia/en/c/ca/Hybris_company_%28SAP%29_logo.jpg");
+			final List<NotificationTokensModel> notificationTokensModel = notificationTokenDao.getAllTokens();
 
-		//"https://localhost:9002/sapbasketstorefront/_ui/addons/sapbasketstorefrontAddOn/responsive/common/images/firebase.png"
-		/*
-		 * final String s =
-		 * WebpushnotificationsbackofficeService.class.getClassLoader().getResource("firebase.png").toString(); final File
-		 * file = new File(s);
-		 * //FileUtils.copyURLToFile(WebpushnotificationsbackofficeService.class.getClassLoader().getResource(
-		 * "firebase.png"), file); notificationObj.put("icon", file);
-		 */
-		/*
-		 * notificationObj.put("icon",
-		 * "file:///C:/SAPBasket/hybris/bin/custom/pushnotificationaddon/acceleratoraddon/web/webroot/_ui/responsive/common/images/firebase.png"
-		 * );
-		 */
-		for (int k = 0; k < tokens.size(); k++)
-		{
-			String response = null;
-			try
+			final ArrayList<String> tokens = new ArrayList<String>();
+
+
+			for (final NotificationTokensModel n : notificationTokensModel)
 			{
-				final DataOutputStream[] printout = new DataOutputStream[1];
-
-				final URL url = new URL(reqUrl);
-				final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
-				conn.setConnectTimeout(10000);
-				//urlc.setReadTimeout(10000);//?
-
-				conn.setDoInput(true);
-				conn.setDoOutput(true);
-
-				/*
-				 * Customer Sprcific firebase API key
-				 */
-				conn.setRequestProperty("AUTHORIZATION",
-						"key=AAAA5dKG7Q4:APA91bGgHwpxhdLcafISaylMnZjx8H4mudwfkY9VK5zxmWALeOFY7Z1bMlIavKHNYZMnfE-XPUpSWPHezd9npcwnxyREvVh1o6pjryj9XpTDs6aT_qNwmQI_1NxXRnW-gVisWBoevMJS");
-				conn.setRequestProperty("Content-type", "application/json");
-
-				conn.setRequestMethod("POST");
-
-				conn.connect();
-
-				// Send POST output.
-				printout[0] = new DataOutputStream(conn.getOutputStream());
-
-				final JSONObject message = new JSONObject();
-				message.put("data", notificationObj);
-
-				LOG.info(tokens + "" + k + "the tokens are");
-
-				message.put("to", tokens.get(k));//try with registration_ids...
-
-				printout[0].writeBytes(message.toString());
-				printout[0].flush();
-				printout[0].close();
-
-				final InputStream in = new BufferedInputStream(conn.getInputStream());
-				response = convertStreamToString(in);
-			}
-			catch (final MalformedURLException e)
-			{
-				LOG.info(e);
-			}
-			catch (final ProtocolException e)
-
-			{
-				LOG.info(e);
-			}
-			catch (final IOException e)
-			{
-				LOG.info(e);
-			}
-			catch (final Exception e)
-			{
-				LOG.info(e);
+				tokens.add(n.getNotificationToken());
 			}
 
-			LOG.info(response + "response");
-			if (response != null)
+
+
+			final JSONObject notificationObj = new JSONObject();
+			notificationObj.put("title", title);
+			notificationObj.put("body", body);
+			notificationObj.put("click_action", link);
+			notificationObj.put("icon", "https://upload.wikimedia.org/wikipedia/en/c/ca/Hybris_company_%28SAP%29_logo.jpg");
+			notificationObj.put("image", "https://upload.wikimedia.org/wikipedia/en/c/ca/Hybris_company_%28SAP%29_logo.jpg");
+
+			//"https://localhost:9002/sapbasketstorefront/_ui/addons/sapbasketstorefrontAddOn/responsive/common/images/firebase.png"
+			/*
+			 * final String s =
+			 * WebpushnotificationsbackofficeService.class.getClassLoader().getResource("firebase.png").toString(); final
+			 * File file = new File(s);
+			 * //FileUtils.copyURLToFile(WebpushnotificationsbackofficeService.class.getClassLoader().getResource(
+			 * "firebase.png"), file); notificationObj.put("icon", file);
+			 */
+			/*
+			 * notificationObj.put("icon",
+			 * "file:///C:/SAPBasket/hybris/bin/custom/pushnotificationaddon/acceleratoraddon/web/webroot/_ui/responsive/common/images/firebase.png"
+			 * );
+			 */
+			for (int k = 0; k < tokens.size(); k++)
 			{
-				final JSONObject removeInvalidToken = new JSONObject(response);
-				final JSONArray invalidTokens = removeInvalidToken.getJSONArray("results");
-				final JSONObject temp = invalidTokens.getJSONObject(0);
-				if (temp.has("error"))//
+				String response = null;
+				try
 				{
-					removeTokens.add(tokens.get(k));//messaging.deleteToken(token) in unload.js...?
+					final DataOutputStream[] printout = new DataOutputStream[1];
 
+					final URL url = new URL(reqUrl);
+					final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+					conn.setConnectTimeout(10000);
+					//urlc.setReadTimeout(10000);//?
+
+					conn.setDoInput(true);
+					conn.setDoOutput(true);
+
+					/*
+					 * Customer Sprcific firebase API key
+					 */
+					conn.setRequestProperty("AUTHORIZATION",
+							"key=AAAA5dKG7Q4:APA91bGgHwpxhdLcafISaylMnZjx8H4mudwfkY9VK5zxmWALeOFY7Z1bMlIavKHNYZMnfE-XPUpSWPHezd9npcwnxyREvVh1o6pjryj9XpTDs6aT_qNwmQI_1NxXRnW-gVisWBoevMJS");
+					conn.setRequestProperty("Content-type", "application/json");
+
+					conn.setRequestMethod("POST");
+
+					conn.connect();
+
+					// Send POST output.
+					printout[0] = new DataOutputStream(conn.getOutputStream());
+
+					final JSONObject message = new JSONObject();
+					message.put("data", notificationObj);
+
+					LOG.info(tokens + "" + k + "the tokens are");
+
+					message.put("to", tokens.get(k));//try with registration_ids...
+
+					printout[0].writeBytes(message.toString());
+					printout[0].flush();
+					printout[0].close();
+
+					final InputStream in = new BufferedInputStream(conn.getInputStream());
+					response = convertStreamToString(in);
+				}
+				catch (final MalformedURLException e)
+				{
+					LOG.info(e);
+				}
+				catch (final ProtocolException e)
+
+				{
+					LOG.info(e);
+				}
+				catch (final IOException e)
+				{
+					LOG.info(e);
+				}
+				catch (final Exception e)
+				{
+					LOG.info(e);
+				}
+
+				LOG.info(response + "response");
+				if (response != null)
+				{
+					final JSONObject removeInvalidToken = new JSONObject(response);
+					final JSONArray invalidTokens = removeInvalidToken.getJSONArray("results");
+					final JSONObject temp = invalidTokens.getJSONObject(0);
+					if (temp.has("error"))//
+					{
+						removeTokens.add(tokens.get(k));//messaging.deleteToken(token) in unload.js...?
+
+					}
 				}
 			}
+
+			if (!removeTokens.isEmpty())
+
+			{
+				final List<NotificationTokensModel> invalidTokensModel = notificationTokenDao.removeInvalidTokens(removeTokens);
+				modelService.removeAll(invalidTokensModel);
+
+			}
 		}
-
-		if (!removeTokens.isEmpty())
-
+		catch (final NullPointerException e)
 		{
-			final List<NotificationTokensModel> invalidTokensModel = notificationTokenDao.removeInvalidTokens(removeTokens);
-			modelService.removeAll(invalidTokensModel);
-
+			LOG.info(e);
+		}
+		catch (final Exception e)
+		{
+			LOG.info(e);
 		}
 		return "Notification SENT";
 	}
